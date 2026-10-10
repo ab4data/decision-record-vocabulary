@@ -37,7 +37,7 @@ Every table answers this question quietly, and it is the most expensive thing to
 | ⭐ `reason_class` | **One of about eleven shared classes — see §4** |
 | `decided_at` | When |
 
-⭐ **Note what is *not* in that list: `reason_code` itself.** The code stays in the fact table, in the domain's own language. **It is the class that conforms.** That distinction came out of writing 27 of these lists and classifying all 238 values — see [reason-codes/ANALYSIS.md](reason-codes/ANALYSIS.md). It is the difference between asking every team to adopt a shared vocabulary and asking them to map onto one.
+⭐ **Note what is *not* in that list: `reason_code` itself.** The code stays in the fact table, in the domain's own language. **It is the class that conforms.** That distinction came out of writing the first 27 of these lists and classifying all 238 values. The corpus is now 87 lists across 18 sectors and 716 codes, and tripling it required no twelfth class — see [reason-codes/ANALYSIS.md](reason-codes/ANALYSIS.md). It is the difference between asking every team to adopt a shared vocabulary and asking them to map onto one.
 
 **Seven is a starting proposal.** If you need an eighth, that is a useful disagreement — [open an issue](../../issues).
 
@@ -68,7 +68,7 @@ With it: *"and two thirds of the new rejections are incomplete documentation, on
 
 ⭐ **And the conformed counterpart: `reason_class`.**
 
-Writing 27 of these lists across nine sectors and classifying all 238 values produced **eleven classes** — three of which appear in every single domain. See [reason-codes/ANALYSIS.md](reason-codes/ANALYSIS.md).
+Writing the first 27 lists produced **eleven classes**. Extending the corpus to 87 lists across 18 sectors, and 716 codes, required no twelfth class. Three classes appear in every single domain. See [reason-codes/ANALYSIS.md](reason-codes/ANALYSIS.md).
 
 | Field | Who owns it | Cardinality |
 |---|---|---|
@@ -77,7 +77,7 @@ Writing 27 of these lists across nine sectors and classifying all 238 values pro
 
 **Nobody adopts anybody else's vocabulary.** A hospital's `collateral_unavailable` and a bank's `income_unverified` are the same class in different words, and both words are right where they are used. **The class is what travels.**
 
-The three classes present in all 27 domains are worth building first: `evidence_insufficient` (the most universal reason anything departs from default), `conformed` (without it there is no denominator and no rate), and `other` (which no list of any size has eliminated).
+The three classes present in all 87 domains are worth building first: `evidence_insufficient` (the most universal reason anything departs from default), `conformed` (without it there is no denominator and no rate), and `other` (which no list of any size has eliminated).
 
 Starter lists per domain are in [reason-codes/](reason-codes/).
 
