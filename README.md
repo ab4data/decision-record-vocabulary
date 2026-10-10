@@ -2,7 +2,7 @@
 
 **Seven dimensions and two columns, so that a refund decision, a code review and a clinical note can be compared without ever being merged.**
 
-Dedicated to the public domain under [CC0](LICENSE). Adopt it, fork it, rename it, ignore the parts that do not fit. **It is only worth anything if it is shared.**
+Dedicated to the public domain under [CC0](LICENSE) — and [here is why](NOTICE.md). Adopt it, fork it, rename it, ignore the parts that do not fit. **It is only worth anything if it is shared.**
 
 ---
 
