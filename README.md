@@ -40,7 +40,7 @@ Five working loops. **Five different vocabularies for the same idea** — health
 | File | What it is |
 |---|---|
 | **[SCHEMA.md](SCHEMA.md)** | The proposal: what one row stands for, the conformed seven, `reason_code`, `basis_refs`, `worker_kind` |
-| **[reason-codes/](reason-codes/)** | Starter lists for several domains. **These are the most forkable thing here** |
+| ⭐ **[reason-codes/](reason-codes/)** | **27 starter lists across nine sectors, and an [analysis](reason-codes/ANALYSIS.md) of what they share.** 238 local codes collapse to 11 classes; three appear in every domain |
 | **[CLAIMS.md](CLAIMS.md)** | Every factual claim behind this, with its source and status — including the ones that are argument rather than evidence |
 | **[CONTRIBUTING.md](CONTRIBUTING.md)** | How to propose a change, and what a useful disagreement looks like |
 | **[deck/](deck/)** | The talk this came from, as a single self-contained HTML file |

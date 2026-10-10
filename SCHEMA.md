@@ -34,8 +34,10 @@ Every table answers this question quietly, and it is the most expensive thing to
 | `task_type` | What kind of work this was, from a list your domain writes |
 | `data_class` | How sensitive the material was |
 | `outcome` | `accepted` · `edited` · `rejected` · `abandoned` |
-| ⭐ `reason_code` | **One value from a short list — see §4** |
+| ⭐ `reason_class` | **One of about eleven shared classes — see §4** |
 | `decided_at` | When |
+
+⭐ **Note what is *not* in that list: `reason_code` itself.** The code stays in the fact table, in the domain's own language. **It is the class that conforms.** That distinction came out of writing 27 of these lists and classifying all 238 values — see [reason-codes/ANALYSIS.md](reason-codes/ANALYSIS.md). It is the difference between asking every team to adopt a shared vocabulary and asking them to map onto one.
 
 **Seven is a starting proposal.** If you need an eighth, that is a useful disagreement — [open an issue](../../issues).
 
@@ -63,6 +65,19 @@ With it: *"and two thirds of the new rejections are incomplete documentation, on
 > **A rate becomes a mechanism.** That is the whole value of the column.
 
 ⭐ **Expect to need an "other", and monitor its rate rather than trying to eliminate it.** The EU's content-decision register offers sixteen violation categories and seventy keyword specifications — written by the European Commission, with lawyers, over years — and it *still* carries both an "other" category and an "other" keyword with a 500-character free-text box. **If they need one, so will you.** A climbing "other" rate tells you the list has stopped fitting, or that people have stopped caring. Both are worth knowing.
+
+⭐ **And the conformed counterpart: `reason_class`.**
+
+Writing 27 of these lists across nine sectors and classifying all 238 values produced **eleven classes** — three of which appear in every single domain. See [reason-codes/ANALYSIS.md](reason-codes/ANALYSIS.md).
+
+| Field | Who owns it | Cardinality |
+|---|---|---|
+| `reason_code` | **The domain. Stays local, in local language** | 6–9 per domain |
+| `reason_class` | **Conformed, shared across every domain** | ~11 total |
+
+**Nobody adopts anybody else's vocabulary.** A hospital's `collateral_unavailable` and a bank's `income_unverified` are the same class in different words, and both words are right where they are used. **The class is what travels.**
+
+The three classes present in all 27 domains are worth building first: `evidence_insufficient` (the most universal reason anything departs from default), `conformed` (without it there is no denominator and no rate), and `other` (which no list of any size has eliminated).
 
 Starter lists per domain are in [reason-codes/](reason-codes/).
 
@@ -115,7 +130,8 @@ task_type         claims.decision
 worker_kind       agent
 attempt           2
 outcome           edited
-reason_code       valuation_disputed
+reason_code       valuation_disputed        (local)
+reason_class      evidence_contradicts      (conformed)
 decide_seconds    95
 basis_refs        [policy:motor-v9, claim:CL-70412, report:rpt-2211]
 detected_auto     no
