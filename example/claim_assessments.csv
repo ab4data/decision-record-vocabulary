@@ -1,0 +1,26 @@
+decision_id,task_id,attempt,task_type,standard_set_at,decided_at,decided_by,outcome,proposed_outcome,worker_kind,model_id,reason_code,reason_class,reason_text,data_class,decide_seconds,detected_automatically,decision_automation
+CLM-0001,CLM-T0001,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-02T09:07:00Z,CLM-staff-02,accepted,,deterministic_code,,within_policy,conformed,,personal,4,yes,fully
+CLM-0002,CLM-T0002,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-03T10:14:00Z,CLM-staff-03,accepted,,deterministic_code,,within_policy,conformed,,personal,4,yes,fully
+CLM-0003,CLM-T0003,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-04T11:21:00Z,CLM-staff-04,accepted,,deterministic_code,,within_policy,conformed,,personal,4,yes,fully
+CLM-0004,CLM-T0004,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-05T12:28:00Z,CLM-staff-05,accepted,,deterministic_code,,within_policy,conformed,,personal,4,yes,fully
+CLM-0005,CLM-T0005,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-06T13:35:00Z,CLM-staff-06,accepted,,deterministic_code,,within_policy,conformed,,personal,4,yes,fully
+CLM-0006,CLM-T0006,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-07T14:42:00Z,CLM-staff-01,accepted,,deterministic_code,,within_policy,conformed,,personal,4,yes,fully
+CLM-0007,CLM-T0007,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-08T15:49:00Z,CLM-staff-02,accepted,accepted,person_with_agent,house-assist-2026-03,within_policy,conformed,,personal,38,no,partially
+CLM-0008,CLM-T0008,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-09T16:56:00Z,CLM-staff-03,accepted,accepted,person_with_agent,house-assist-2026-03,within_policy,conformed,,personal,38,no,partially
+CLM-0009,CLM-T0009,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-10T08:03:00Z,CLM-staff-04,accepted,accepted,person_with_agent,house-assist-2026-03,within_policy,conformed,,personal,38,no,partially
+CLM-0010,CLM-T0010,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-11T09:10:00Z,CLM-staff-05,rejected,rejected,person_with_agent,house-assist-2026-03,documentation_incomplete,evidence_insufficient,,personal,95,no,partially
+CLM-0011,CLM-T0011,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-12T10:17:00Z,CLM-staff-06,rejected,rejected,person_with_agent,house-assist-2026-03,documentation_incomplete,evidence_insufficient,,personal,95,no,partially
+CLM-0012,CLM-T0012,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-13T11:24:00Z,CLM-staff-01,rejected,rejected,person_with_agent,house-assist-2026-03,documentation_incomplete,evidence_insufficient,,personal,95,no,partially
+CLM-0013,CLM-T0013,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-14T12:31:00Z,CLM-staff-02,rejected,accepted,person_with_agent,house-assist-2026-03,documentation_incomplete,evidence_insufficient,,personal,130,no,partially
+CLM-0014,CLM-T0014,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-15T13:38:00Z,CLM-staff-03,rejected,accepted,person_with_agent,house-assist-2026-03,documentation_incomplete,evidence_insufficient,,personal,130,no,partially
+CLM-0015,CLM-T0015,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-16T14:45:00Z,CLM-staff-04,abandoned,,person,,documentation_incomplete,evidence_insufficient,,personal,140,no,not_automated
+CLM-0016,CLM-T0016,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-17T15:52:00Z,CLM-staff-05,abandoned,,person,,documentation_incomplete,evidence_insufficient,,personal,140,no,not_automated
+CLM-0017,CLM-T0017,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-18T16:59:00Z,CLM-staff-06,edited,accepted,person_with_agent,house-assist-2026-03,valuation_disputed,evidence_contradicts,,personal,210,no,partially
+CLM-0018,CLM-T0018,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-19T08:06:00Z,CLM-staff-01,edited,accepted,person_with_agent,house-assist-2026-03,valuation_disputed,evidence_contradicts,,personal,210,no,partially
+CLM-0019,CLM-T0019,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-20T09:13:00Z,CLM-staff-02,edited,accepted,person_with_agent,house-assist-2026-03,valuation_disputed,evidence_contradicts,,personal,210,no,partially
+CLM-0020,CLM-T0020,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-21T10:20:00Z,CLM-staff-03,rejected,,person,,coverage_excluded,out_of_scope,,personal,88,no,not_automated
+CLM-0021,CLM-T0021,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-22T11:27:00Z,CLM-staff-04,rejected,,person,,coverage_excluded,out_of_scope,,personal,88,no,not_automated
+CLM-0022,CLM-T0022,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-23T12:34:00Z,CLM-staff-05,rejected,,deterministic_code,,timing_outside_terms,timing,,personal,3,yes,fully
+CLM-0023,CLM-T0023,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-24T13:41:00Z,CLM-staff-06,abandoned,,person,,referred_specialist,authority_exceeded,,personal,55,no,not_automated
+CLM-0024,CLM-T0024,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-25T14:48:00Z,CLM-staff-01,abandoned,,person,,referred_specialist,authority_exceeded,,personal,55,no,not_automated
+CLM-0025,CLM-T0025,1,claims.assessment,2026-08-15T00:00:00Z,2026-09-26T15:55:00Z,CLM-staff-02,edited,,person,,other,other,see case notes,personal,300,no,not_automated

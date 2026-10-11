@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ab4data/decision-record-vocabulary/spec/decision-record.schema.json",
+  "title": "Decision record",
+  "description": "One row per judged attempt: work that was handed out, came back, and was judged against a standard written before the work started. Vocabulary version 0.1.0. See PROFILES.md for which fields are required at which conformance level.",
+  "type": "object",
+  "additionalProperties": true,
+
+  "properties": {
+    "decision_id":   { "type": "string", "minLength": 1, "description": "Unique within the emitting system." },
+    "task_id":       { "type": "string", "minLength": 1, "description": "The task this attempt belongs to. A task may be attempted more than once." },
+    "attempt":       { "type": "integer", "minimum": 1, "description": "Which attempt at that task this row is." },
+    "task_type":     { "type": "string", "minLength": 1, "description": "What kind of work this was, from a list the domain writes." },
+    "decided_at":    { "type": "string", "format": "date-time", "description": "When the judgement was made." },
+    "decided_by":    { "type": "string", "description": "Who or what made the call. Pseudonymous identifiers are expected; report on kinds of work, never on named people." },
+
+    "standard_set_at": { "type": "string", "format": "date-time", "description": "When the standard this was judged against was written. Must not be later than decided_at: the measure is defined before the observation." },
+
+    "outcome":       { "$ref": "#/$defs/outcome" },
+    "worker_kind":   { "$ref": "#/$defs/worker_kind" },
+
+    "reason_code":   { "type": "string", "minLength": 1, "description": "LOCAL. One value from a short list the domain itself writes, in its own language. Not conformed." },
+    "reason_class":  { "$ref": "#/$defs/reason_class", "description": "CONFORMED. The shared class the local reason_code maps to." },
+    "reason_text":   { "type": "string", "maxLength": 500, "description": "Optional free text. Required by convention when reason_class is 'other'." },
+
+    "data_class":    { "type": "string", "description": "How sensitive the material was, from the organisation's own classification scheme." },
+
+    "detected_automatically": { "$ref": "#/$defs/detection_automation" },
+    "decision_automation":    { "$ref": "#/$defs/decision_automation" },
+
+    "proposed_outcome": { "$ref": "#/$defs/outcome", "description": "What software proposed, where a person then decided. Present with worker_kind 'person_with_agent' makes an override computable." },
+    "model_id":      { "type": "string", "description": "Which model answered, where routing selects one. A choice made by software on your behalf." },
+
+    "decide_seconds": { "type": "number", "minimum": 0, "description": "Elapsed time to reach the judgement." },
+
+    "basis_refs": {
+      "type": "array",
+      "description": "The records that were actually in front of whoever decided. Keys, not copies. A directed, typed, acyclic edge list: a decision can only cite what already existed.",
+      "items": { "$ref": "#/$defs/basis_ref" }
+    }
+  },
+
+  "required": ["decision_id", "task_type", "decided_at", "outcome", "reason_class"],
+
+  "allOf": [
+    {
+      "description": "An 'other' class carries free text, or the rate cannot be investigated.",
+      "if":   { "properties": { "reason_class": { "const": "other" } }, "required": ["reason_class"] },
+      "then": { "required": ["reason_text"] }
+    },
+    {
+      "description": "A proposed outcome only means something where software proposed and a person then decided. Recording one against any other worker_kind makes the override rate wrong.",
+      "if":   { "required": ["proposed_outcome"] },
+      "then": { "properties": { "worker_kind": { "const": "person_with_agent" } }, "required": ["worker_kind"] }
+    }
+  ],
+
+  "x-rules-not-expressible-here": [
+    "standard_set_at must not be later than decided_at. JSON Schema cannot compare two fields, so spec/check-spec.pl and spec/check-profile.pl enforce it instead.",
+    "basis_refs must stay acyclic. A decision can only cite what already existed, which makes cycles impossible in correct data and detectable in incorrect data."
+  ],
+
+  "$defs": {
+    "outcome": {
+      "type": "string",
+      "enum": ["accepted", "edited", "rejected", "abandoned"]
+    },
+    "worker_kind": {
+      "type": "string",
+      "enum": ["person", "agent", "deterministic_code", "person_with_agent"]
+    },
+    "reason_class": {
+      "type": "string",
+      "enum": [
+        "conformed",
+        "evidence_insufficient",
+        "evidence_contradicts",
+        "rule_conflict",
+        "out_of_scope",
+        "risk_elevated",
+        "capacity_or_cost",
+        "timing",
+        "third_party",
+        "authority_exceeded",
+        "other"
+      ]
+    },
+    "decision_automation": {
+      "type": "string",
+      "enum": ["fully", "partially", "not_automated"]
+    },
+    "detection_automation": {
+      "type": "string",
+      "enum": ["yes", "no"]
+    },
+    "basis_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "id", "rel"],
+      "properties": {
+        "type": { "type": "string", "minLength": 1, "description": "What kind of thing was cited: policy, claim, report, decision, dataset, model." },
+        "id":   { "type": "string", "minLength": 1, "description": "A stable identifier for it. Version it if it is versionable." },
+        "rel":  { "type": "string", "enum": ["applied", "assessed", "cited", "supersedes"] }
+      }
+    }
+  }
+}

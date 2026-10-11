@@ -1,0 +1,1388 @@
+[
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-71",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 4,
+      "decided_at" : "2026-09-02T09:07:00Z",
+      "decided_by" : "CLM-staff-02",
+      "decision_automation" : "fully",
+      "decision_id" : "CLM-0001",
+      "detected_automatically" : "yes",
+      "outcome" : "accepted",
+      "reason_class" : "conformed",
+      "reason_code" : "within_policy",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0001",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "deterministic_code"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-72",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 4,
+      "decided_at" : "2026-09-03T10:14:00Z",
+      "decided_by" : "CLM-staff-03",
+      "decision_automation" : "fully",
+      "decision_id" : "CLM-0002",
+      "detected_automatically" : "yes",
+      "outcome" : "accepted",
+      "reason_class" : "conformed",
+      "reason_code" : "within_policy",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0002",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "deterministic_code"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-73",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 4,
+      "decided_at" : "2026-09-04T11:21:00Z",
+      "decided_by" : "CLM-staff-04",
+      "decision_automation" : "fully",
+      "decision_id" : "CLM-0003",
+      "detected_automatically" : "yes",
+      "outcome" : "accepted",
+      "reason_class" : "conformed",
+      "reason_code" : "within_policy",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0003",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "deterministic_code"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-74",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 4,
+      "decided_at" : "2026-09-05T12:28:00Z",
+      "decided_by" : "CLM-staff-05",
+      "decision_automation" : "fully",
+      "decision_id" : "CLM-0004",
+      "detected_automatically" : "yes",
+      "outcome" : "accepted",
+      "reason_class" : "conformed",
+      "reason_code" : "within_policy",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0004",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "deterministic_code"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-75",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 4,
+      "decided_at" : "2026-09-06T13:35:00Z",
+      "decided_by" : "CLM-staff-06",
+      "decision_automation" : "fully",
+      "decision_id" : "CLM-0005",
+      "detected_automatically" : "yes",
+      "outcome" : "accepted",
+      "reason_class" : "conformed",
+      "reason_code" : "within_policy",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0005",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "deterministic_code"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-76",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 4,
+      "decided_at" : "2026-09-07T14:42:00Z",
+      "decided_by" : "CLM-staff-01",
+      "decision_automation" : "fully",
+      "decision_id" : "CLM-0006",
+      "detected_automatically" : "yes",
+      "outcome" : "accepted",
+      "reason_class" : "conformed",
+      "reason_code" : "within_policy",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0006",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "deterministic_code"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-77",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 38,
+      "decided_at" : "2026-09-08T15:49:00Z",
+      "decided_by" : "CLM-staff-02",
+      "decision_automation" : "partially",
+      "decision_id" : "CLM-0007",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "accepted",
+      "proposed_outcome" : "accepted",
+      "reason_class" : "conformed",
+      "reason_code" : "within_policy",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0007",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-78",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 38,
+      "decided_at" : "2026-09-09T16:56:00Z",
+      "decided_by" : "CLM-staff-03",
+      "decision_automation" : "partially",
+      "decision_id" : "CLM-0008",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "accepted",
+      "proposed_outcome" : "accepted",
+      "reason_class" : "conformed",
+      "reason_code" : "within_policy",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0008",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-79",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 38,
+      "decided_at" : "2026-09-10T08:03:00Z",
+      "decided_by" : "CLM-staff-04",
+      "decision_automation" : "partially",
+      "decision_id" : "CLM-0009",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "accepted",
+      "proposed_outcome" : "accepted",
+      "reason_class" : "conformed",
+      "reason_code" : "within_policy",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0009",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-710",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 95,
+      "decided_at" : "2026-09-11T09:10:00Z",
+      "decided_by" : "CLM-staff-05",
+      "decision_automation" : "partially",
+      "decision_id" : "CLM-0010",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "rejected",
+      "proposed_outcome" : "rejected",
+      "reason_class" : "evidence_insufficient",
+      "reason_code" : "documentation_incomplete",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0010",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-711",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 95,
+      "decided_at" : "2026-09-12T10:17:00Z",
+      "decided_by" : "CLM-staff-06",
+      "decision_automation" : "partially",
+      "decision_id" : "CLM-0011",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "rejected",
+      "proposed_outcome" : "rejected",
+      "reason_class" : "evidence_insufficient",
+      "reason_code" : "documentation_incomplete",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0011",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-712",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 95,
+      "decided_at" : "2026-09-13T11:24:00Z",
+      "decided_by" : "CLM-staff-01",
+      "decision_automation" : "partially",
+      "decision_id" : "CLM-0012",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "rejected",
+      "proposed_outcome" : "rejected",
+      "reason_class" : "evidence_insufficient",
+      "reason_code" : "documentation_incomplete",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0012",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-713",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 130,
+      "decided_at" : "2026-09-14T12:31:00Z",
+      "decided_by" : "CLM-staff-02",
+      "decision_automation" : "partially",
+      "decision_id" : "CLM-0013",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "rejected",
+      "proposed_outcome" : "accepted",
+      "reason_class" : "evidence_insufficient",
+      "reason_code" : "documentation_incomplete",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0013",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-714",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 130,
+      "decided_at" : "2026-09-15T13:38:00Z",
+      "decided_by" : "CLM-staff-03",
+      "decision_automation" : "partially",
+      "decision_id" : "CLM-0014",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "rejected",
+      "proposed_outcome" : "accepted",
+      "reason_class" : "evidence_insufficient",
+      "reason_code" : "documentation_incomplete",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0014",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-715",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 140,
+      "decided_at" : "2026-09-16T14:45:00Z",
+      "decided_by" : "CLM-staff-04",
+      "decision_automation" : "not_automated",
+      "decision_id" : "CLM-0015",
+      "detected_automatically" : "no",
+      "outcome" : "abandoned",
+      "reason_class" : "evidence_insufficient",
+      "reason_code" : "documentation_incomplete",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0015",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "person"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-716",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 140,
+      "decided_at" : "2026-09-17T15:52:00Z",
+      "decided_by" : "CLM-staff-05",
+      "decision_automation" : "not_automated",
+      "decision_id" : "CLM-0016",
+      "detected_automatically" : "no",
+      "outcome" : "abandoned",
+      "reason_class" : "evidence_insufficient",
+      "reason_code" : "documentation_incomplete",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0016",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "person"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-717",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 210,
+      "decided_at" : "2026-09-18T16:59:00Z",
+      "decided_by" : "CLM-staff-06",
+      "decision_automation" : "partially",
+      "decision_id" : "CLM-0017",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "edited",
+      "proposed_outcome" : "accepted",
+      "reason_class" : "evidence_contradicts",
+      "reason_code" : "valuation_disputed",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0017",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-718",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 210,
+      "decided_at" : "2026-09-19T08:06:00Z",
+      "decided_by" : "CLM-staff-01",
+      "decision_automation" : "partially",
+      "decision_id" : "CLM-0018",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "edited",
+      "proposed_outcome" : "accepted",
+      "reason_class" : "evidence_contradicts",
+      "reason_code" : "valuation_disputed",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0018",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-719",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 210,
+      "decided_at" : "2026-09-20T09:13:00Z",
+      "decided_by" : "CLM-staff-02",
+      "decision_automation" : "partially",
+      "decision_id" : "CLM-0019",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "edited",
+      "proposed_outcome" : "accepted",
+      "reason_class" : "evidence_contradicts",
+      "reason_code" : "valuation_disputed",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0019",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-720",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 88,
+      "decided_at" : "2026-09-21T10:20:00Z",
+      "decided_by" : "CLM-staff-03",
+      "decision_automation" : "not_automated",
+      "decision_id" : "CLM-0020",
+      "detected_automatically" : "no",
+      "outcome" : "rejected",
+      "reason_class" : "out_of_scope",
+      "reason_code" : "coverage_excluded",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0020",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "person"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-721",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 88,
+      "decided_at" : "2026-09-22T11:27:00Z",
+      "decided_by" : "CLM-staff-04",
+      "decision_automation" : "not_automated",
+      "decision_id" : "CLM-0021",
+      "detected_automatically" : "no",
+      "outcome" : "rejected",
+      "reason_class" : "out_of_scope",
+      "reason_code" : "coverage_excluded",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0021",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "person"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-722",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 3,
+      "decided_at" : "2026-09-23T12:34:00Z",
+      "decided_by" : "CLM-staff-05",
+      "decision_automation" : "fully",
+      "decision_id" : "CLM-0022",
+      "detected_automatically" : "yes",
+      "outcome" : "rejected",
+      "reason_class" : "timing",
+      "reason_code" : "timing_outside_terms",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0022",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "deterministic_code"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-723",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 55,
+      "decided_at" : "2026-09-24T13:41:00Z",
+      "decided_by" : "CLM-staff-06",
+      "decision_automation" : "not_automated",
+      "decision_id" : "CLM-0023",
+      "detected_automatically" : "no",
+      "outcome" : "abandoned",
+      "reason_class" : "authority_exceeded",
+      "reason_code" : "referred_specialist",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0023",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "person"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-724",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 55,
+      "decided_at" : "2026-09-25T14:48:00Z",
+      "decided_by" : "CLM-staff-01",
+      "decision_automation" : "not_automated",
+      "decision_id" : "CLM-0024",
+      "detected_automatically" : "no",
+      "outcome" : "abandoned",
+      "reason_class" : "authority_exceeded",
+      "reason_code" : "referred_specialist",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0024",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "person"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "motor-v9",
+            "rel" : "applied",
+            "type" : "policy"
+         },
+         {
+            "id" : "CL-725",
+            "rel" : "assessed",
+            "type" : "claim"
+         }
+      ],
+      "data_class" : "personal",
+      "decide_seconds" : 300,
+      "decided_at" : "2026-09-26T15:55:00Z",
+      "decided_by" : "CLM-staff-02",
+      "decision_automation" : "not_automated",
+      "decision_id" : "CLM-0025",
+      "detected_automatically" : "no",
+      "outcome" : "edited",
+      "reason_class" : "other",
+      "reason_code" : "other",
+      "reason_text" : "see case notes",
+      "standard_set_at" : "2026-08-15T00:00:00Z",
+      "task_id" : "CLM-T0025",
+      "task_type" : "claims.assessment",
+      "worker_kind" : "person"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "ADR-0042",
+            "rel" : "applied",
+            "type" : "decision"
+         },
+         {
+            "id" : "c9f1",
+            "rel" : "assessed",
+            "type" : "commit"
+         }
+      ],
+      "data_class" : "internal",
+      "decide_seconds" : 120,
+      "decided_at" : "2026-09-27T16:02:00Z",
+      "decided_by" : "REV-staff-03",
+      "decision_automation" : "partially",
+      "decision_id" : "REV-0001",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "accepted",
+      "proposed_outcome" : "accepted",
+      "reason_class" : "conformed",
+      "reason_code" : "meets_standard",
+      "standard_set_at" : "2026-07-01T00:00:00Z",
+      "task_id" : "REV-T0001",
+      "task_type" : "code.review",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "ADR-0042",
+            "rel" : "applied",
+            "type" : "decision"
+         },
+         {
+            "id" : "c9f2",
+            "rel" : "assessed",
+            "type" : "commit"
+         }
+      ],
+      "data_class" : "internal",
+      "decide_seconds" : 120,
+      "decided_at" : "2026-09-28T08:09:00Z",
+      "decided_by" : "REV-staff-04",
+      "decision_automation" : "partially",
+      "decision_id" : "REV-0002",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "accepted",
+      "proposed_outcome" : "accepted",
+      "reason_class" : "conformed",
+      "reason_code" : "meets_standard",
+      "standard_set_at" : "2026-07-01T00:00:00Z",
+      "task_id" : "REV-T0002",
+      "task_type" : "code.review",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "ADR-0042",
+            "rel" : "applied",
+            "type" : "decision"
+         },
+         {
+            "id" : "c9f3",
+            "rel" : "assessed",
+            "type" : "commit"
+         }
+      ],
+      "data_class" : "internal",
+      "decide_seconds" : 120,
+      "decided_at" : "2026-09-01T09:16:00Z",
+      "decided_by" : "REV-staff-05",
+      "decision_automation" : "partially",
+      "decision_id" : "REV-0003",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "accepted",
+      "proposed_outcome" : "accepted",
+      "reason_class" : "conformed",
+      "reason_code" : "meets_standard",
+      "standard_set_at" : "2026-07-01T00:00:00Z",
+      "task_id" : "REV-T0003",
+      "task_type" : "code.review",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "ADR-0042",
+            "rel" : "applied",
+            "type" : "decision"
+         },
+         {
+            "id" : "c9f4",
+            "rel" : "assessed",
+            "type" : "commit"
+         }
+      ],
+      "data_class" : "internal",
+      "decide_seconds" : 120,
+      "decided_at" : "2026-09-02T10:23:00Z",
+      "decided_by" : "REV-staff-06",
+      "decision_automation" : "partially",
+      "decision_id" : "REV-0004",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "accepted",
+      "proposed_outcome" : "accepted",
+      "reason_class" : "conformed",
+      "reason_code" : "meets_standard",
+      "standard_set_at" : "2026-07-01T00:00:00Z",
+      "task_id" : "REV-T0004",
+      "task_type" : "code.review",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "ADR-0042",
+            "rel" : "applied",
+            "type" : "decision"
+         },
+         {
+            "id" : "c9f5",
+            "rel" : "assessed",
+            "type" : "commit"
+         }
+      ],
+      "data_class" : "internal",
+      "decide_seconds" : 120,
+      "decided_at" : "2026-09-03T11:30:00Z",
+      "decided_by" : "REV-staff-01",
+      "decision_automation" : "partially",
+      "decision_id" : "REV-0005",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "accepted",
+      "proposed_outcome" : "accepted",
+      "reason_class" : "conformed",
+      "reason_code" : "meets_standard",
+      "standard_set_at" : "2026-07-01T00:00:00Z",
+      "task_id" : "REV-T0005",
+      "task_type" : "code.review",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "ADR-0042",
+            "rel" : "applied",
+            "type" : "decision"
+         },
+         {
+            "id" : "c9f6",
+            "rel" : "assessed",
+            "type" : "commit"
+         }
+      ],
+      "data_class" : "internal",
+      "decide_seconds" : 120,
+      "decided_at" : "2026-09-04T12:37:00Z",
+      "decided_by" : "REV-staff-02",
+      "decision_automation" : "partially",
+      "decision_id" : "REV-0006",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "accepted",
+      "proposed_outcome" : "accepted",
+      "reason_class" : "conformed",
+      "reason_code" : "meets_standard",
+      "standard_set_at" : "2026-07-01T00:00:00Z",
+      "task_id" : "REV-T0006",
+      "task_type" : "code.review",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "ADR-0042",
+            "rel" : "applied",
+            "type" : "decision"
+         },
+         {
+            "id" : "c9f7",
+            "rel" : "assessed",
+            "type" : "commit"
+         }
+      ],
+      "data_class" : "internal",
+      "decide_seconds" : 120,
+      "decided_at" : "2026-09-05T13:44:00Z",
+      "decided_by" : "REV-staff-03",
+      "decision_automation" : "partially",
+      "decision_id" : "REV-0007",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "accepted",
+      "proposed_outcome" : "accepted",
+      "reason_class" : "conformed",
+      "reason_code" : "meets_standard",
+      "standard_set_at" : "2026-07-01T00:00:00Z",
+      "task_id" : "REV-T0007",
+      "task_type" : "code.review",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "ADR-0042",
+            "rel" : "applied",
+            "type" : "decision"
+         },
+         {
+            "id" : "c9f8",
+            "rel" : "assessed",
+            "type" : "commit"
+         }
+      ],
+      "data_class" : "internal",
+      "decide_seconds" : 120,
+      "decided_at" : "2026-09-06T14:51:00Z",
+      "decided_by" : "REV-staff-04",
+      "decision_automation" : "partially",
+      "decision_id" : "REV-0008",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "accepted",
+      "proposed_outcome" : "accepted",
+      "reason_class" : "conformed",
+      "reason_code" : "meets_standard",
+      "standard_set_at" : "2026-07-01T00:00:00Z",
+      "task_id" : "REV-T0008",
+      "task_type" : "code.review",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "ADR-0042",
+            "rel" : "applied",
+            "type" : "decision"
+         },
+         {
+            "id" : "c9f9",
+            "rel" : "assessed",
+            "type" : "commit"
+         }
+      ],
+      "data_class" : "internal",
+      "decide_seconds" : 260,
+      "decided_at" : "2026-09-07T15:58:00Z",
+      "decided_by" : "REV-staff-05",
+      "decision_automation" : "partially",
+      "decision_id" : "REV-0009",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "edited",
+      "proposed_outcome" : "edited",
+      "reason_class" : "evidence_insufficient",
+      "reason_code" : "test_coverage",
+      "standard_set_at" : "2026-07-01T00:00:00Z",
+      "task_id" : "REV-T0009",
+      "task_type" : "code.review",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "ADR-0042",
+            "rel" : "applied",
+            "type" : "decision"
+         },
+         {
+            "id" : "c9f10",
+            "rel" : "assessed",
+            "type" : "commit"
+         }
+      ],
+      "data_class" : "internal",
+      "decide_seconds" : 260,
+      "decided_at" : "2026-09-08T16:05:00Z",
+      "decided_by" : "REV-staff-06",
+      "decision_automation" : "partially",
+      "decision_id" : "REV-0010",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "edited",
+      "proposed_outcome" : "edited",
+      "reason_class" : "evidence_insufficient",
+      "reason_code" : "test_coverage",
+      "standard_set_at" : "2026-07-01T00:00:00Z",
+      "task_id" : "REV-T0010",
+      "task_type" : "code.review",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "ADR-0042",
+            "rel" : "applied",
+            "type" : "decision"
+         },
+         {
+            "id" : "c9f11",
+            "rel" : "assessed",
+            "type" : "commit"
+         }
+      ],
+      "data_class" : "internal",
+      "decide_seconds" : 300,
+      "decided_at" : "2026-09-09T08:12:00Z",
+      "decided_by" : "REV-staff-01",
+      "decision_automation" : "partially",
+      "decision_id" : "REV-0011",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "edited",
+      "proposed_outcome" : "accepted",
+      "reason_class" : "evidence_insufficient",
+      "reason_code" : "test_coverage",
+      "standard_set_at" : "2026-07-01T00:00:00Z",
+      "task_id" : "REV-T0011",
+      "task_type" : "code.review",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "ADR-0042",
+            "rel" : "applied",
+            "type" : "decision"
+         },
+         {
+            "id" : "c9f12",
+            "rel" : "assessed",
+            "type" : "commit"
+         }
+      ],
+      "data_class" : "internal",
+      "decide_seconds" : 300,
+      "decided_at" : "2026-09-10T09:19:00Z",
+      "decided_by" : "REV-staff-02",
+      "decision_automation" : "partially",
+      "decision_id" : "REV-0012",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "edited",
+      "proposed_outcome" : "accepted",
+      "reason_class" : "evidence_insufficient",
+      "reason_code" : "test_coverage",
+      "standard_set_at" : "2026-07-01T00:00:00Z",
+      "task_id" : "REV-T0012",
+      "task_type" : "code.review",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "ADR-0042",
+            "rel" : "applied",
+            "type" : "decision"
+         },
+         {
+            "id" : "c9f13",
+            "rel" : "assessed",
+            "type" : "commit"
+         }
+      ],
+      "data_class" : "internal",
+      "decide_seconds" : 90,
+      "decided_at" : "2026-09-11T10:26:00Z",
+      "decided_by" : "REV-staff-03",
+      "decision_automation" : "not_automated",
+      "decision_id" : "REV-0013",
+      "detected_automatically" : "no",
+      "outcome" : "rejected",
+      "reason_class" : "evidence_contradicts",
+      "reason_code" : "works_as_specified",
+      "standard_set_at" : "2026-07-01T00:00:00Z",
+      "task_id" : "REV-T0013",
+      "task_type" : "code.review",
+      "worker_kind" : "person"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "ADR-0042",
+            "rel" : "applied",
+            "type" : "decision"
+         },
+         {
+            "id" : "c9f14",
+            "rel" : "assessed",
+            "type" : "commit"
+         }
+      ],
+      "data_class" : "internal",
+      "decide_seconds" : 90,
+      "decided_at" : "2026-09-12T11:33:00Z",
+      "decided_by" : "REV-staff-04",
+      "decision_automation" : "not_automated",
+      "decision_id" : "REV-0014",
+      "detected_automatically" : "no",
+      "outcome" : "rejected",
+      "reason_class" : "evidence_contradicts",
+      "reason_code" : "works_as_specified",
+      "standard_set_at" : "2026-07-01T00:00:00Z",
+      "task_id" : "REV-T0014",
+      "task_type" : "code.review",
+      "worker_kind" : "person"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "ADR-0042",
+            "rel" : "applied",
+            "type" : "decision"
+         },
+         {
+            "id" : "c9f15",
+            "rel" : "assessed",
+            "type" : "commit"
+         }
+      ],
+      "data_class" : "internal",
+      "decide_seconds" : 340,
+      "decided_at" : "2026-09-13T12:40:00Z",
+      "decided_by" : "REV-staff-05",
+      "decision_automation" : "not_automated",
+      "decision_id" : "REV-0015",
+      "detected_automatically" : "no",
+      "outcome" : "edited",
+      "reason_class" : "rule_conflict",
+      "reason_code" : "correctness_risk",
+      "standard_set_at" : "2026-07-01T00:00:00Z",
+      "task_id" : "REV-T0015",
+      "task_type" : "code.review",
+      "worker_kind" : "person"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "ADR-0042",
+            "rel" : "applied",
+            "type" : "decision"
+         },
+         {
+            "id" : "c9f16",
+            "rel" : "assessed",
+            "type" : "commit"
+         }
+      ],
+      "data_class" : "internal",
+      "decide_seconds" : 340,
+      "decided_at" : "2026-09-14T13:47:00Z",
+      "decided_by" : "REV-staff-06",
+      "decision_automation" : "not_automated",
+      "decision_id" : "REV-0016",
+      "detected_automatically" : "no",
+      "outcome" : "edited",
+      "reason_class" : "rule_conflict",
+      "reason_code" : "correctness_risk",
+      "standard_set_at" : "2026-07-01T00:00:00Z",
+      "task_id" : "REV-T0016",
+      "task_type" : "code.review",
+      "worker_kind" : "person"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "ADR-0042",
+            "rel" : "applied",
+            "type" : "decision"
+         },
+         {
+            "id" : "c9f17",
+            "rel" : "assessed",
+            "type" : "commit"
+         }
+      ],
+      "data_class" : "internal",
+      "decide_seconds" : 340,
+      "decided_at" : "2026-09-15T14:54:00Z",
+      "decided_by" : "REV-staff-01",
+      "decision_automation" : "not_automated",
+      "decision_id" : "REV-0017",
+      "detected_automatically" : "no",
+      "outcome" : "edited",
+      "reason_class" : "rule_conflict",
+      "reason_code" : "correctness_risk",
+      "standard_set_at" : "2026-07-01T00:00:00Z",
+      "task_id" : "REV-T0017",
+      "task_type" : "code.review",
+      "worker_kind" : "person"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "ADR-0042",
+            "rel" : "applied",
+            "type" : "decision"
+         },
+         {
+            "id" : "c9f18",
+            "rel" : "assessed",
+            "type" : "commit"
+         }
+      ],
+      "data_class" : "internal",
+      "decide_seconds" : 410,
+      "decided_at" : "2026-09-16T15:01:00Z",
+      "decided_by" : "REV-staff-02",
+      "decision_automation" : "partially",
+      "decision_id" : "REV-0018",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "rejected",
+      "proposed_outcome" : "rejected",
+      "reason_class" : "risk_elevated",
+      "reason_code" : "security_concern",
+      "standard_set_at" : "2026-07-01T00:00:00Z",
+      "task_id" : "REV-T0018",
+      "task_type" : "code.review",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "ADR-0042",
+            "rel" : "applied",
+            "type" : "decision"
+         },
+         {
+            "id" : "c9f19",
+            "rel" : "assessed",
+            "type" : "commit"
+         }
+      ],
+      "data_class" : "internal",
+      "decide_seconds" : 410,
+      "decided_at" : "2026-09-17T16:08:00Z",
+      "decided_by" : "REV-staff-03",
+      "decision_automation" : "partially",
+      "decision_id" : "REV-0019",
+      "detected_automatically" : "no",
+      "model_id" : "house-assist-2026-03",
+      "outcome" : "rejected",
+      "proposed_outcome" : "rejected",
+      "reason_class" : "risk_elevated",
+      "reason_code" : "security_concern",
+      "standard_set_at" : "2026-07-01T00:00:00Z",
+      "task_id" : "REV-T0019",
+      "task_type" : "code.review",
+      "worker_kind" : "person_with_agent"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "ADR-0042",
+            "rel" : "applied",
+            "type" : "decision"
+         },
+         {
+            "id" : "c9f20",
+            "rel" : "assessed",
+            "type" : "commit"
+         }
+      ],
+      "data_class" : "internal",
+      "decide_seconds" : 75,
+      "decided_at" : "2026-09-18T08:15:00Z",
+      "decided_by" : "REV-staff-04",
+      "decision_automation" : "not_automated",
+      "decision_id" : "REV-0020",
+      "detected_automatically" : "no",
+      "outcome" : "abandoned",
+      "reason_class" : "third_party",
+      "reason_code" : "upstream_defect",
+      "standard_set_at" : "2026-07-01T00:00:00Z",
+      "task_id" : "REV-T0020",
+      "task_type" : "code.review",
+      "worker_kind" : "person"
+   },
+   {
+      "attempt" : 1,
+      "basis_refs" : [
+         {
+            "id" : "ADR-0042",
+            "rel" : "applied",
+            "type" : "decision"
+         },
+         {
+            "id" : "c9f21",
+            "rel" : "assessed",
+            "type" : "commit"
+         }
+      ],
+      "data_class" : "internal",
+      "decide_seconds" : 180,
+      "decided_at" : "2026-09-19T09:22:00Z",
+      "decided_by" : "REV-staff-05",
+      "decision_automation" : "not_automated",
+      "decision_id" : "REV-0021",
+      "detected_automatically" : "no",
+      "outcome" : "edited",
+      "reason_class" : "other",
+      "reason_code" : "other",
+      "reason_text" : "see case notes",
+      "standard_set_at" : "2026-07-01T00:00:00Z",
+      "task_id" : "REV-T0021",
+      "task_type" : "code.review",
+      "worker_kind" : "person"
+   }
+]

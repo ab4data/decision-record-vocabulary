@@ -1,0 +1,4 @@
+value,parent,status,definition
+fully,,stable,"The decision was made by software with no human judgement applied."
+partially,,stable,"Software and a person both contributed to the decision."
+not_automated,,stable,"A person decided without software making or directly supporting the decision."

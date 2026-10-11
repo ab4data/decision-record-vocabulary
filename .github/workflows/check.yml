@@ -1,0 +1,48 @@
+name: check
+
+# Every claim this repository makes about its own contents is checked here, on
+# every push and every pull request. Perl and JSON::PP are all it needs, and
+# both are already on the runner.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  spec:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Perl and JSON::PP are present
+        run: perl -MJSON::PP -e 'print "perl $], JSON::PP $JSON::PP::VERSION\n"'
+
+      - name: The vocabulary CSVs still match their source
+        working-directory: spec
+        run: perl build-vocab.pl --check
+
+      - name: Schema, vocabularies and worked example agree
+        working-directory: spec
+        run: perl check-spec.pl
+
+      - name: The worked example still reaches the Full profile
+        working-directory: spec
+        run: |
+          perl check-profile.pl ../example/decisions.json | tee /tmp/profile.txt
+          grep -q 'meets the Full profile' /tmp/profile.txt
+
+      - name: The committed example is what make-example.pl produces
+        working-directory: example
+        run: |
+          perl make-example.pl > /dev/null
+          git diff --exit-code -- . \
+            || { echo 'The committed example differs from a fresh run. Re-run make-example.pl and commit the result.'; exit 1; }
+
+      - name: The corpus analysis still reproduces
+        working-directory: reason-codes
+        run: perl analyse.pl > /dev/null

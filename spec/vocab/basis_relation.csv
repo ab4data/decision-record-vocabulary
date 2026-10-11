@@ -1,0 +1,5 @@
+value,parent,status,definition
+applied,,stable,"A rule, policy or standard that governed this decision was applied to it."
+assessed,,stable,"The subject matter that was examined in order to decide."
+cited,,stable,"Supporting material that was in front of the decider and informed the decision."
+supersedes,,stable,"This decision replaces an earlier decision, which is kept and marked rather than deleted."

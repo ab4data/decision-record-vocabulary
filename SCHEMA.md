@@ -2,6 +2,8 @@
 
 **Status: a proposal, offered for amendment.** Nothing here is a standard. If a field is wrong for your domain, [say so](../../issues) or change it in a fork — that is what it is for.
 
+> ⭐ **This page is the argument. [`spec/`](spec/) is the same thing a program can check** — JSON Schema, the vocabularies as CSV, [three conformance profiles](spec/PROFILES.md) and a validator you can point at your own extract. **[`example/`](example/) shows it working on 46 records.**
+
 ---
 
 ## 1. What one row stands for

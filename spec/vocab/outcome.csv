@@ -1,0 +1,5 @@
+value,parent,status,definition
+accepted,,stable,"The work was accepted as produced."
+edited,,stable,"The work was accepted after change."
+rejected,,stable,"The work was not accepted."
+abandoned,,stable,"The attempt ended without a judgement being reached."

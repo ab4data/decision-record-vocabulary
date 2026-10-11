@@ -1,0 +1,12 @@
+value,parent,status,definition
+conformed,none,stable,"The standard applied and was followed. Every list needs this value; without it there is no denominator."
+evidence_insufficient,input,stable,"There was not enough to go on: missing, incomplete, unreadable, unverifiable or not yet available."
+evidence_contradicts,input,stable,"What was supplied conflicts with something else that is known."
+rule_conflict,rule,stable,"A specific rule, policy, threshold or standard was breached or engaged."
+out_of_scope,rule,provisional,"The matter does not fall within the boundary of what is being decided. Lowest coverage in the corpus; may collapse into rule_conflict."
+risk_elevated,judgement,stable,"An assessment of risk, consequence or trajectory drove the outcome rather than a rule."
+capacity_or_cost,resource,stable,"Resources, budget, volume or cost to serve shaped the decision."
+timing,resource,stable,"A deadline, window, sequence or statutory clock shaped the outcome."
+third_party,external,stable,"The outcome was determined by someone outside the deciding organisation."
+authority_exceeded,authority,stable,"Beyond the decider delegation: referred, escalated, or stood aside."
+other,unclassified,stable,"None of the above. Free text required, and the rate is monitored."

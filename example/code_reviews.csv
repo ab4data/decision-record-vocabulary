@@ -1,0 +1,22 @@
+decision_id,task_id,attempt,task_type,standard_set_at,decided_at,decided_by,outcome,proposed_outcome,worker_kind,model_id,reason_code,reason_class,reason_text,data_class,decide_seconds,detected_automatically,decision_automation
+REV-0001,REV-T0001,1,code.review,2026-07-01T00:00:00Z,2026-09-27T16:02:00Z,REV-staff-03,accepted,accepted,person_with_agent,house-assist-2026-03,meets_standard,conformed,,internal,120,no,partially
+REV-0002,REV-T0002,1,code.review,2026-07-01T00:00:00Z,2026-09-28T08:09:00Z,REV-staff-04,accepted,accepted,person_with_agent,house-assist-2026-03,meets_standard,conformed,,internal,120,no,partially
+REV-0003,REV-T0003,1,code.review,2026-07-01T00:00:00Z,2026-09-01T09:16:00Z,REV-staff-05,accepted,accepted,person_with_agent,house-assist-2026-03,meets_standard,conformed,,internal,120,no,partially
+REV-0004,REV-T0004,1,code.review,2026-07-01T00:00:00Z,2026-09-02T10:23:00Z,REV-staff-06,accepted,accepted,person_with_agent,house-assist-2026-03,meets_standard,conformed,,internal,120,no,partially
+REV-0005,REV-T0005,1,code.review,2026-07-01T00:00:00Z,2026-09-03T11:30:00Z,REV-staff-01,accepted,accepted,person_with_agent,house-assist-2026-03,meets_standard,conformed,,internal,120,no,partially
+REV-0006,REV-T0006,1,code.review,2026-07-01T00:00:00Z,2026-09-04T12:37:00Z,REV-staff-02,accepted,accepted,person_with_agent,house-assist-2026-03,meets_standard,conformed,,internal,120,no,partially
+REV-0007,REV-T0007,1,code.review,2026-07-01T00:00:00Z,2026-09-05T13:44:00Z,REV-staff-03,accepted,accepted,person_with_agent,house-assist-2026-03,meets_standard,conformed,,internal,120,no,partially
+REV-0008,REV-T0008,1,code.review,2026-07-01T00:00:00Z,2026-09-06T14:51:00Z,REV-staff-04,accepted,accepted,person_with_agent,house-assist-2026-03,meets_standard,conformed,,internal,120,no,partially
+REV-0009,REV-T0009,1,code.review,2026-07-01T00:00:00Z,2026-09-07T15:58:00Z,REV-staff-05,edited,edited,person_with_agent,house-assist-2026-03,test_coverage,evidence_insufficient,,internal,260,no,partially
+REV-0010,REV-T0010,1,code.review,2026-07-01T00:00:00Z,2026-09-08T16:05:00Z,REV-staff-06,edited,edited,person_with_agent,house-assist-2026-03,test_coverage,evidence_insufficient,,internal,260,no,partially
+REV-0011,REV-T0011,1,code.review,2026-07-01T00:00:00Z,2026-09-09T08:12:00Z,REV-staff-01,edited,accepted,person_with_agent,house-assist-2026-03,test_coverage,evidence_insufficient,,internal,300,no,partially
+REV-0012,REV-T0012,1,code.review,2026-07-01T00:00:00Z,2026-09-10T09:19:00Z,REV-staff-02,edited,accepted,person_with_agent,house-assist-2026-03,test_coverage,evidence_insufficient,,internal,300,no,partially
+REV-0013,REV-T0013,1,code.review,2026-07-01T00:00:00Z,2026-09-11T10:26:00Z,REV-staff-03,rejected,,person,,works_as_specified,evidence_contradicts,,internal,90,no,not_automated
+REV-0014,REV-T0014,1,code.review,2026-07-01T00:00:00Z,2026-09-12T11:33:00Z,REV-staff-04,rejected,,person,,works_as_specified,evidence_contradicts,,internal,90,no,not_automated
+REV-0015,REV-T0015,1,code.review,2026-07-01T00:00:00Z,2026-09-13T12:40:00Z,REV-staff-05,edited,,person,,correctness_risk,rule_conflict,,internal,340,no,not_automated
+REV-0016,REV-T0016,1,code.review,2026-07-01T00:00:00Z,2026-09-14T13:47:00Z,REV-staff-06,edited,,person,,correctness_risk,rule_conflict,,internal,340,no,not_automated
+REV-0017,REV-T0017,1,code.review,2026-07-01T00:00:00Z,2026-09-15T14:54:00Z,REV-staff-01,edited,,person,,correctness_risk,rule_conflict,,internal,340,no,not_automated
+REV-0018,REV-T0018,1,code.review,2026-07-01T00:00:00Z,2026-09-16T15:01:00Z,REV-staff-02,rejected,rejected,person_with_agent,house-assist-2026-03,security_concern,risk_elevated,,internal,410,no,partially
+REV-0019,REV-T0019,1,code.review,2026-07-01T00:00:00Z,2026-09-17T16:08:00Z,REV-staff-03,rejected,rejected,person_with_agent,house-assist-2026-03,security_concern,risk_elevated,,internal,410,no,partially
+REV-0020,REV-T0020,1,code.review,2026-07-01T00:00:00Z,2026-09-18T08:15:00Z,REV-staff-04,abandoned,,person,,upstream_defect,third_party,,internal,75,no,not_automated
+REV-0021,REV-T0021,1,code.review,2026-07-01T00:00:00Z,2026-09-19T09:22:00Z,REV-staff-05,edited,,person,,other,other,see case notes,internal,180,no,not_automated

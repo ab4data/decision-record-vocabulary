@@ -1,0 +1,9 @@
+value,parent,status,definition
+input,departed,stable,"The departure came from what arrived: not enough, or it did not add up. Acted on by whoever owns intake."
+rule,departed,stable,"The departure came from the rules themselves. Acted on by whoever owns the policy."
+judgement,departed,stable,"A person assessed risk or consequence. Acted on through training and calibration."
+resource,departed,stable,"Money, people, time or a deadline shaped it. Acted on through funding and scheduling."
+external,departed,stable,"Decided by someone outside the organisation. Managed rather than fixed."
+authority,departed,stable,"Beyond the decider delegation. Acted on by whoever sets delegations."
+none,conformed,stable,"No departure occurred."
+unclassified,departed,stable,"A departure that does not fit the defined loci."
