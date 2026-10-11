@@ -1,0 +1,7 @@
+# Every text file is LF, in the repository and in the working tree.
+#
+# The reason is concrete: spec/check-spec.pl and the CI job verify that the
+# committed example byte-matches what example/make-example.pl writes. Without
+# this, the same correct script produces a diff on Windows and no diff on
+# Linux, and the check becomes noise instead of a signal.
+* text=auto eol=lf

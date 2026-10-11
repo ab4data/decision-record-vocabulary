@@ -39,11 +39,38 @@ Five working loops. **Five different vocabularies for the same idea** — health
 
 | File | What it is |
 |---|---|
-| **[SCHEMA.md](SCHEMA.md)** | The proposal: what one row stands for, the conformed seven, `reason_code`, `basis_refs`, `worker_kind` |
+| **[SCHEMA.md](SCHEMA.md)** | The proposal in prose: what one row stands for, the conformed seven, `reason_code`, `basis_refs`, `worker_kind` |
+| ⭐ **[spec/](spec/)** | **The same thing a program can check.** JSON Schema, eight controlled vocabularies as CSV, three conformance profiles, and three validators that need nothing but Perl |
+| ⭐ **[example/](example/)** | **Two synthetic domains, 46 records, compared without ever being joined.** The answers are computed by a committed program, not typed in |
+| **[ddl/](ddl/)** | Starter tables for SQLite and Postgres, with every rule in the spec written as a `CHECK` |
 | ⭐ **[reason-codes/](reason-codes/)** | **87 lists across 18 sectors, and an [analysis](reason-codes/ANALYSIS.md) of what they share.** 716 local codes collapse to 11 classes; three appear in every domain. The lists are constructed, not collected |
 | **[CLAIMS.md](CLAIMS.md)** | Every factual claim behind this, with its source and status — including the ones that are argument rather than evidence |
 | **[CONTRIBUTING.md](CONTRIBUTING.md)** | How to propose a change, and what a useful disagreement looks like |
 | **[deck/](deck/)** | The talk this came from, as a single self-contained HTML file |
+
+---
+
+## Five columns, and you are in
+
+⭐ **[The Core profile is five columns](spec/PROFILES.md)**, and two domains that both reach it can be put on the same chart.
+
+```
+decision_id   task_type   decided_at   outcome   reason_class
+```
+
+**Point the checker at an extract and it tells you where you stand:**
+
+```bash
+cd spec && perl check-profile.pl ../example/decisions.json
+```
+
+```
+  Core      MET    5 of  5 columns on every record
+  Standard  MET   11 of 11 columns on every record
+  Full      MET   16 of 16 columns on every record
+```
+
+**Perl and `JSON::PP` are all it needs**, and `JSON::PP` ships with Perl. No installation, no network.
 
 ---
 

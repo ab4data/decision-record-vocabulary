@@ -1,0 +1,5 @@
+value,parent,status,definition
+person,,stable,"A human decided, unaided by a model."
+agent,,stable,"Software chose its own next step and decided."
+deterministic_code,,stable,"A rule fired. No model involved."
+person_with_agent,,stable,"A person decided with model assistance. Most work within two years, and the value most often left out of schemas."
