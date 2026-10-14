@@ -19,19 +19,21 @@ Add those to one process you already log, agree the definitions with one other t
 
 ---
 
-## This has been built before — five times
+## This has been built before, many times over
 
 The idea is stable and well tested. What has been missing is a shared shape.
+
+⭐ **The five rows below are documented examples, not a count.** They were chosen because they span four decades and five industries — and **two of them are hundreds of implementations on their own.**
 
 | When | Where | What they recorded |
 |---|---|---|
 | **1988 →** | A hospital system | Clinicians may depart from a care protocol **provided they record why**. Reasons analysed, fed back, protocol changed |
 | **1988 →** | A bank | An information-based strategy: test an offer, measure, let the measurement choose the next one |
 | **2005 →** | Medical research | Journals will not publish a trial unless it was **registered before the first patient was enrolled** |
-| **2011 →** | Software teams | One record per decision; when replaced, the old one is **marked superseded, not deleted** |
+| **2011 →** | Software teams | One record per decision; when replaced, the old one is **marked superseded, not deleted**. ⭐ **Counted in 921 public repositories** |
 | **2023 →** | European regulation | A structured record for **every content decision**, from 375 platforms, publicly downloadable |
 
-Five working loops. **Five different vocabularies for the same idea** — health calls it protocol variance, government calls it a statement of reasons. That is the only thing standing between them, and it is the cheap thing to fix.
+Five working loops, and ⭐ **five different vocabularies for the same idea** — health calls it protocol variance, government calls it a statement of reasons, software calls it an architecture decision record. **That is the only thing standing between them, and it is the cheap thing to fix.**
 
 ---
 
@@ -78,7 +80,7 @@ cd spec && perl check-profile.pl ../example/decisions.json
 
 **Settled.** Conformed dimensions are a thirty-year-old, widely used technique. A general provenance standard has been a W3C Recommendation since 2013. Object-centric event logs exist specifically to stop flattening everything to one case notion. **Nothing here needs inventing.**
 
-**Evidenced.** Showing people their own decisions back measurably improves what they do next — a Cochrane review pools 177 studies and finds a median gain under three in a hundred, mean about six, at moderate certainty. **Real, peer-reviewed, and modest.**
+**Evidenced.** Showing people their own decisions back measurably improves what they do next — a Cochrane review pools 177 studies and finds a **median gain of 2.7% and a mean of 6.2%**, at moderate certainty. **Real, peer-reviewed, and modest.**
 
 ⭐ **Open, and the most interesting part.** That evidence covers the *reason* half. For the *basis* half — recording what a judgement rested on — **I could find no controlled trial.** If you know of one, [please say so](../../issues). If you are in a position to run one, that is the gap worth closing.
 
