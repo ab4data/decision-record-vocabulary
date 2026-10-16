@@ -89,6 +89,31 @@ A public register of what can and cannot be evidenced is unusual, and it is deli
 | **M2** | BI and analytics software spending in 2025 is **about US$40bn**, up from about $10.5bn in 2010 | **Reported — a range, $34bn–$47bn across three analysts** | ⛔ **BI spending did not fall. It grew and was dwarfed.** ⚠️ Estimates disagree by 2–3× for the same year, **so only cited points are ever plotted and nothing between them is interpolated** |
 | ⭐ **M3** | ⛔ **No defensible year-by-year series exists for BI and analytics software spending** | ⭐ **A bounded search result, re-checked 11 October 2026** | For **2019 alone**, three houses published **$24.8bn** (Gartner market share), **$22bn** (Forrester) and **$14.9bn** (Statista). Gartner's own 2017 forecast put 2020 at **$22.8bn** while its market-share report already had 2019 at **$24.8bn** — forecast and market-share bases differ. **If you know of a consistently-scoped public series, [that is a correction worth having](../../issues)** |
 
+
+## Agentic AI: what is being bought, and how it is going
+
+| # | Claim | Status | Source |
+|---|---|---|---|
+| **G1** | In a January 2025 poll of **3,412 webinar attendees**, **19%** said their organisation had made significant investments in agentic AI | **Reported — analyst-published** | Gartner. ⚠️ A webinar-attendee poll, which self-selects for interest; not a population survey |
+| ⭐ **G2** | **More than 40% of agentic AI projects are forecast to be cancelled by the end of 2027**, for escalating costs, unclear business value or inadequate risk controls | **Reported — analyst-published forecast** | Gartner press release, 25 June 2025. ⚠️ A forecast, not a measurement |
+| **G3** | Of thousands of vendors claiming agentic capability, an analyst estimates only about **130** are genuinely agentic; the rest is "agent washing" | **Reported — analyst-published** | Gartner, 25 June 2025 |
+| ⭐ **G4** | **About 95% of enterprise generative-AI pilots showed no measurable effect on profit and loss** | **Reported — single study** | MIT NANDA, *The GenAI Divide: State of AI in Business 2025*, August 2025 — 150 leader interviews, 350 employees surveyed, 300 public deployments. ⚠️ "Failure" here means no measurable P&L impact, not abandonment. A modest sample and a single study |
+| ⭐⭐ **G5** | ⛔ **Withdrawn: "most organisations are trying to buy the third capability directly."** It sat in bold on `threecaps` in both decks with no register entry. **G1, G2 and G4 are what the evidence actually supports**, and they are narrower | **Withdrawn — never reinstate** | Replaced on the slide by the labelling condition: where the outcome labels itself, delegation already runs; where it does not, the record is the label |
+
+---
+
+## Where delegation already works without a decision record
+
+| # | Claim | Status | Source |
+|---|---|---|---|
+| **D1** | A card network's risk platform scores a transaction in **under 300 milliseconds** from tap to issuing bank; the network reports roughly **160 billion transactions a year** and peaks near **70,000 per second** | **Reported — vendor-published** | Mastercard, *AI-powered decision management*, b2b.mastercard.com. ⚠️ Said aloud as vendor-published. ⚠️ The platform is named "Decision Intelligence Pro", which collides with this talk's subject |
+| **D2** | A second card network reports assessing **more than 500 risk attributes in about a millisecond** per transaction | **Reported — vendor-published** | Visa AI and machine learning guide. ⚠️ Vendor-published |
+| ⭐ **D3** | A payments firm said in February 2024 its AI assistant was doing the work of **700 full-time agents**, handling about **2.3 million conversations in its first month** across 35+ languages; it later moved back toward human support, its chief executive saying cost had weighed too heavily and quality suffered | **Reported — company statement, then press** | Klarna, February 2024; reversal reported 2025. ⚠️ Dates for the reversal differ between secondary outlets; the Bloomberg interview is the primary source to check |
+| ⭐⭐ **D4** | **These work because the outcome labels itself.** A chargeback, a failing test, an unreported email: ground truth arrives automatically, so no written reason is needed. Where no label arrives on its own, the reason has to be recorded | **Assumption — an argued reading of D1–D3, offered as one** | The pattern is visible across the three; the causal claim is mine. **Open to a counter-example** |
+| ⭐ **D5** | **United States consumer credit requires a statement of the specific principal reasons for a denial**, and in September 2023 the regulator stated that creditors using complex or AI models may not rely on generic sample-form reasons, nor excuse non-compliance by pointing to model complexity | **Reported — read from law-firm analysis, not the Circular** | Regulation B / ECOA; CFPB Circular 2023-03, 19 September 2023. ⚠️ ⭐ **Verify against the CFPB's own text before the talk** |
+| **D6** | Published accounts of successful agent deployments describe writing evaluation criteria before the run and scoring each attempt against them — an "outcomes loop" | **Reported — vendor and practitioner sources** | Summaries of Anthropic and other deployment guidance, 2026. ⚠️ Much 2026 agent-deployment material is vendor-published or self-published; two widely-cited figures could not be verified at source and are excluded |
+
+---
 ---
 
 ## ⛔ Withdrawn
