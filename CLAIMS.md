@@ -102,6 +102,17 @@ A public register of what can and cannot be evidenced is unusual, and it is deli
 
 ---
 
+## Why this wave is stalling — 2026
+
+| # | Claim | Status | Source |
+|---|---|---|---|
+| ⭐⭐ **G6** | **The most-pursued AI use cases are not the ones returning anything.** Most pursued: cybersecurity threat detection **54%**, IT service desk automation **54%**, automated code generation **44%**. Delivering positive operational or financial returns: IT asset and cost optimisation **40%**, synthetic data generation **28%**, automated code generation **23%**. **Only one entry appears on both lists** | **Reported — analyst-published** | Gartner press release, **1 September 2026**; survey of C-suite executives fielded **January to April 2026**, **1,303 respondents** at organisations with at least US$50m revenue. ⚠️ The underlying survey is not public. Said aloud as analyst-published every time |
+| ⭐ **G7** | **Only 22% of organisations have successfully scaled AI across multiple business units** or adopted an AI-first approach | **Reported — analyst-published** | Same survey and release |
+| ⭐⭐ **G8** | **The analyst's own explanation for the gap**: leaders are choosing **from what they have seen in publications, keynotes and vendor messaging rather than from a business case.** Organisations getting returns pick narrowly and build foundations first, and **data quality is named as the common gap** | **Reported — the analyst's own stated reasoning** | Same release, as reported by ITPro, 3 September 2026. ⭐ This is the analyst's wording, not the speaker's |
+| ⭐ **G9** | **Choosing from a business case requires knowing what your own decisions cost and how often they go wrong** — which is the two columns, not an AI capability | **Assumption — the speaker's reading of G6–G8, labelled on the slide** | Mine. **Open to a counter-example** |
+| ⛔ **G10** | ⛔ **Do not cite "782 leaders" or "57% said they expected too much too fast."** Circulated by secondary aggregators and **not found in Gartner's own newsroom** | **Quarantined — unverified at source** | Searched 17 October 2026; no matching Gartner release located. **G6–G8 are the verifiable 2026 figures** |
+
+---
 ## How unaided human judgement performs
 
 | # | Claim | Status | Source |
