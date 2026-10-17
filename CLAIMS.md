@@ -102,6 +102,29 @@ A public register of what can and cannot be evidenced is unusual, and it is deli
 
 ---
 
+## How unaided human judgement performs
+
+| # | Claim | Status | Source |
+|---|---|---|---|
+| ⭐⭐ **N1** | In noise audits at an insurance company, the **median difference in premiums set by different underwriters for identical policies was 55%**, and the **median difference in payouts by different claims adjusters for identical claims was 43%** | **Reported — the authors' own consulting audits, published in a trade book** | Kahneman, Sibony & Sunstein, *Noise: A Flaw in Human Judgment* (2021). ⚠️ **Widely cited but not peer-reviewed.** Said as the authors' own audit, every time |
+| ⭐ **N2** | Asked how much variation they expected among expert judgments, **828 senior executives gave a median answer of 10%** — roughly a fifth of what the audits found | **Reported — same source** | *Noise* (2021). ⚠️ Not peer-reviewed. ⭐ The gap between expectation and measurement is the usable part |
+| ⭐⭐ **N3** | Across a large body of comparisons, **mechanical prediction was about 10% more accurate than clinical judgement on average**, and clinicians were substantially more accurate in only **6–16% of studies** — consistent regardless of task, judge type, experience or data type | **Verified — peer-reviewed meta-analysis** | Grove, Zald, Lebow, Snitz & Nelson, *Psychological Assessment* 12:19–30 (2000). ⚠️ **The widely-quoted "136 studies" belongs to Grove & Meehl (1996), not this paper** — do not conflate them |
+| ⭐ **N4** | **Decision fatigue within a single session is measurable.** Clinicians were **about 26% more likely to prescribe an antibiotic in the fourth hour of a session than in the first**, for acute respiratory infection, across 23 primary-care practices over 17 months | **Verified — peer-reviewed, observational** | Linder et al., "Time of Day and the Decision to Prescribe Antibiotics", *JAMA Internal Medicine* 174(12):2029–31 (2014). ⚠️ Observational; the authors attribute it to decision fatigue but did not test the mechanism |
+| ⭐⭐ **N5** | **A decision record is a continuous noise audit.** The audits behind N1 had to construct identical cases and route them to many experts. The same `task_type` decided by different workers, with a reason on each row, measures the same variation continuously and at no extra cost | **Assumption — an argued reading of N1 and the schema, offered as one** | The mechanism follows from the record's own grain; no trial of it exists. **Open to a counter-example** |
+| ⛔ **N6** | ⛔ **Do not use the parole-hearing / "hungry judges" study.** It is widely quoted and is contested on the grounds that case ordering was not random | **Quarantined — never cite** | Danziger et al. (2011) and the Weinshall-Margel & Shapard critique |
+| ⛔ **N7** | ⛔ **Do not use "people make 35,000 decisions a day."** The figure circulates without a traceable source | **Quarantined — never cite** | Untraceable. **N4 is the defensible way to make the fatigue point** |
+| **N8** | Whether colonoscopy adenoma-detection rates fall later in the day is **contested** — some studies find a decline of roughly 7%, others find none, and one set of authors attributes the decline to rushing rather than fatigue | **Contested — excluded from the deck** | Multiple studies, 2015–2018. ⚠️ Mixed evidence; not used |
+
+---
+
+## What can be delegated, and to what
+
+| # | Claim | Status | Source |
+|---|---|---|---|
+| ⭐⭐ **W1** | **Six tests sort a decision onto one of four rungs**: does the outcome label itself · how soon do you know · does it recur · can "right" be written before the attempt · what does wrong cost and can it be undone · is the input bounded. The rungs are the four values of `worker_kind` | **Assumption — an argued framework, offered to be attacked** | Mine. The rungs carry evidence individually (N3, the classification finding, D1, D5); the sort itself does not |
+| ⭐ **W2** | **Sectors sort the same way.** Where ground truth arrives automatically — card authorisation, content moderation, spam, ad bidding, ranking, test gates — delegation is long since done. Where it does not — underwriting, clinical variance, credit exceptions, approvals, casework, audit — it has not started | **Assumption — one test applied by hand, offered to be argued with** | Anchored on documented cases: D1 (card authorisation), P6 (375 platforms on the European register), N1 (insurance underwriting), P1 (hospital protocol since 1988), D5 (credit adverse action). **The remaining entries are the same test applied** |
+
+---
 ## Where delegation already works without a decision record
 
 | # | Claim | Status | Source |
