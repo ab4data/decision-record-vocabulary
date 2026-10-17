@@ -666,6 +666,62 @@
 <aside>⭐ This slide exists to answer the question the locus slide raises: does any of this actually work? It is the only controlled evidence in the talk, and volunteering a modest number is what buys credibility with a room that has sat through AI talks that oversold. ⚠️ Do not lead with the percentage — it sounds trivial in the abstract and lands completely differently against throughput. Say the green box out loud as a multiplication: 2.7%, times a hundred thousand decisions, is two thousand seven hundred better outcomes from a logging change. Then the right-hand card, which is the part people miss: the effect is largest where performance is poor, and nobody deploys this where things are already fine, so the median is a floor rather than an expectation. The footer concedes the open question before anyone can raise it.</aside>
 </section>
 
+<section id="improve" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:24px 128px 62px;display:flex;flex-direction:column;justify-content:center;gap:14px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#1B7A43;letter-spacing:1px">how fast, by how much &#8212; and who it is worth showing</p>
+<h2 style="margin:0;font-size:40px;font-weight:600;line-height:1.08">Fastest where performance is worst, and it fades when the feedback stops. <span style="color:#1B7A43">The lever is not the volume of decisions &#8212; it is whose decisions you show back.</span></h2>
+<div style="display:flex;gap:22px;align-items:stretch">
+
+<div style="flex:1.25;background:#FFFFFF;border:1px solid #DCE0DD;border-radius:16px;padding:12px 16px 8px">
+<svg viewBox="0 0 820 322" style="width:820px;max-width:100%;height:auto;display:block;margin:0 auto;font-family:'IBM Plex Sans',Arial,sans-serif" aria-label="Adherence rising from 38.8 per cent to 83.6 per cent over fourteen months of fortnightly feedback, then falling to 76.6 per cent three months after the feedback stopped">
+  <line x1="70" y1="20" x2="70" y2="262" stroke="#C3CBD4" stroke-width="2"/>
+  <line x1="70" y1="262" x2="790" y2="262" stroke="#C3CBD4" stroke-width="2"/>
+  <g font-size="15" fill="#6A7179" text-anchor="end">
+    <text x="60" y="27">100%</text><text x="60" y="88">75%</text><text x="60" y="149">50%</text><text x="60" y="210">25%</text><text x="60" y="267">0</text>
+  </g>
+  <g stroke="#ECEFF2" stroke-width="1">
+    <line x1="70" y1="22" x2="790" y2="22"/><line x1="70" y1="83" x2="790" y2="83"/><line x1="70" y1="144" x2="790" y2="144"/><line x1="70" y1="205" x2="790" y2="205"/>
+  </g>
+  <rect x="70" y="22" width="500" height="240" fill="#E9F7EE" opacity="0.5"/>
+  <rect x="570" y="22" width="220" height="240" fill="#FBE9E7" opacity="0.45"/>
+  <text x="320" y="44" font-size="17" fill="#1B7A43" text-anchor="middle" font-weight="600">fortnightly feedback, 14 months</text>
+  <text x="680" y="44" font-size="17" fill="#C0392B" text-anchor="middle" font-weight="600">feedback stops</text>
+  <polyline points="70,167 140,150 210,131 280,113 350,100 420,92 490,86 570,58" fill="none" stroke="#1B7A43" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="570,58 680,65 790,75" fill="none" stroke="#C0392B" stroke-width="5" stroke-dasharray="11 7" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="70" cy="167" r="7" fill="#1B7A43"/><circle cx="570" cy="58" r="7" fill="#1B7A43"/><circle cx="790" cy="75" r="7" fill="#C0392B"/>
+  <text x="84" y="190" font-size="21" fill="#12161C" font-weight="600">38.8%</text>
+  <text x="556" y="42" font-size="21" fill="#1B7A43" font-weight="600" text-anchor="end">83.6%</text>
+  <text x="784" y="103" font-size="21" fill="#C0392B" font-weight="600" text-anchor="end">76.6%</text>
+  <g font-size="15" fill="#6A7179" text-anchor="middle">
+    <text x="70" y="284">start</text><text x="320" y="284">month 7</text><text x="570" y="284">month 14</text><text x="790" y="284" text-anchor="end">+3 months</text>
+  </g>
+  <text x="70" y="312" font-size="16" fill="#6A7179">⚠️ One unit, 114 indicators, uncontrolled before-and-after &#8212; the shape, not the size</text>
+</svg>
+</div>
+
+<div style="flex:1;display:flex;flex-direction:column;gap:10px">
+  <div style="background:#E9F7EE;border-left:6px solid #4ADE80;border-radius:12px;padding:12px 18px">
+    <p style="margin:0;font-size:23px;font-weight:600;line-height:1.14">The size, from the controlled evidence</p>
+    <p style="margin:5px 0 0;font-size:21px;line-height:1.24"><b>Median +2.7%</b>, quartiles <b>0.0 to 8.6</b> &#183; <b>mean +6.2%</b>, 95% confidence <b>4.1 to 8.2</b> &#183; odds ratio <b>1.47</b>. Moderate certainty, 177 studies.</p>
+  </div>
+  <div style="background:#FFFFFF;border:1px solid #DCE0DD;border-radius:12px;padding:12px 18px">
+    <p style="margin:0;font-size:23px;font-weight:600;line-height:1.14">Largest where the baseline is worst</p>
+    <p style="margin:5px 0 0;font-size:21px;line-height:1.24">Lower starting performance went with larger gains. <b>Nobody deploys this where things are already fine</b>, so the median is a floor rather than a forecast.</p>
+  </div>
+  <div style="background:#FFFFFF;border:1px solid #DCE0DD;border-radius:12px;padding:12px 18px">
+    <p style="margin:0;font-size:23px;font-weight:600;line-height:1.14">⚠️ And repetition alone does not compound it</p>
+    <p style="margin:5px 0 0;font-size:21px;line-height:1.24">The review found <b>repeated delivery associated with a smaller effect, contrary to expectation.</b> Frequency is not the lever. <b>What is shown, and to whom, is the lever.</b></p>
+  </div>
+</div>
+</div>
+
+<div style="background:#12161C;padding:14px 24px;border-radius:16px;display:flex;flex-direction:column;gap:9px">
+<p style="margin:0;font-size:25px;color:#F7F8F6;line-height:1.22">⭐⭐ <b>So show it to the people whose decisions multiply.</b> <span style="color:#A9B4C2">A person deciding transactions improves their own next decisions. <b style="color:#F7F8F6">A person setting a rule, a threshold or a policy makes one decision that is then applied to every case that matches it, by everyone who handles one &#8212; and now by every agent that follows it too, until somebody changes it.</b></span></p>
+<p style="margin:0;font-size:24px;color:#E4E9EF;line-height:1.22;border-top:2px solid #2F6FEB;padding-top:9px"><b style="color:#7FA6F5">That fan-out is the analytics contribution, and it is this room&#8217;s.</b> <span style="color:#A9B4C2">Nobody currently shows a policy owner what their rule did across ten thousand cases, broken down by reason class and locus, because the data to do it has not existed. <b style="color:#F7F8F6">It is the same two columns. The only thing that changes is who you point the report at.</b></span></p>
+</div>
+<p style="position:absolute;left:128px;right:128px;bottom:24px;font-size:19px;color:#6A7179">Trajectory: Jolliffe et al., <i>PLoS ONE</i> (2019), PMC6415863 &#8212; fortnightly cycles, 14 months, one inpatient unit. ⚠️ <b style="color:#12161C">Uncontrolled before-and-after; read it for the shape, not the size.</b> Effect sizes and moderators: Cochrane CD000259.pub5, 22 June 2026 &#8212; 292 studies, 678 arms, 558 outcomes from 177 studies. ⚠️ <b style="color:#12161C">Its evidence base runs to June 2020.</b> The fan-out argument is mine, and it is arithmetic rather than a finding.</p>
+<aside>⭐ Read the plot left to right and say three things only: it started badly, it got much better over about a year of fortnightly cycles, and it slid back once the cycles stopped. ⚠️ Say immediately that this is one unit and uncontrolled &#8212; the shape is the point, the Cochrane numbers are the size. ⭐⭐ The green card is the number to be held to, and the amber finding under it is the one worth pausing on: repeating the feedback more often was associated with a <i>smaller</i> effect, contrary to what everyone expects. That kills the obvious plan of just sending more reports, and it sets up the dark band. ⭐⭐ The dark band is the whole reason this slide exists for this audience. A caseworker improving their own decisions is worth 2.7%. A policy owner seeing what their threshold did across ten thousand cases is the same 2.7% applied to a decision that governs ten thousand more &#8212; and that report is the analyst&#8217;s job, not the caseworker&#8217;s. ⭐ Say the last sentence slowly: it is the same two columns, and the only thing that changes is who you point the report at. ⚠️ Say the fan-out is arithmetic rather than a measured finding; no trial of it exists.</aside>
+</section>
+
 <section id="learning" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:84px 128px 120px;display:flex;flex-direction:column;justify-content:center;gap:30px">
 <p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;color:#1B7A43;letter-spacing:1px">capability two, complete</p>
 <h2 style="font-size:58px;font-weight:600;line-height:1.1">That is organisational learning. A shared class, a locus that names who can act, and a number that says how much it buys.</h2>

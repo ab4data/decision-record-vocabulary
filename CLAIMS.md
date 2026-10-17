@@ -117,6 +117,20 @@ A public register of what can and cannot be evidenced is unusual, and it is deli
 
 ---
 
+## How fast feedback works, and how long it lasts
+
+Full research record, with the design and limits of each source: `Build Documentation/13_Feedback_Time_Course_Research.md`.
+
+| # | Claim | Status | Source |
+|---|---|---|---|
+| ⭐⭐ **F1** | The Cochrane review's full figures: **292 studies, 678 study arms**; across **558 dichotomous practice outcomes from 177 studies** the **median absolute improvement was 2.7%, interquartile range 0.0 to 8.6**; the meta-analysis found a **mean absolute increase of 6.2%, 95% CI 4.1 to 8.2**, and an **odds ratio of 1.47, 95% CI 1.31 to 1.64** | **Verified — re-checked at Cochrane, 17 October 2026** | Ivers et al., CD000259.pub5, published **22 June 2026**, Issue 6. Moderate certainty for the mean increase and the odds ratio. ⚠️ **The review's evidence base runs to June 2020** |
+| ⭐ **F2** | **Lower baseline performance was associated with larger intervention effects** | **Verified — same review** | CD000259.pub5. ⭐ This is why the median is a floor rather than a forecast: nobody deploys feedback where performance is already good |
+| ⚠️⭐⭐ **F3** | **Repeated delivery of feedback was associated with a *lower* effect size** — which the review's authors describe as **contrary to expectations** | **Verified — same review** | CD000259.pub5. ⭐ Frequency is not the lever. **This rules out claiming that feedback compounds, and no slide may draw a compounding curve** |
+| ⭐⭐ **F4** | **A measured trajectory**: in an inpatient acquired brain injury rehabilitation unit, **fortnightly** audit and feedback cycles run for **14 months** against **114 clinical indicators** raised median adherence from **38.8%** (95% CI 34.3–44.4) to **83.6%** (95% CI 81.8–88.5) | **Reported — uncontrolled before-and-after, single unit** | Jolliffe et al., *PLoS ONE* (2019), PMC6415863. ⚠️ **Read it for the shape, not the size.** The improvement cannot be attributed to the feedback alone |
+| ⭐ **F5** | **The gain partly decayed once the cycles stopped**: three months after the programme ended, median adherence had fallen **from 82.3% to 76.6%** | **Reported — same study, same design limits** | Jolliffe et al. (2019). ⭐ The only follow-up-after-withdrawal figure found |
+| ⭐⭐ **F6** | **A decision made about a rule, threshold or policy is applied to every case that matches it**, by every worker who handles one, human or agent, until it is changed — so showing a policy owner what their rule did has leverage proportional to that fan-out | **Assumption — arithmetic, and true by definition of a rule. No trial of it exists** | Mine. Anchored on documented fan-out: **P6**, 375 platforms filing a record for every content decision, and **D5**, a single credit policy governing every application. **Open to a counter-example** |
+
+---
 ## What can be delegated, and to what
 
 | # | Claim | Status | Source |
