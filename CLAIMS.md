@@ -139,6 +139,19 @@ Full research record, with the design and limits of each source: `Build Document
 | ⭐ **W2** | **Sectors sort the same way.** Where ground truth arrives automatically — card authorisation, content moderation, spam, ad bidding, ranking, test gates — delegation is long since done. Where it does not — underwriting, clinical variance, credit exceptions, approvals, casework, audit — it has not started | **Assumption — one test applied by hand, offered to be argued with** | Anchored on documented cases: D1 (card authorisation), P6 (375 platforms on the European register), N1 (insurance underwriting), P1 (hospital protocol since 1988), D5 (credit adverse action). **The remaining entries are the same test applied** |
 
 ---
+## Adaptive routing: what already exists, and what this proposal does not claim
+
+Full research record: `Build Documentation/14_Adaptive_Decision_Routing_Research.md`.
+
+| # | Claim | Status | Source |
+|---|---|---|---|
+| **R1** | **Model cascades route per request**: call pretrained models cheapest-first, judge each answer with a learned scorer, and stop when one is acceptable. Reported to match GPT-4 at **up to 98% cost reduction**, or exceed its accuracy by **4%** at equal cost | **Reported — the authors' own experiments** | Chen, Zaharia & Zou, *FrugalGPT*, arXiv 2305.05176 (2023). ⚠️ **Per-dataset savings were 98.3%, 73.3% and 59.2% — the headline is the best of three, not an average.** No independent replication found |
+| **R2** | **Learning to defer trains a classifier and a rejector jointly**, from samples of an expert's decisions, so the system learns which individual cases to hand to a person | **Verified — peer-reviewed** | Mozannar & Sontag, arXiv 2006.01862 (2020); Charusaie et al., ICML 2022 |
+| ⭐ **R3** | Finding an optimal linear classifier-and-rejector pair is **NP-hard even when a zero-error pair exists**, and earlier methods can miss it | **Verified — peer-reviewed** | Mozannar et al., "Who Should Predict?" (2023) |
+| ⭐⭐ **R4** | **Learning which instances to defer requires a large number of expert predictions**, in addition to the ground-truth labels needed to train the model | **Verified — peer-reviewed** | Hemmer et al., AAAI 2023, "Learning to Defer with Limited Expert Predictions". ⭐ **This is the dependency the decision record satisfies** |
+| ⛔⭐⭐ **R5** | ⛔ **This proposal is NOT superior to existing routing research, and must never claim to be.** The `delegable` ladder is a coarse, static, class-level assignment; cascades and learning-to-defer route **per individual case** and are strictly more powerful | **Stated limitation — carried on the slide in both decks** | The honest position: **the routing is theirs; the training data is the gap.** A decision record produces per-case expert decisions (R4) as a by-product of work, and the conformed `reason_class` layer — comparing across organisations — is the part absent from this literature |
+
+---
 ## Where delegation already works without a decision record
 
 | # | Claim | Status | Source |
