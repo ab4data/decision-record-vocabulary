@@ -190,7 +190,7 @@
 </div>
 
 <div style="flex:1;display:flex;flex-direction:column;gap:11px">
-  <div><p style="margin:0;font-size:22px;font-weight:600;color:#1B7A43">Locus</p><p style="margin:2px 0 0;font-size:20px;line-height:1.26">Latin for <i>place</i>. For a departure, the locus states <b>which part of the operation the stated cause sat in</b> &#8212; the input &#183; a rule &#183; a person&#8217;s judgement &#183; a resource &#183; a party outside. It is the parent of <b>reason_class</b>, and the level that identifies <b>who can act on it.</b></p></div>
+  <div><p style="margin:0;font-size:22px;font-weight:600;color:#1B7A43">Locus</p><p style="margin:2px 0 0;font-size:20px;line-height:1.26">Latin for <i>place</i>. For a departure, the locus states <b>which part of the operation the stated cause sat in</b> &#8212; the input &#183; a rule &#183; a person&#8217;s judgement &#183; a resource &#183; a party outside &#183; <b>or beyond the decider&#8217;s delegation</b>. It is the parent of <b>reason_class</b>, the level that identifies <b>who can act on it</b> &#8212; and <b>you never store it: it comes with the class.</b></p></div>
   <div><p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:22px;font-weight:600;color:#2F6FEB">reason_code</p><p style="margin:2px 0 0;font-size:20px;line-height:1.26">The value in which <b>whoever decided states why</b> the attempt went as it did. Six to eight per domain, the list written by the people doing the work, in their own words. <b>It is not shared outside the organisation.</b></p></div>
   <div><p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:22px;font-weight:600;color:#2F6FEB">reason_class</p><p style="margin:2px 0 0;font-size:20px;line-height:1.26"><b>The shared parent of reason_code.</b> Many local codes map to one class; there are about eleven classes and they are identical across organisations. <b>This is the only part that travels between organisations.</b></p></div>
   <div><p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:22px;font-weight:600;color:#2F6FEB">basis_refs</p><p style="margin:2px 0 0;font-size:20px;line-height:1.26">The identifiers of the records that were in front of whoever decided. <b>Keys, not copies</b> &#8212; the source text stays where it is, under the access controls it already has. Each identifier is a link from this record back to an earlier one, and it records <b>what was cited, not what caused</b> the decision.</p></div>
@@ -199,7 +199,7 @@
 </div>
 
 </div>
-<p style="position:absolute;left:128px;right:128px;bottom:26px;font-size:19px;color:#6A7179"><b style="color:#2F6FEB">Blue</b> are column names you would type. <b style="color:#1B7A43">Green</b> are ideas. The three levels run <b style="color:#12161C">reason_code &#8594; reason_class &#8594; locus</b>, local to shared to who can act. The open vocabulary at github.com/ab4data/decision-record-vocabulary uses exactly these names.</p>
+<p style="position:absolute;left:128px;right:128px;bottom:26px;font-size:19px;color:#6A7179"><b style="color:#2F6FEB">Blue</b> are column names you would type. <b style="color:#1B7A43">Green</b> are ideas. The three levels run <b style="color:#12161C">reason_code &#8594; reason_class &#8594; locus</b> &#8212; local, shared, then who can act. <b style="color:#12161C">You store the first two; the locus is green because it comes with the class rather than being typed.</b> The open vocabulary at github.com/ab4data/decision-record-vocabulary uses exactly these names.</p>
 <aside>&#11088;&#11088; Do not read this slide out. Name four and move on &#8212; Decision Intelligence, a judged attempt, reason_code and reason_class &#8212; and tell the room the rest are here so nothing later needs a footnote. &#11088; The structure worth saying aloud is the three-level one in the footer: the local code, its shared parent, and the locus above that which names who can act. Once the room has that, the middle of the talk needs no further vocabulary. &#11088;&#11088; A gate and a departure are the pair most easily confused, and the slide now separates them explicitly: a departure is a property of the decision, a gate is a property of the process. Say that distinction out loud, because the hospital is an example of both at once &#8212; the clinician departs from the protocol, and the gate is what makes the reason exist. &#9888; The AI line matters: AI is not a competing wave, it is what raises decision volume to the point where recording becomes worth doing.</aside>
 </section>
 
@@ -452,41 +452,46 @@
 <aside>⭐ The core of capability two, and the line to land is the headline: two industries, two words, one class, and neither has to give up its vocabulary. That is what makes this adoptable where a shared code list would not be. ⭐⭐ The two ⭐ lines inside the cards are the answer to the question a regulated room is already forming — does any of this leave the building? No. The mapping is a lookup table you own, a model that suggests codes runs on hardware you own, and comparing with another team means agreeing definitions rather than moving rows. For the hospitals, the water utility and anyone with defence work, that is the sentence that decides whether they can start at all. ⚠️ Read the footer caveat out loud — the eleven classes came from lists one person wrote, which shows the structure is achievable and shows nothing about what real teams use. Saying so is what makes the rest of the slide credible.</aside>
 </section>
 
-<section id="locus" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:50px 128px 92px;display:flex;flex-direction:column;justify-content:center;gap:18px">
-<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;color:#2F6FEB;letter-spacing:1px">and one level up from the class is the level that tells you what to do about it</p>
-<h2 style="font-size:50px;font-weight:600;line-height:1.1">Group the classes by where the departure came from, and each group names a different person who can act.</h2>
+<section id="locus" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:50px 128px 92px;display:flex;flex-direction:column;justify-content:center;gap:38px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;color:#2F6FEB;letter-spacing:1px">and one level up from the class is the level that tells you what to do about it</p>
+<h2 style="margin:0;font-size:48px;font-weight:600;line-height:1.08">Group the classes by where the departure came from, and each group names a different person who can act. <span style="color:#2F6FEB">Six of them, and the sixth points straight at your delegations.</span></h2>
 <div style="display:flex;gap:14px">
   <div style="flex:1;background:#FFFFFF;border:2px solid #4ADE80;border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:7px">
-    <p style="font-size:25px;font-weight:600;color:#1B7A43">input</p>
-    <p style="font-size:22px;color:#4A5568;line-height:1.22">Not enough, or it did not add up</p>
-    <p style="font-size:23px;color:#12161C;line-height:1.22"><b>Fix the form, the intake, the upstream system</b></p>
+    <p style="margin:0;font-size:25px;font-weight:600;color:#1B7A43">input</p>
+    <p style="margin:0;font-size:22px;color:#4A5568;line-height:1.22">Not enough, or it did not add up</p>
+    <p style="margin:0;font-size:23px;color:#12161C;line-height:1.22"><b>Fix the form, the intake, the upstream system</b></p>
   </div>
   <div style="flex:1;background:#FFFFFF;border:2px solid #4ADE80;border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:7px">
-    <p style="font-size:25px;font-weight:600;color:#1B7A43">rule</p>
-    <p style="font-size:22px;color:#4A5568;line-height:1.22">A rule was breached or engaged</p>
-    <p style="font-size:23px;color:#12161C;line-height:1.22"><b>Whoever owns the policy</b></p>
+    <p style="margin:0;font-size:25px;font-weight:600;color:#1B7A43">rule</p>
+    <p style="margin:0;font-size:22px;color:#4A5568;line-height:1.22">A rule was breached or engaged</p>
+    <p style="margin:0;font-size:23px;color:#12161C;line-height:1.22"><b>Whoever owns the policy</b></p>
   </div>
   <div style="flex:1;background:#FFFFFF;border:2px solid #4ADE80;border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:7px">
-    <p style="font-size:25px;font-weight:600;color:#1B7A43">judgement</p>
-    <p style="font-size:22px;color:#4A5568;line-height:1.22">A person assessed risk or consequence</p>
-    <p style="font-size:23px;color:#12161C;line-height:1.22"><b>Training, calibration, worked examples</b></p>
+    <p style="margin:0;font-size:25px;font-weight:600;color:#1B7A43">judgement</p>
+    <p style="margin:0;font-size:22px;color:#4A5568;line-height:1.22">A person assessed risk or consequence</p>
+    <p style="margin:0;font-size:23px;color:#12161C;line-height:1.22"><b>Training, calibration, worked examples</b></p>
   </div>
   <div style="flex:1;background:#FFFFFF;border:2px solid #4ADE80;border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:7px">
-    <p style="font-size:25px;font-weight:600;color:#1B7A43">resource</p>
-    <p style="font-size:22px;color:#4A5568;line-height:1.22">Money, people, time or a deadline</p>
-    <p style="font-size:23px;color:#12161C;line-height:1.22"><b>Funding, staffing, scheduling</b></p>
+    <p style="margin:0;font-size:25px;font-weight:600;color:#1B7A43">resource</p>
+    <p style="margin:0;font-size:22px;color:#4A5568;line-height:1.22">Money, people, time or a deadline</p>
+    <p style="margin:0;font-size:23px;color:#12161C;line-height:1.22"><b>Funding, staffing, scheduling</b></p>
+  </div>
+  <div style="flex:1;background:#FFFFFF;border:2px solid #7FA6F5;border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:7px">
+    <p style="margin:0;font-size:25px;font-weight:600;color:#2F6FEB">authority</p>
+    <p style="margin:0;font-size:22px;color:#4A5568;line-height:1.22">Beyond the decider&#8217;s delegation</p>
+    <p style="margin:0;font-size:23px;color:#12161C;line-height:1.22">⭐ <b>Whoever sets delegations</b></p>
   </div>
   <div style="flex:1;background:#FFFFFF;border:2px solid #C3CBD4;border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:7px">
-    <p style="font-size:25px;font-weight:600;color:#6A7179">external</p>
-    <p style="font-size:22px;color:#4A5568;line-height:1.22">Someone outside decided it</p>
-    <p style="font-size:23px;color:#12161C;line-height:1.22">⚠️ <b>Nobody internally. Manage it</b></p>
+    <p style="margin:0;font-size:25px;font-weight:600;color:#6A7179">external</p>
+    <p style="margin:0;font-size:22px;color:#4A5568;line-height:1.22">Someone outside decided it</p>
+    <p style="margin:0;font-size:23px;color:#12161C;line-height:1.22">⚠️ <b>Nobody internally. Manage it</b></p>
   </div>
 </div>
 <div style="background:#1B7A43;padding:18px 28px;border-radius:16px">
-<p style="font-size:30px;color:#FFFFFF;line-height:1.24"><b>"Incomplete documentation is up four points" is a fact. "Sixty per cent of departures this quarter were input" is an instruction to go and fix the form.</b></p>
+<p style="margin:0;font-size:29px;color:#FFFFFF;line-height:1.24"><b>"Incomplete documentation is up four points" is a fact. "Sixty per cent of departures this quarter were input" is an instruction to go and fix the form.</b></p>
 </div>
-<p style="position:absolute;left:128px;right:128px;bottom:36px;font-size:24px;color:#6A7179">⭐ And because the classes are shared, a claims team and a code review team can compare these mixes — which is an argument about where next year's money goes, made from operational data. ⚠️ A description, not a target: the moment a locus mix becomes a performance indicator, people will code to it.</p>
-<aside>⭐ The most immediately useful slide in the deck for anyone who commissions improvement work. Walk the five boxes and read the bottom line of each, because that bottom line is the whole point — the class says what happened, the locus says who can do something about it. Then the green band, slowly. ⚠️ Deliver the warning in the footer as seriously as the idea: this is a diagnostic, and the day it becomes a target it stops being either.</aside>
+<p style="margin:0;position:absolute;left:128px;right:128px;bottom:36px;font-size:24px;color:#6A7179">⭐ And because the classes are shared, a claims team and a code review team can compare these mixes — which is an argument about where next year's money goes, made from operational data. ⚠️ A description, not a target: the moment a locus mix becomes a performance indicator, people will code to it.</p>
+<aside>&#11088;&#11088; The blue card is the one to pause on: a decision taken beyond somebody&#8217;s delegation is not a failure of the decider, it is a signal that the delegation boundary is in the wrong place &#8212; which is the whole subject of capability three. ⭐ The most immediately useful slide in the deck for anyone who commissions improvement work. Walk the five boxes and read the bottom line of each, because that bottom line is the whole point — the class says what happened, the locus says who can do something about it. Then the green band, slowly. ⚠️ Deliver the warning in the footer as seriously as the idea: this is a diagnostic, and the day it becomes a target it stops being either.</aside>
 </section>
 
 <section id="levers" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:30px 128px 70px;display:flex;flex-direction:column;justify-content:center;gap:20px">
@@ -495,17 +500,18 @@
 <p style="margin:0;font-size:22px;line-height:1.26;color:#12161C"><b>A rule written on day one is a fine place to start, and so is a blank page.</b> What the record changes is <b>how often the organisation gets to be less wrong than it was.</b> Each cycle returns the same three things: the departure rate against the rule as it stands, the locus naming who can change it, and a better-informed rule for the next period. <b>Where the record does not exist</b>, that correction waits on an incident, an audit or a complaint, so it arrives in <b>years</b> &#8212; and often not at all, because nobody connects the outcome back to the rule that produced it. <b style="color:#1B7A43">Where it does, the cycle is monthly</b>, and each month the organisation knows something about its own work that it did not know before. <b style="color:#1B7A43">That knowledge is held by the organisation rather than by the people, so it stays when they move on.</b></p>
 <table style="font-family:'IBM Plex Sans', Arial, sans-serif;font-size:21px;color:#12161C;border-collapse:collapse;width:100%;line-height:1.2">
 <tr style="background:#12161C">
-  <th style="width:30%;color:#F7F8F6;text-align:left;padding:8px 12px">What the record shows</th>
-  <th style="width:26%;color:#FFB454;text-align:left;padding:8px 12px">Who can act &#8212; the locus names them</th>
-  <th style="width:44%;color:#4ADE80;text-align:left;padding:8px 12px">The lever they pull</th>
+  <th style="width:30%;color:#F7F8F6;text-align:left;padding:6px 11px">What the record shows</th>
+  <th style="width:26%;color:#FFB454;text-align:left;padding:6px 11px">Who can act &#8212; the locus names them</th>
+  <th style="width:44%;color:#4ADE80;text-align:left;padding:6px 11px">The lever they pull</th>
 </tr>
-<tr style="background:#FFFFFF"><td style="padding:8px 12px">Departures concentrated in <b>input</b></td><td style="padding:8px 12px">Whoever owns the form or the intake</td><td style="padding:8px 12px">The field, the validation, the upstream system</td></tr>
-<tr style="background:#FFFFFF"><td style="padding:8px 12px">Departures concentrated in <b>rule</b></td><td style="padding:8px 12px">The policy owner</td><td style="padding:8px 12px"><b>The rule itself</b> &#8212; reworded, rescoped, or retired</td></tr>
-<tr style="background:#FFFFFF"><td style="padding:8px 12px">Departures concentrated in <b>judgement</b></td><td style="padding:8px 12px">Whoever trains and calibrates</td><td style="padding:8px 12px">Worked examples, calibration, written guidance</td></tr>
-<tr style="background:#FFFFFF"><td style="padding:8px 12px">Departures concentrated in <b>resource</b></td><td style="padding:8px 12px">Whoever funds, staffs or schedules</td><td style="padding:8px 12px">Funding, headcount, the deadline itself</td></tr>
-<tr style="background:#FFFFFF"><td style="padding:8px 12px">The <b>&#8220;other&#8221;</b> rate climbing</td><td style="padding:8px 12px">The team who wrote the list</td><td style="padding:8px 12px"><b>The reason_code list</b> &#8212; a value added, or one split in two</td></tr>
-<tr style="background:#FFFFFF"><td style="padding:8px 12px">Overrides dominated by one class</td><td style="padding:8px 12px">Whoever owns the model or the pipeline</td><td style="padding:8px 12px">The threshold, the instructions, or what gets retrieved</td></tr>
-<tr style="background:#E9F7EE"><td style="padding:8px 12px">⭐ <b>One class stable, departures near zero</b></td><td style="padding:8px 12px"><b style="color:#1B7A43">The policy owner</b></td><td style="padding:8px 12px">⭐ <b style="color:#1B7A43">The standard is promoted to a rule</b> &#8212; that path can now run without a person</td></tr>
+<tr style="background:#FFFFFF"><td style="padding:6px 11px">Departures concentrated in <b>input</b></td><td style="padding:6px 11px">Whoever owns the form or the intake</td><td style="padding:6px 11px">The field, the validation, the upstream system</td></tr>
+<tr style="background:#FFFFFF"><td style="padding:6px 11px">Departures concentrated in <b>rule</b></td><td style="padding:6px 11px">The policy owner</td><td style="padding:6px 11px"><b>The rule itself</b> &#8212; reworded, rescoped, or retired</td></tr>
+<tr style="background:#FFFFFF"><td style="padding:6px 11px">Departures concentrated in <b>judgement</b></td><td style="padding:6px 11px">Whoever trains and calibrates</td><td style="padding:6px 11px">Worked examples, calibration, written guidance</td></tr>
+<tr style="background:#FFFFFF"><td style="padding:6px 11px">Departures concentrated in <b>resource</b></td><td style="padding:6px 11px">Whoever funds, staffs or schedules</td><td style="padding:6px 11px">Funding, headcount, the deadline itself</td></tr>
+<tr style="background:#EEF3FD"><td style="padding:6px 11px">⭐ Departures concentrated in <b>authority</b></td><td style="padding:6px 11px"><b style="color:#2F6FEB">Whoever sets delegations</b></td><td style="padding:6px 11px">⭐ <b style="color:#2F6FEB">The delegation boundary itself</b> &#8212; widened where it was too tight, tightened where it was not</td></tr>
+<tr style="background:#FFFFFF"><td style="padding:6px 11px">The <b>&#8220;other&#8221;</b> rate climbing</td><td style="padding:6px 11px">The team who wrote the list</td><td style="padding:6px 11px"><b>The reason_code list</b> &#8212; a value added, or one split in two</td></tr>
+<tr style="background:#FFFFFF"><td style="padding:6px 11px">Overrides dominated by one class</td><td style="padding:6px 11px">Whoever owns the model or the pipeline</td><td style="padding:6px 11px">The threshold, the instructions, or what gets retrieved</td></tr>
+<tr style="background:#E9F7EE"><td style="padding:6px 11px">⭐ <b>One class stable, departures near zero</b></td><td style="padding:6px 11px"><b style="color:#1B7A43">The policy owner</b></td><td style="padding:6px 11px">⭐ <b style="color:#1B7A43">The standard is promoted to a rule</b> &#8212; that path can now run without a person</td></tr>
 </table>
 <div style="background:#1B7A43;padding:16px 26px;border-radius:16px">
 <p style="margin:0;font-size:25px;color:#FFFFFF;line-height:1.24"><b>The last row is how automation gets earned rather than announced.</b> <span style="color:#D6F5E2">A rule written in advance is a forecast. A rule promoted off a stable rate is a measurement &#8212; and the record says which path was safe to promote, and from when. <b style="color:#FFFFFF">The standard the next attempt is judged against then changes, and the loop runs again.</b></span></p>
