@@ -4,6 +4,8 @@
 
 Dedicated to the public domain under [CC0](LICENSE) — and [here is why](NOTICE.md). Adopt it, fork it, rename it, ignore the parts that do not fit. **It is only worth anything if it is shared.**
 
+▶ **[Open the presentation this came from](https://ab4data.github.io/decision-record-vocabulary/deck/the-second-wave-animated.html)** — all 39 slides, animated, in the browser. ⚠️ **A working draft until 29 October 2026.**
+
 ---
 
 ## The short version
@@ -48,7 +50,7 @@ Five working loops, and ⭐ **five different vocabularies for the same idea** �
 | ⭐ **[reason-codes/](reason-codes/)** | **87 lists across 18 sectors, and an [analysis](reason-codes/ANALYSIS.md) of what they share.** 716 local codes collapse to 11 classes; three appear in every domain. The lists are constructed, not collected |
 | **[CLAIMS.md](CLAIMS.md)** | Every factual claim behind this, with its source and status — including the ones that are argument rather than evidence |
 | **[CONTRIBUTING.md](CONTRIBUTING.md)** | How to propose a change, and what a useful disagreement looks like |
-| **[deck/](deck/)** | The talk this came from, as two self-contained HTML files. ⚠️ **A working draft until 29 October 2026** |
+| ⭐ **[deck/](deck/)** | **The talk this came from — [open it in the browser](https://ab4data.github.io/decision-record-vocabulary/deck/the-second-wave-animated.html)**, or take the one self-contained HTML file and read it offline. ⚠️ **A working draft until 29 October 2026** |
 
 ---
 

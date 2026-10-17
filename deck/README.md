@@ -1,11 +1,10 @@
 # The talk
 
-Two self-contained HTML files. Open either in a browser; arrow keys, space, Home and End navigate. **No build step, no dependencies, no network calls** beyond a Google Fonts stylesheet.
+## ▶ [Open the presentation](https://ab4data.github.io/decision-record-vocabulary/deck/the-second-wave-animated.html)
 
-| File | |
-|---|---|
-| [`the-second-wave-animated.html`](the-second-wave-animated.html) | **The presented version**, with three animated diagrams · 33 sections |
-| [`the-second-wave.html`](the-second-wave.html) | The same content with the animated diagrams removed · 30 sections |
+**Every slide, animated, in the browser — nothing to download and nothing to install.** Arrow keys, space, Home and End navigate.
+
+One self-contained file: [`the-second-wave-animated.html`](the-second-wave-animated.html) — **36 slides and three animated diagrams, 39 sections in all.** **No build step, no dependencies, no network calls** beyond a Google Fonts stylesheet, so saving the file gives you the whole talk offline.
 
 Speaker notes are in `<aside>` elements in the source — hidden on screen, readable in the file. **They carry the caveats**, including which figures are to be said aloud as analyst-published or as a prediction.
 
