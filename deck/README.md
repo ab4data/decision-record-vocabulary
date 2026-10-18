@@ -1,14 +1,14 @@
 # The talk
 
-## ▶ [Open the presentation](https://ab4data.github.io/decision-record-vocabulary/deck/the-second-wave-animated.html)
+## ▶ [Open the presentation](https://ab4data.github.io/decision-record-vocabulary/deck/the-second-wave.html)
 
-**Every slide, animated, in the browser — nothing to download and nothing to install.** Arrow keys, space, Home and End navigate.
+**Every slide, in the browser — nothing to download and nothing to install.** Arrow keys, space, Home and End navigate.
 
-One self-contained file: [`the-second-wave-animated.html`](the-second-wave-animated.html) — **36 slides and three animated diagrams, 39 sections in all.** **No build step, no dependencies, no network calls** beyond a Google Fonts stylesheet, so saving the file gives you the whole talk offline.
+One self-contained file: [`the-second-wave.html`](the-second-wave.html) — **32 slides**, the deck as it goes on the screen in the room. **No build step, no dependencies, no network calls** beyond a Google Fonts stylesheet, so saving the file gives you the whole talk offline.
 
-Speaker notes are in `<aside>` elements in the source — hidden on screen, readable in the file. **They carry the caveats**, including which figures are to be said aloud as analyst-published or as a prediction.
+**The speaker notes are in the file**, in `<aside>` elements — hidden on screen, readable in the source. **They carry the caveats**, including which figures are to be said aloud as analyst-published or as a prediction, and they hold the detail that the slides deliberately leave off.
 
-`prefers-reduced-motion` is honoured: with it switched on, every diagram renders in its final state instead of moving.
+`prefers-reduced-motion` is honoured: with it switched on, the diagram renders in its final state instead of moving.
 
 ---
 

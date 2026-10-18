@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>The Second Wave — Decision Intelligence (presenting)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+  html, body { margin:0; padding:0; background:#0B0E13; }
+  body { scroll-snap-type: y mandatory; overflow-x: hidden; }
+  section { width:1920px; height:1080px; box-sizing:border-box; position:relative;
+            transform-origin: top left; scroll-snap-align: start; overflow:hidden; }
+  section > aside { display:none; }
+  @media (max-width: 1920px) { section { transform: scale(calc(100vw / 1920)); } }
+  .deck { display:flex; flex-direction:column; gap:0; }
+  .deck > section { flex:none; }
+
+  /* ---- animated diagram slides ---- */
+  .anim svg { display:block; }
+  .anim .lbl { margin:0; }
+
+  /* flowing wires: the dash crawls along the path */
+  .anim .wire { stroke-dasharray: 14 10; animation: crawl 1.1s linear infinite; }
+  .anim .wire-slow { animation-duration: 2.2s; }
+  @keyframes crawl { to { stroke-dashoffset: -24; } }
+
+  /* the broken link on the join slide: pulses but never completes */
+  .anim .brokenwire { animation: dim 3s ease-in-out infinite; }
+  @keyframes dim { 0%,100% { opacity:.35 } 50% { opacity:.8 } }
+
+  /* data packets get a soft glow so they read on a projector */
+  .anim .pkt { filter: drop-shadow(0 0 7px rgba(127,166,245,.85)); }
+
+  /* the held identifier list: appears, holds, then vanishes */
+  .anim .hold { animation: holdbox 8s linear infinite; }
+  @keyframes holdbox {
+    0%,18% { opacity:0 } 24%,62% { opacity:1 } 76%,100% { opacity:0 }
+  }
+  .anim .fade-list { animation: holdlist 8s linear infinite; }
+  @keyframes holdlist {
+    0%,20% { opacity:0; transform:translateY(6px) }
+    26%,60% { opacity:1; transform:translateY(0) }
+    74%,100% { opacity:0; transform:translateY(16px) }
+  }
+
+  /* lineage: the faulty node pulses, then the wave spreads outward */
+  .anim .src { animation: pulse 3.5s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { r:52 } 50% { r:58 } }
+  .anim .edge { stroke-dasharray: 400; stroke-dashoffset: 400;
+                animation: draw 7s linear infinite; }
+  .anim .node { animation: light 7s linear infinite; }
+  @keyframes draw {
+    0%,8% { stroke-dashoffset:400; stroke:#C3CBD4 }
+    20%,72% { stroke-dashoffset:0; stroke:#C0392B }
+    86%,100% { stroke-dashoffset:400; stroke:#C3CBD4 }
+  }
+  @keyframes light {
+    0%,10% { fill:#FFFFFF; stroke:#B8C2CC }
+    24%,72% { fill:#FBE9E7; stroke:#C0392B }
+    86%,100% { fill:#FFFFFF; stroke:#B8C2CC }
+  }
+  .anim .e1,.anim .n1 { animation-delay:0s }
+  .anim .e2,.anim .n2 { animation-delay:.18s }
+  .anim .e3,.anim .n3 { animation-delay:.36s }
+  .anim .e4,.anim .n4 { animation-delay:.70s }
+  .anim .e5,.anim .n5 { animation-delay:.88s }
+  .anim .e6,.anim .n6 { animation-delay:1.06s }
+  .anim .e7 { animation-delay:1.20s }
+  .anim .e8,.anim .n7 { animation-delay:1.55s }
+  .anim .e9,.anim .n8 { animation-delay:1.72s }
+
+  /* ---- silos: four loops turn, nothing crosses between them ---- */
+  .anim .nolink { animation: dim 2.6s ease-in-out infinite; }
+
+  /* ---- gaming: the reported line climbs, then the four explanations ---- */
+  .anim .rise { stroke-dasharray: 900; stroke-dashoffset: 900;
+                animation: risedraw 8s linear infinite; }
+  @keyframes risedraw {
+    0% { stroke-dashoffset:900 }
+    34%,88% { stroke-dashoffset:0 }
+    100% { stroke-dashoffset:900 }
+  }
+  .anim .cand { animation: candlight 8s linear infinite; }
+  @keyframes candlight {
+    0%,22% { opacity:.85 } 32%,46% { opacity:1 } 58%,100% { opacity:.85 }
+  }
+  .anim .c1 { animation-delay:0s }
+  .anim .c2 { animation-delay:.55s }
+  .anim .c3 { animation-delay:1.10s }
+  .anim .c4 { animation-delay:1.65s }
+  .anim .qmark { opacity:0; animation: qshow 8s linear infinite; }
+  @keyframes qshow { 0%,58% { opacity:0 } 68%,90% { opacity:1 } 97%,100% { opacity:0 } }
+
+  /* anyone who has asked their system to stop moving things gets a still deck */
+  @media (prefers-reduced-motion: reduce) {
+    .anim *, .anim *::before, .anim *::after {
+      animation: none !important; transition: none !important;
+    }
+    .anim .hold, .anim .fade-list { opacity:1 !important; transform:none !important; }
+    .anim .edge { stroke-dashoffset:0 !important; stroke:#C0392B !important; }
+    .anim .node { fill:#FBE9E7 !important; stroke:#C0392B !important; }
+    .anim .cand, .anim .qmark { opacity:1 !important; }
+    .anim .rise { stroke-dashoffset:0 !important; }
+  }
+</style>
+</head>
+<body>
+<div class="deck">
+
+<section id="cover" data-transition="fade" style="background:#12161C;color:#F7F8F6;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 140px 120px;display:flex;flex-direction:column;justify-content:center;gap:34px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:30px;color:#4ADE80;letter-spacing:2px">Hunter Data Analytics &#183; Thursday 29 October 2026</p>
+<h2 style="margin:0;font-size:124px;font-weight:600;line-height:0.98;letter-spacing:-2px">The Second Wave</h2>
+<p style="margin:0;font-size:66px;font-weight:600;line-height:1.05;color:#4ADE80">Decision Intelligence</p>
+<p style="margin:0;font-size:42px;line-height:1.26;color:#E4E9EF;max-width:1500px">AI is about to make far more of your organisation&#8217;s decisions. <b style="color:#FFFFFF">What you record about each one decides how far you can widen that, and how fast.</b></p>
+<p style="margin:0;font-size:34px;line-height:1.3;color:#9AA3AD;max-width:1500px">It is a data analytics problem, and this room already owns most of the tools.</p>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;align-items:baseline;font-size:26px;color:#6A7179">
+<span>Tony Blanch &#183; Solution Architect, AI systems and data</span><span style="color:#7FA6F5">github.com/ab4data/decision-record-vocabulary</span>
+</div>
+<aside>The fixed opening: "I am not going to ask a room full of engineers to raise their hands, though please do feel free to express yourself if you feel the urge." Then tell the room what you think they are already thinking. This is the presenting deck; the detailed deck carries the sources and the full apparatus, and is the one to hand out afterwards.</aside>
+</section>
+
+<section id="summary" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:84px 140px 120px;display:flex;flex-direction:column;justify-content:center;gap:30px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#1B7A43;letter-spacing:2px">the whole thing, before any of the detail</p>
+<h2 style="margin:0;font-size:68px;font-weight:600;line-height:1.06">The whole talk, in five sentences</h2>
+<div style="display:flex;flex-direction:column;gap:22px;margin-top:6px">
+<div style="display:flex;gap:28px;align-items:baseline"><span style="font-family:'JetBrains Mono','Courier New',monospace;font-size:40px;color:#9AA3AD;width:44px;flex:none">1</span><p style="margin:0;font-size:40px;line-height:1.22">AI is about to make far more of your organisation&#8217;s decisions.</p></div>
+<div style="display:flex;gap:28px;align-items:baseline"><span style="font-family:'JetBrains Mono','Courier New',monospace;font-size:40px;color:#9AA3AD;width:44px;flex:none">2</span><p style="margin:0;font-size:40px;line-height:1.22">Your systems already record <b>what</b> was decided.<br><b style="color:#1B7A43">Why</b> it went that way is the part still to capture.</p></div>
+<div style="display:flex;gap:28px;align-items:baseline"><span style="font-family:'JetBrains Mono','Courier New',monospace;font-size:40px;color:#9AA3AD;width:44px;flex:none">3</span><p style="margin:0;font-size:40px;line-height:1.22">Capturing it takes seconds, on a form somebody already fills in.</p></div>
+<div style="display:flex;gap:28px;align-items:baseline"><span style="font-family:'JetBrains Mono','Courier New',monospace;font-size:40px;color:#9AA3AD;width:44px;flex:none">4</span><p style="margin:0;font-size:40px;line-height:1.22">Do that for a few months and you have a record of how your organisation actually decides.</p></div>
+<div style="display:flex;gap:28px;align-items:baseline"><span style="font-family:'JetBrains Mono','Courier New',monospace;font-size:40px;color:#4ADE80;width:44px;flex:none">5</span><p style="margin:0;font-size:40px;line-height:1.22"><b>That record lets you remember what happened, learn from the pattern, and hand more work to software without losing control.</b></p></div>
+</div>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;font-size:24px;color:#9AA3AD"><span>Opening</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>Read all five slowly and do not elaborate on any of them. The purpose is that somebody who stops listening after this slide still leaves with the argument. Point at five and say that is the one with the money in it.</aside>
+</section>
+
+<section id="threecaps" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:48px 140px 104px;display:flex;flex-direction:column;justify-content:center;gap:22px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#1B7A43;letter-spacing:2px">the shape of the whole talk</p>
+<h2 style="margin:0;font-size:58px;font-weight:600;line-height:1.06">Three capabilities, in order.</h2>
+<div style="display:flex;font-size:36px;font-weight:600;line-height:1.12;white-space:nowrap">
+<span style="width:569px;flex:none;box-sizing:border-box;padding-left:29px;color:#1D4ED8">Decision memory <span style="color:#6A7179;font-weight:400">&#8594;</span></span>
+<span style="width:540px;flex:none;box-sizing:border-box;color:#86198F">builds knowledge <span style="color:#6A7179;font-weight:400">&#8594;</span></span>
+<span style="flex:1;color:#1B7A43">to serve decision intelligence.</span>
+</div>
+<div style="display:flex;gap:26px;align-items:stretch">
+<div style="flex:1;background:#FFFFFF;border:3px solid #C3CBD4;border-radius:20px;padding:22px 26px;display:flex;flex-direction:column;gap:16px">
+<p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:28px;color:#6A7179">Part one</p>
+<p style="margin:0;font-size:40px;font-weight:600;line-height:1.08;color:#1D4ED8">Decision memory</p>
+<p style="margin:0;font-size:28px;line-height:1.26">Record why, every decision by human or agent. <b>10 seconds. A pattern in a month.</b></p>
+</div>
+<div style="flex:1;background:#FFFFFF;border:3px solid #C3CBD4;border-radius:20px;padding:22px 26px;display:flex;flex-direction:column;gap:16px">
+<p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:28px;color:#6A7179">Part two</p>
+<p style="margin:0;font-size:40px;font-weight:600;line-height:1.08;color:#86198F">Organisational learning</p>
+<p style="margin:0;font-size:28px;line-height:1.26"><b>Find, prioritise and demonstrate</b> patterns and stakeholder opportunities.</p>
+</div>
+<div style="flex:1.1;background:#E9F7EE;border:3px solid #4ADE80;border-radius:20px;padding:22px 26px;display:flex;flex-direction:column;gap:16px">
+<p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:28px;color:#1B7A43">Part three</p>
+<p style="margin:0;font-size:40px;font-weight:600;line-height:1.08;color:#1B7A43">Safe delegation</p>
+<p style="margin:0;font-size:28px;line-height:1.26">More decisions to more people and more agents. <b>Delegation widens, learned and earned.</b></p>
+</div>
+</div>
+<div style="background:#1B7A43;padding:24px 34px;border-radius:20px">
+<p style="margin:0;font-size:29px;color:#FFFFFF;line-height:1.24"><b>Where the outcome labels itself, the third already runs today.</b> <span style="color:#D6F5E2">A card payment is scored in under a third of a second, because the chargeback is the label and it arrives on its own. <b style="color:#FFFFFF">Where no label arrives on its own, the record is the label — and that is the first one.</b></span></p>
+</div>
+<p style="margin:0;font-size:23px;line-height:1.3;color:#6A7179">⚠️ A framing, offered for argument. <b style="color:#12161C">More than 40% of agentic AI projects are forecast to be cancelled by end-2027</b> for unclear value or inadequate risk controls — analyst-published, Gartner 2025.</p>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;font-size:24px;color:#9AA3AD"><span>Opening</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>Say out loud that this is a framing offered for argument, not a standard. The rest of the talk is one pass through these three, in order. The green card is where the money is and the room knows it.</aside>
+</section>
+
+<section id="deadline" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:84px 140px 120px;display:flex;flex-direction:column;justify-content:center;gap:34px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#C0392B;letter-spacing:2px">and there is a date on this</p>
+<h2 style="margin:0;font-size:132px;font-weight:600;line-height:1.0;letter-spacing:-2px;color:#C0392B">10 December 2026</h2>
+<p style="margin:0;font-size:52px;line-height:1.18;max-width:1560px">An Australian privacy policy has to describe <b>the kinds of decisions your software makes.</b></p>
+<div style="background:#1B7A43;padding:26px 36px;border-radius:20px">
+<p style="margin:0;font-size:38px;color:#FFFFFF;line-height:1.22">A record answers that from data rather than from memory.<br><span style="color:#D6F5E2">A human signing it off does not take you outside it.</span></p>
+</div>
+<p style="margin:0;font-size:30px;color:#6A7179;line-height:1.3">Australian Privacy Principle 1.7&#8211;1.9, commencing 10 December 2026 &#8212; six weeks after tonight.</p>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;font-size:24px;color:#9AA3AD"><span>Opening</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>Let the date sit on screen. The sentence that starts conversations in the break is the one in the green band: a human signing it off does not take you outside it. Say it once and move on.</aside>
+</section>
+
+<section id="lastwave" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:84px 140px 120px;display:flex;flex-direction:column;justify-content:center;gap:30px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#1B7A43;letter-spacing:2px">the last wave &#8212; and this room built most of it</p>
+<h2 style="margin:0;font-size:68px;font-weight:600;line-height:1.06">Where it was genuinely done, it paid.<br><span style="color:#1B7A43">Fewer than three in ten ever opened the tools.</span></h2>
+<div style="display:flex;gap:26px;align-items:stretch">
+<div style="flex:1;background:#E9F7EE;border:3px solid #4ADE80;border-radius:20px;padding:30px 34px;display:flex;flex-direction:column;gap:14px">
+<p style="margin:0;font-size:40px;font-weight:600;line-height:1.14;color:#1B7A43">It paid</p>
+<p style="margin:0;font-size:34px;line-height:1.26">Firms genuinely practising data-driven decision making performed measurably better &#8212; in productivity, output, asset use, return on equity and market value.</p>
+<p style="margin:0;font-size:27px;line-height:1.28;color:#1B7A43">179 large listed firms &#183; peer-reviewed, 2011 &#183; tested against the obvious objection</p>
+</div>
+<div style="flex:1;background:#FFFFFF;border:3px solid #C3CBD4;border-radius:20px;padding:30px 34px;display:flex;flex-direction:column;gap:14px">
+<p style="margin:0;font-size:40px;font-weight:600;line-height:1.14">Asked what stopped them, nobody led with the technology</p>
+<p style="margin:0;font-size:34px;line-height:1.26">The top two were <b>not knowing what to do with it</b> and <b>having no time</b>. Data quality and technology came below all four.</p>
+<p style="margin:0;font-size:27px;line-height:1.28;color:#6A7179">About three thousand executives, managers and analysts &#183; 30+ industries &#183; 2011</p>
+</div>
+</div>
+<div style="background:#1B7A43;padding:24px 34px;border-radius:20px">
+<p style="margin:0;font-size:38px;color:#FFFFFF;line-height:1.22">Both of those are won the same way: <span style="color:#D6F5E2">make the ask small enough to say yes to.</span><br>Part 1 positions teams for greater opportunity.</p>
+</div>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;font-size:24px;color:#9AA3AD"><span>Opening</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>Say the usage figure is from a vendor survey, out loud, every time it is said. The productivity finding is Brynjolfsson, Hitt and Kim 2011, and it is the firmest evidence in the talk; name them, because attribution is part of the credibility. The two cards together are the argument: it worked, and the thing that stopped it was never technical.</aside>
+</section>
+
+<section id="whyfailing" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:50px 140px 106px;display:flex;flex-direction:column;justify-content:center;gap:24px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:27px;color:#C0392B;letter-spacing:2px">and this wave is stalling too &#8212; surveyed this year, not forecast</p>
+<h2 style="margin:0;font-size:50px;font-weight:600;line-height:1.07">The use cases everybody is buying are <span style="color:#C0392B">not the ones reporting a return.</span></h2>
+<div style="display:flex;gap:24px;align-items:stretch">
+<div style="flex:1;background:#FFFFFF;border:3px solid #C0392B;border-radius:20px;padding:20px 28px">
+  <p style="margin:0;font-size:29px;font-weight:600;line-height:1.12;color:#C0392B">The three most pursued</p>
+  <p style="margin:10px 0 0;font-size:27px;line-height:1.4">1 &#183; Cybersecurity threat detection<br>2 &#183; IT service desk automation<br>3 &#183; <b>Automated code generation</b></p>
+</div>
+<div style="flex:1;background:#E9F7EE;border:3px solid #4ADE80;border-radius:20px;padding:20px 28px">
+  <p style="margin:0;font-size:29px;font-weight:600;line-height:1.12;color:#1B7A43">The three reporting a return</p>
+  <p style="margin:10px 0 0;font-size:27px;line-height:1.4">1 &#183; IT asset and cost optimisation<br>2 &#183; Synthetic data generation<br>3 &#183; <b>Automated code generation</b></p>
+</div>
+<div style="flex:0.8;background:#12161C;border-radius:20px;padding:20px 28px;display:flex;flex-direction:column;justify-content:center">
+  <p style="margin:0;font-size:64px;font-weight:600;line-height:1;color:#F7F8F6">22%</p>
+  <p style="margin:8px 0 0;font-size:25px;line-height:1.24;color:#E4E9EF">of <b style="color:#F7F8F6">1,303 organisations</b> have scaled AI beyond one business unit</p>
+</div>
+</div>
+<div style="background:#C0392B;padding:18px 30px;border-radius:20px">
+<p style="margin:0;font-size:30px;color:#FFFFFF;line-height:1.24"><b>One entry appears on both lists.</b> <span style="color:#FADBD8">The analyst&#8217;s own explanation: leaders are choosing <b style="color:#FFFFFF">from publications, keynotes and vendor messaging rather than from a business case</b> &#8212; and data quality is named as the common gap.</span></p>
+</div>
+<div style="background:#1B7A43;padding:18px 30px;border-radius:20px">
+<p style="margin:0;font-size:30px;color:#FFFFFF;line-height:1.24"><b>Choosing from a business case means knowing what your decisions cost and how often they go wrong.</b><br><span style="color:#D6F5E2">That is the two columns &#8212; and it is why the first thing to build is the thing nobody is selling.</span></p>
+</div>
+<p style="margin:0;font-size:21px;line-height:1.3;color:#6A7179">⚠️ <b style="color:#12161C">Rankings, not percentages, and on purpose</b> &#8212; the two published figures sit on different bases, one of which the release does not state, and &#8220;positive return&#8221; is never defined. They are not comparable, so they are not shown. Gartner, 1,303 respondents, Jan&#8211;Apr 2026. The green line is my reading.</p>
+<div style="position:absolute;left:140px;right:140px;bottom:40px;display:flex;justify-content:space-between;font-size:22px;color:#9AA3AD"><span>Opening</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>⭐⭐ The percentages were here and have been taken off on purpose &#8212; say so. The two published figures are not on the same base, and the release never defines a positive return. In front of analysts the first question would be &#8220;percentage of what?&#8221;, and there is no answer. The ranking survives, and the ranking is the finding. ⭐ Saying you checked and took the numbers off buys more credibility in this room than the numbers would have. ⭐⭐ The red band is the analyst&#8217;s own wording. The people who would have built that business case are sitting in front of you. ⭐ The green band is labelled as my reading.</aside>
+</section>
+
+<section id="defs" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:66px 140px 112px;display:flex;flex-direction:column;justify-content:center;gap:30px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:27px;color:#1B7A43;letter-spacing:2px">one line each, before any of the detail</p>
+<h2 style="margin:0;font-size:56px;font-weight:600;line-height:1.07">The words this talk leans on. <span style="color:#1B7A43">Defined once, here.</span></h2>
+<div style="display:flex;flex-direction:column;gap:17px">
+  <div style="display:flex;gap:30px;align-items:baseline"><span style="width:430px;flex:none;font-size:33px;font-weight:600;color:#1B7A43">Decision Intelligence</span><span style="font-size:32px;line-height:1.2">Your decisions, recorded as data you can count and learn from</span></div>
+  <div style="display:flex;gap:30px;align-items:baseline"><span style="width:430px;flex:none;font-size:33px;font-weight:600;color:#1B7A43">First wave &#183; second wave</span><span style="font-size:32px;line-height:1.2">The dashboard, then the decision itself. <b>AI is the fuel, not the wave</b></span></div>
+  <div style="display:flex;gap:30px;align-items:baseline"><span style="width:430px;flex:none;font-size:33px;font-weight:600;color:#1B7A43">A judged attempt</span><span style="font-size:32px;line-height:1.2"><b>One decision record</b> &#8212; one attempt at one task, judged against a standard</span></div>
+  <div style="display:flex;gap:30px;align-items:baseline"><span style="width:430px;flex:none;font-size:33px;font-weight:600;color:#1B7A43">A standard</span><span style="font-size:32px;line-height:1.2">The acceptance criterion, written <b>before</b> the attempt</span></div>
+  <div style="display:flex;gap:30px;align-items:baseline"><span style="width:430px;flex:none;font-size:33px;font-weight:600;color:#1B7A43">A departure</span><span style="font-size:32px;line-height:1.2">A decision that did not follow the standard. It may be correct</span></div>
+  <div style="display:flex;gap:30px;align-items:baseline"><span style="width:430px;flex:none;font-size:33px;font-weight:600;color:#1B7A43">A gate</span><span style="font-size:32px;line-height:1.2">A point where <b>the action cannot complete until the reason is recorded</b></span></div>
+  <div style="display:flex;gap:30px;align-items:baseline"><span style="width:430px;flex:none;font-size:33px;font-weight:600;color:#1B7A43">Locus</span><span style="font-size:32px;line-height:1.2">For a departure, where the <b>stated</b> cause sat &#8212; <b>six places, and it comes with the class</b></span></div>
+  <div style="display:flex;gap:30px;align-items:baseline"><span style="width:430px;flex:none;font-family:'JetBrains Mono','Courier New',monospace;font-size:33px;font-weight:600;color:#2F6FEB">reason_code</span><span style="font-size:32px;line-height:1.2">Whoever decided states why, in your own words. <b>Stays in your building</b></span></div>
+  <div style="display:flex;gap:30px;align-items:baseline"><span style="width:430px;flex:none;font-family:'JetBrains Mono','Courier New',monospace;font-size:33px;font-weight:600;color:#2F6FEB">reason_class</span><span style="font-size:32px;line-height:1.2">Its shared parent. About eleven, the same everywhere. <b>This part travels</b></span></div>
+  <div style="display:flex;gap:30px;align-items:baseline"><span style="width:430px;flex:none;font-family:'JetBrains Mono','Courier New',monospace;font-size:33px;font-weight:600;color:#2F6FEB">basis_refs</span><span style="font-size:32px;line-height:1.2">What was in front of the decider &#8212; cited, not caused. <b>Keys, not copies</b></span></div>
+  <div style="display:flex;gap:30px;align-items:baseline"><span style="width:430px;flex:none;font-family:'JetBrains Mono','Courier New',monospace;font-size:33px;font-weight:600;color:#2F6FEB">worker_kind</span><span style="font-size:32px;line-height:1.2">Person &#183; agent &#183; rule &#183; <b>person working with an agent</b></span></div>
+</div>
+<div style="position:absolute;left:140px;right:140px;bottom:46px;display:flex;justify-content:space-between;font-size:23px;color:#9AA3AD"><span><b style="color:#2F6FEB">Blue</b> are column names. <b style="color:#1B7A43">Green</b> are ideas. <b style="color:#12161C">reason_code &#8594; reason_class &#8594; locus</b> &#8212; you store the first two; the locus comes with the class</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>&#11088;&#11088; Do not read this slide out. It is a reference the room scans in ten seconds, not a passage. Name four aloud &#8212; Decision Intelligence, a judged attempt, reason_code and reason_class &#8212; and say the rest are here so nothing later needs a footnote. &#11088; The pair worth saying twice is reason_code against reason_class: one syllable apart, opposite meanings, one stays local and one is the shared parent that travels. &#11088; The footer line is the structure: local code, shared parent, then the locus that names who can act. &#9888; Locus and departure are the two the room will not have met; the detailed deck carries the full definitions for anybody who wants them afterwards. &#9888; A gate and a departure are different kinds of thing &#8212; a departure describes the decision, a gate describes the process.</aside>
+</section>
+
+<section id="join" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:84px 140px 120px;display:flex;flex-direction:column;justify-content:center;gap:24px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#1B7A43;letter-spacing:2px">so what stopped it?</p>
+<h2 style="margin:0;font-size:68px;font-weight:600;line-height:1.06">The warehouse got built. The dashboard got built. <span style="color:#C0392B">The link from a decision back to the fact it used was left to choice.</span></h2>
+<p style="margin:0;font-size:38px;line-height:1.24;max-width:1600px">Where somebody attached it to a gate, it stuck. <b>Six documented examples, four decades</b> &#8212; a hospital system, a bank, medical research, software teams, a European public register, <b>and United States consumer credit, where a denial cannot be issued without the specific reason</b>.</p>
+<div style="display:flex;gap:26px">
+<div style="flex:1;background:#FFFFFF;border:3px solid #C3CBD4;border-radius:20px;padding:26px 32px">
+<p style="margin:0;font-size:52px;font-weight:600;line-height:1.05;color:#2F6FEB">375</p>
+<p style="margin:8px 0 0;font-size:31px;line-height:1.24">platforms filing a record every time they act, on the European register</p>
+</div>
+<div style="flex:1;background:#FFFFFF;border:3px solid #C3CBD4;border-radius:20px;padding:26px 32px">
+<p style="margin:0;font-size:52px;font-weight:600;line-height:1.05;color:#2F6FEB">921</p>
+<p style="margin:8px 0 0;font-size:31px;line-height:1.24">public code repositories keeping architecture decision records, counted in 2023</p>
+</div>
+<div style="flex:1.1;background:#E9F7EE;border:3px solid #4ADE80;border-radius:20px;padding:26px 32px">
+<p style="margin:0;font-size:38px;font-weight:600;line-height:1.14;color:#1B7A43">The one with no gate is the voluntary one</p>
+<p style="margin:8px 0 0;font-size:31px;line-height:1.24">Half of those repositories hold only one to five records.</p>
+</div>
+</div>
+<div style="background:#1B7A43;padding:24px 34px;border-radius:20px">
+<p style="margin:0;font-size:40px;color:#FFFFFF;line-height:1.2"><b>A mandate is not the mechanism. A gate is.</b></p>
+</div>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;font-size:24px;color:#9AA3AD"><span>Opening</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>Say these are documented examples rather than a count of what exists &#8212; there will be many more, and somebody in the room may well have built one. The two counts are real counts and can be cited: 375 platforms on the Digital Services Act register, 921 repositories counted by Buchgeher and colleagues in 2023. The contrast is the point: the gated ones stuck, the voluntary one mostly stalled at a handful of records.</aside>
+</section>
+
+<section id="part1" data-transition="fade" style="background:#12161C;color:#F7F8F6;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 140px 120px;display:flex;flex-direction:column;justify-content:center;gap:28px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:34px;color:#4ADE80;letter-spacing:3px">PART 1</p>
+<h2 style="margin:0;font-size:116px;font-weight:600;line-height:1.0;letter-spacing:-2px">Decision memory</h2>
+<p style="margin:0;font-size:46px;line-height:1.22;color:#E4E9EF;max-width:1520px">Record why it went that way, at the moment the judgement is made &#8212; not reconstructed afterwards.</p>
+<p style="margin:0;font-size:34px;line-height:1.26;color:#9AA3AD">Two columns on a form. About ten seconds a decision.</p>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;font-size:24px;color:#6A7179"><span>Capability one of three</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>A breath slide. Say the part number out loud so the room can place itself.</aside>
+</section>
+
+<section id="onerow" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:84px 140px 120px;display:flex;flex-direction:column;justify-content:center;gap:34px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#1B7A43;letter-spacing:2px">what to write down</p>
+<h2 style="margin:0;font-size:72px;font-weight:600;line-height:1.05">One row. <span style="color:#1B7A43">One judged attempt.</span></h2>
+<p style="margin:0;font-size:42px;line-height:1.24;max-width:1600px">Handed out, came back, <b>judged against a standard set in advance.</b></p>
+<div style="display:flex;gap:26px;align-items:stretch">
+<div style="flex:1;background:#E9F7EE;border:3px solid #4ADE80;border-radius:20px;padding:30px 34px;display:flex;flex-direction:column;gap:14px">
+<p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:36px;color:#1B7A43">reason_code</p>
+<p style="margin:0;font-size:44px;font-weight:600;line-height:1.1">Why it went that way</p>
+<p style="margin:0;font-size:32px;line-height:1.26">One short answer from a fixed, predefined list.<br>The hospital has had this since 1988.</p>
+</div>
+<div style="flex:1;background:#EEF3FD;border:3px solid #7FA6F5;border-radius:20px;padding:30px 34px;display:flex;flex-direction:column;gap:14px">
+<p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:36px;color:#2F6FEB">basis_refs</p>
+<p style="margin:0;font-size:44px;font-weight:600;line-height:1.1">What it rested on</p>
+<p style="margin:0;font-size:32px;line-height:1.26">The identifiers of what was actually in front of the decider.<br>Software teams have held these since 2011.</p>
+</div>
+</div>
+<p style="margin:0;font-size:34px;line-height:1.24;color:#12161C;max-width:1640px">⭐ <b>And the record shows you where the decisions actually are.</b><br><span style="color:#6A7179">Where a task turns out to carry more than one judgement, the rows will show it.</span></p>
+<div style="background:#1B7A43;padding:24px 34px;border-radius:20px">
+<p style="margin:0;font-size:38px;color:#FFFFFF;line-height:1.22"><b>Everything else tonight is downstream of those two columns.</b></p>
+</div>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;font-size:24px;color:#9AA3AD"><span>Part 1 &#183; Decision memory</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>The most expensive thing to change later is what one row stands for, so spend the time here. Judged against a standard set in advance is the phrase that does the work &#8212; it is what separates a decision record from a log.</aside>
+</section>
+
+<section id="lineage" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:84px 140px 120px;display:flex;flex-direction:column;justify-content:center;gap:34px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#1B7A43;letter-spacing:2px">what that one column buys you</p>
+<h2 style="margin:0;font-size:68px;font-weight:600;line-height:1.05"><span style="color:#C0392B">A figure turns out to be wrong.</span><br>Which decisions did it actually change?</h2>
+<p style="margin:0;font-size:42px;line-height:1.26;max-width:1620px">Each judged attempt is a point. Each thing it cited is a link to an earlier one. <b>Follow the links and you have the answer</b> &#8212; for a bad figure, for a withdrawn policy, for a model you no longer trust.</p>
+<p style="margin:0;font-size:36px;line-height:1.26;color:#6A7179;max-width:1620px"><b>A decision often rests on another decision</b> &#8212; that is precedent. <b>It still cannot loop back on itself</b>, because nothing can cite what did not yet exist, <b>so every chain terminates.</b> Follow one down and you end at an observation, at <b style="color:#1B7A43">a rule with a measured rate behind it</b>, or at <b style="color:#C0392B">somebody&#8217;s assertion</b>. <b>A rule promoted off a measured rate can be re-run next quarter to see whether it still holds. A rule that was simply decided cannot be re-tested, because there is nothing to re-test</b> &#8212; and the proportions tell you how much of your doctrine is evidence.</p>
+<div style="background:#1B7A43;padding:26px 36px;border-radius:20px">
+<p style="margin:0;font-size:40px;color:#FFFFFF;line-height:1.2"><b>The question the last wave could not answer, and this one can.</b></p>
+</div>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;font-size:24px;color:#9AA3AD"><span>Part 1 &#183; Decision memory</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>Data lineage tells you which reports a bad figure reached. This tells you which judgements it changed, which is the question anybody actually has to answer after an incident. The detailed deck has the animation of this if the room wants to see it move.</aside>
+</section>
+
+<section id="part2" data-transition="fade" style="background:#12161C;color:#F7F8F6;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 140px 120px;display:flex;flex-direction:column;justify-content:center;gap:28px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:34px;color:#4ADE80;letter-spacing:3px">PART 2</p>
+<h2 style="margin:0;font-size:116px;font-weight:600;line-height:1.0;letter-spacing:-2px">Organisational learning</h2>
+<p style="margin:0;font-size:46px;line-height:1.22;color:#E4E9EF;max-width:1520px">Find the pattern,<br>and fix the one thing that caused it rather than the whole system.</p>
+<div style="display:inline-flex;align-self:flex-start;gap:14px;align-items:center;background:#1B7A43;padding:16px 28px;border-radius:14px">
+<span style="font-size:34px;color:#FFFFFF">&#10003;</span><span style="font-size:32px;color:#FFFFFF">Capability one complete &#8212; that was decision memory</span>
+</div>
+<p style="margin:0;font-size:34px;line-height:1.26;color:#E4E9EF;max-width:1560px">⭐ <b style="color:#FFFFFF">You may already be building this under another name.</b> The teams succeeding at handing work to agents write down what a good answer looks like before the run and score each attempt against it. <b style="color:#FFFFFF">AI engineering calls it <b style="color:#4ADE80">evals</b>, in each team&#8217;s own words.</b> A decision record is the same thing <b style="color:#FFFFFF">with the words agreed</b> &#8212; so two teams can put their reason mixes side by side. <b style="color:#FFFFFF">Inside the organisation that is an argument about where next year&#8217;s money goes, made from operational data. Beyond it, a small team gets a benchmark it could never build alone.</b> <b style="color:#4ADE80">87 starter lists and 11 shared classes are already published in github.com/ab4data</b></p>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;font-size:24px;color:#6A7179"><span>Capability two of three</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>Mark the first capability as finished before opening the second. The room needs to feel the build.</aside>
+</section>
+
+<section id="classes" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:84px 140px 120px;display:flex;flex-direction:column;justify-content:center;gap:32px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#1B7A43;letter-spacing:2px">nobody has to adopt anybody else&#8217;s words</p>
+<h2 style="margin:0;font-size:66px;font-weight:600;line-height:1.06">A hospital says <i>protocol variance</i>.<br>A bank says <i>income unverified</i>.<br><span style="color:#1B7A43">Both are the same class, and both words are right.</span></h2>
+<div style="display:flex;gap:26px;align-items:stretch">
+<div style="flex:1;background:#FFFFFF;border:3px solid #C3CBD4;border-radius:20px;padding:30px 34px;display:flex;flex-direction:column;gap:14px">
+<p style="margin:0;font-size:44px;font-weight:600;line-height:1.1">Your word stays yours</p>
+<p style="margin:0;font-size:33px;line-height:1.26">Keep the local code your people already use. Map it once to a shared class. <b>Only the class travels.</b></p>
+</div>
+<div style="flex:1;background:#E9F7EE;border:3px solid #4ADE80;border-radius:20px;padding:30px 34px;display:flex;flex-direction:column;gap:14px">
+<p style="margin:0;font-size:44px;font-weight:600;line-height:1.1;color:#1B7A43">Nothing leaves the building</p>
+<p style="margin:0;font-size:33px;line-height:1.26">The mapping is your own lookup table. Where a model suggests the code, <b>a small classifier runs on your own hardware.</b> The case notes never reach a hosted service.</p>
+</div>
+</div>
+<p style="margin:0;font-size:32px;line-height:1.3;color:#6A7179">Eleven classes, with 87 published starter lists across 18 sectors &#8212; open and free to copy, adapt or argue with, at github.com/ab4data/decision-record-vocabulary</p>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;font-size:24px;color:#9AA3AD"><span>Part 2 &#183; Organisational learning</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>Say that the lists were written by one author and no real team has tested them yet &#8212; that is the honest status and it is also the invitation. The data-sovereignty point lands hard with anyone from health, government or finance; give it a beat.</aside>
+</section>
+
+<section id="locus" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:84px 140px 120px;display:flex;flex-direction:column;justify-content:center;gap:32px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#1B7A43;letter-spacing:2px">one level up from the class</p>
+<h2 style="margin:0;font-size:70px;font-weight:600;line-height:1.05">Group them by where the departure came from, <span style="color:#1B7A43">and each group names a different person who can act.</span></h2>
+<div style="display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;gap:24px;align-items:baseline"><span style="font-family:'JetBrains Mono','Courier New',monospace;font-size:34px;color:#2F6FEB;width:300px;flex:none">input</span><span style="font-size:36px">Fix the form, the intake, the upstream system</span></div>
+<div style="display:flex;gap:24px;align-items:baseline"><span style="font-family:'JetBrains Mono','Courier New',monospace;font-size:34px;color:#2F6FEB;width:300px;flex:none">rule</span><span style="font-size:36px">Whoever owns the policy</span></div>
+<div style="display:flex;gap:24px;align-items:baseline"><span style="font-family:'JetBrains Mono','Courier New',monospace;font-size:34px;color:#2F6FEB;width:300px;flex:none">judgement</span><span style="font-size:36px">Training, calibration, worked examples</span></div>
+<div style="display:flex;gap:24px;align-items:baseline"><span style="font-family:'JetBrains Mono','Courier New',monospace;font-size:34px;color:#2F6FEB;width:300px;flex:none">resource</span><span style="font-size:36px">Funding, staffing, scheduling</span></div>
+<div style="display:flex;gap:24px;align-items:baseline"><span style="font-family:'JetBrains Mono','Courier New',monospace;font-size:34px;color:#2F6FEB;width:300px;flex:none">external</span><span style="font-size:36px">Nobody internally. Manage it</span></div>
+<div style="display:flex;gap:24px;align-items:baseline"><span style="font-family:'JetBrains Mono','Courier New',monospace;font-size:34px;color:#2F6FEB;width:300px;flex:none">authority</span><span style="font-size:36px">⭐ <b>Beyond the decider's delegation. Whoever sets delegations</b></span></div>
+</div>
+<div style="background:#1B7A43;padding:24px 34px;border-radius:20px">
+<p style="margin:0;font-size:37px;color:#FFFFFF;line-height:1.22"><span style="color:#D6F5E2">&#8220;Incomplete documentation is up four points&#8221; is a fact.</span> <b>&#8220;Sixty per cent of departures this quarter were input&#8221; is an instruction to go and fix the form.</b></p>
+</div>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;font-size:24px;color:#9AA3AD"><span>Part 2 &#183; Organisational learning</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>This is the slide that turns a report into an instruction, and it is the one that anybody who commissions improvement work will want. Say that it is a description rather than a target: the moment a locus mix becomes a performance indicator, people will code to it.</aside>
+</section>
+
+<section id="levers" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:72px 140px 118px;display:flex;flex-direction:column;justify-content:center;gap:28px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#1B7A43;letter-spacing:2px">so how do the rules get good, and how fast?</p>
+<h2 style="margin:0;font-size:50px;font-weight:600;line-height:1.07">The rules get better as the record grows.<br><span style="color:#1B7A43">Each cycle informs the organisation about its decision structure and intelligence.</span></h2>
+<div style="display:flex;gap:22px;align-items:stretch">
+  <div style="flex:1;background:#FFFFFF;border:3px solid #C3CBD4;border-radius:20px;padding:26px 30px;display:flex;flex-direction:column;gap:12px">
+    <p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:26px;color:#6A7179">one</p>
+    <p style="margin:0;font-size:38px;font-weight:600;line-height:1.1">Set the standard first</p>
+    <p style="margin:0;font-size:29px;line-height:1.26">What a correct outcome looks like, written down <b>before the attempt is made.</b></p>
+  </div>
+  <div style="flex:1;background:#FFFFFF;border:3px solid #C3CBD4;border-radius:20px;padding:26px 30px;display:flex;flex-direction:column;gap:12px">
+    <p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:26px;color:#6A7179">two</p>
+    <p style="margin:0;font-size:38px;font-weight:600;line-height:1.1">Read the departures</p>
+    <p style="margin:0;font-size:29px;line-height:1.26">The locus names <b>one person</b>, and the lever is theirs: the form &#183; the rule &#183; the training &#183; the funding &#183; <b>the delegation boundary itself.</b></p>
+  </div>
+  <div style="flex:1.1;background:#E9F7EE;border:3px solid #4ADE80;border-radius:20px;padding:26px 30px;display:flex;flex-direction:column;gap:12px">
+    <p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:26px;color:#1B7A43">three</p>
+    <p style="margin:0;font-size:38px;font-weight:600;line-height:1.1;color:#1B7A43">Promote what has gone quiet</p>
+    <p style="margin:0;font-size:29px;line-height:1.26">A class that stays stable with <b>departures near zero</b> is a path that can run without a person.</p>
+  </div>
+</div>
+<div style="background:#1B7A43;padding:22px 32px;border-radius:20px">
+<p style="margin:0;font-size:34px;color:#FFFFFF;line-height:1.24"><b>That third step is how automation gets earned rather than announced.</b> <span style="color:#D6F5E2">A rule written in advance is a forecast. A rule promoted off a stable rate is a measurement.</span></p>
+</div>
+<div style="position:absolute;left:140px;right:140px;bottom:46px;display:flex;justify-content:space-between;font-size:23px;color:#9AA3AD"><span>Part 2 &#183; Organisational learning</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>⭐⭐ The slide that answers "where do the rules come from". Say the headline and mean it: you do not write them in advance, you read them off the record. ⭐ Card two is the same five loci from the previous slide, and the repetition is the point &#8212; the record does not produce an insight, it produces a named person and one thing for them to change. ⭐⭐ Card three is the bridge into capability three, and the line under it is the one to land: a rule written in advance is a forecast, a rule promoted off a rate is a measurement. ⚠️ Say that the lever mapping is engineering judgement; what is measured is the loop itself, at a median of 2.7% across 177 trials. ⚠️ Same mechanism talk 13 calls paving; the word is not used here on purpose.</aside>
+</section>
+
+<section id="noise" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:62px 140px 112px;display:flex;flex-direction:column;justify-content:center;gap:26px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:27px;color:#C0392B;letter-spacing:2px">how large is the problem this is fixing?</p>
+<h2 style="margin:0;font-size:54px;font-weight:600;line-height:1.07">The same case, given to two people, comes back very differently. <span style="color:#C0392B">That variation is already running in your organisation.</span></h2>
+<div style="display:flex;gap:22px;align-items:stretch">
+  <div style="flex:1;background:#FFFFFF;border:3px solid #C0392B;border-radius:20px;padding:24px 28px"><p style="margin:0;font-size:72px;font-weight:600;line-height:1;color:#C0392B">55%</p><p style="margin:8px 0 0;font-size:26px;line-height:1.24">median gap between underwriters pricing <b>the same policy</b></p></div>
+  <div style="flex:1;background:#FFFFFF;border:3px solid #C0392B;border-radius:20px;padding:24px 28px"><p style="margin:0;font-size:72px;font-weight:600;line-height:1;color:#C0392B">43%</p><p style="margin:8px 0 0;font-size:26px;line-height:1.24">median gap between adjusters paying <b>the same claim</b></p></div>
+  <div style="flex:1;background:#FFFFFF;border:3px solid #C3CBD4;border-radius:20px;padding:24px 28px"><p style="margin:0;font-size:72px;font-weight:600;line-height:1;color:#6A7179">10%</p><p style="margin:8px 0 0;font-size:26px;line-height:1.24">what <b>828 senior executives</b> expected the gap to be</p></div>
+  <div style="flex:1.1;background:#EEF3FD;border:3px solid #7FA6F5;border-radius:20px;padding:24px 28px"><p style="margin:0;font-size:72px;font-weight:600;line-height:1;color:#2F6FEB">26%</p><p style="margin:8px 0 0;font-size:26px;line-height:1.24">more antibiotics in <b>hour four of a shift than hour one</b> &#8212; same doctor, same complaint</p></div>
+</div>
+<p style="margin:0;font-size:30px;line-height:1.26;color:#12161C;max-width:1640px">And a plain rule already matches the expert: across a large body of comparisons, <b>mechanical prediction was about 10% more accurate on average</b>, with the expert substantially better in only <b>6 to 16% of studies</b>.</p>
+<div style="background:#1B7A43;padding:22px 32px;border-radius:20px">
+<p style="margin:0;font-size:33px;color:#FFFFFF;line-height:1.24"><b>You cannot measure your own variation without a decision record.</b> <span style="color:#D6F5E2">Same task type, different people, a reason on every row &#8212; that is a continuous audit that costs nothing. True before any AI is switched on.</span></p>
+</div>
+<p style="margin:0;font-size:23px;line-height:1.3;color:#6A7179">⚠️ 55%, 43% and 10% are the authors&#8217; own audits in a trade book, not peer-reviewed &#8212; <i>Noise</i> (2021). Mechanical prediction: Grove et al. (2000), peer-reviewed. Prescribing: Linder et al., <i>JAMA Intern Med</i> (2014), observational.</p>
+<div style="position:absolute;left:140px;right:140px;bottom:46px;display:flex;justify-content:space-between;font-size:23px;color:#9AA3AD"><span>Part 2 &#183; Organisational learning</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>⭐⭐ The deficit, and it comes before the remedy. Land the third number hardest: the executives running these processes expected a tenth of the variation they had. ⚠️ Say aloud that 55 and 43 are the authors&#8217; own audits from a trade book, not peer-reviewed. ⭐ The blue card is decision fatigue and it is the one nobody in the room is immune to. ⭐⭐ Then the band, which is the contribution: a decision record is a free continuous noise audit. For an analytics room this reframes the whole talk as measuring variance you already have. ⛔ Do not use the parole-hearing study; it is contested.</aside>
+</section>
+
+<section id="thenumber" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:84px 140px 120px;display:flex;flex-direction:column;justify-content:center;gap:30px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#1B7A43;letter-spacing:2px">does any of this actually work?</p>
+<h2 style="margin:0;font-size:66px;font-weight:600;line-height:1.06">Show people their own decisions back,<br><span style="color:#1B7A43">and they measurably improve what they do next.</span></h2>
+<div style="display:flex;gap:26px;align-items:stretch">
+<div style="flex:1;background:#E9F7EE;border:3px solid #4ADE80;border-radius:20px;padding:28px 34px;display:flex;flex-direction:column;gap:8px">
+<p style="margin:0;font-size:86px;font-weight:600;line-height:1.0;color:#1B7A43">2.7%</p>
+<p style="margin:0;font-size:32px;line-height:1.24">more decisions went the right way, in half the studies or better</p>
+</div>
+<div style="flex:1;background:#FFFFFF;border:3px solid #C3CBD4;border-radius:20px;padding:28px 34px;display:flex;flex-direction:column;gap:8px">
+<p style="margin:0;font-size:86px;font-weight:600;line-height:1.0">6.2%</p>
+<p style="margin:0;font-size:32px;line-height:1.24">the average across all of them</p>
+</div>
+<div style="flex:1;background:#FFFFFF;border:3px solid #C3CBD4;border-radius:20px;padding:28px 34px;display:flex;flex-direction:column;gap:8px">
+<p style="margin:0;font-size:86px;font-weight:600;line-height:1.0">177</p>
+<p style="margin:0;font-size:32px;line-height:1.24">trials pooled in the current systematic review</p>
+</div>
+</div>
+<div style="background:#1B7A43;padding:24px 34px;border-radius:20px">
+<p style="margin:0;font-size:38px;color:#FFFFFF;line-height:1.22">A process deciding 100,000 times a year gets <b>2,700 better outcomes</b> &#8212; <span style="color:#D6F5E2">from a logging change.</span></p>
+</div>
+<p style="margin:0;font-size:29px;line-height:1.3;color:#6A7179">Cochrane systematic review of audit and feedback, June 2026 &#183; moderate certainty &#183; measures what the decider does next, not the cost of the work</p>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;font-size:24px;color:#9AA3AD"><span>Part 2 &#183; Organisational learning</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>Concede the size before anybody raises it: 2.7% is the median and the lower quarter of studies found no gain at all. That is still a measured effect with 177 trials behind it, which is more than almost any process change arrives with. Say that it measures clinician behaviour and does not measure the cost of care.</aside>
+</section>
+
+<section id="improve" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:44px 140px 102px;display:flex;flex-direction:column;justify-content:center;gap:22px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:27px;color:#1B7A43;letter-spacing:2px">how fast, by how much &#8212; and whose decisions to show</p>
+<h2 style="margin:0;font-size:48px;font-weight:600;line-height:1.07">Fastest where performance is worst. <span style="color:#C0392B">It fades when the feedback stops.</span></h2>
+<div style="display:flex;gap:26px;align-items:stretch">
+
+<div style="flex:1.3;background:#FFFFFF;border:3px solid #C3CBD4;border-radius:20px;padding:14px 20px 6px">
+<svg viewBox="0 0 760 300" style="width:760px;max-width:100%;height:auto;display:block;margin:0 auto;font-family:'IBM Plex Sans',Arial,sans-serif" aria-label="Adherence rising from 38.8 per cent to 83.6 per cent over fourteen months of fortnightly feedback, then falling to 76.6 per cent three months after the feedback stopped">
+  <line x1="62" y1="16" x2="62" y2="246" stroke="#C3CBD4" stroke-width="2"/>
+  <line x1="62" y1="246" x2="740" y2="246" stroke="#C3CBD4" stroke-width="2"/>
+  <g font-size="17" fill="#6A7179" text-anchor="end"><text x="54" y="23">100%</text><text x="54" y="81">75%</text><text x="54" y="139">50%</text><text x="54" y="197">25%</text><text x="54" y="251">0</text></g>
+  <g stroke="#ECEFF2" stroke-width="1"><line x1="62" y1="18" x2="740" y2="18"/><line x1="62" y1="76" x2="740" y2="76"/><line x1="62" y1="134" x2="740" y2="134"/><line x1="62" y1="192" x2="740" y2="192"/></g>
+  <rect x="62" y="18" width="478" height="228" fill="#E9F7EE" opacity="0.5"/>
+  <rect x="540" y="18" width="200" height="228" fill="#FBE9E7" opacity="0.45"/>
+  <text x="301" y="40" font-size="20" fill="#1B7A43" text-anchor="middle" font-weight="600">fortnightly feedback, 14 months</text>
+  <text x="640" y="40" font-size="20" fill="#C0392B" text-anchor="middle" font-weight="600">feedback stops</text>
+  <polyline points="62,156 130,140 198,123 266,106 334,94 402,87 470,81 540,54" fill="none" stroke="#1B7A43" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="540,54 640,61 740,70" fill="none" stroke="#C0392B" stroke-width="6" stroke-dasharray="12 8" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="62" cy="156" r="8" fill="#1B7A43"/><circle cx="540" cy="54" r="8" fill="#1B7A43"/><circle cx="740" cy="70" r="8" fill="#C0392B"/>
+  <text x="78" y="182" font-size="26" fill="#12161C" font-weight="600">38.8%</text>
+  <text x="528" y="40" font-size="26" fill="#1B7A43" font-weight="600" text-anchor="end">83.6%</text>
+  <text x="734" y="100" font-size="26" fill="#C0392B" font-weight="600" text-anchor="end">76.6%</text>
+  <g font-size="17" fill="#6A7179" text-anchor="middle"><text x="62" y="268">start</text><text x="301" y="268">month 7</text><text x="540" y="268">month 14</text><text x="740" y="268" text-anchor="end">+3 months</text></g>
+  <text x="62" y="293" font-size="17" fill="#6A7179">⚠️ One unit, uncontrolled before-and-after &#8212; the shape, not the size</text>
+</svg>
+</div>
+
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;justify-content:center">
+  <div style="background:#E9F7EE;border:3px solid #4ADE80;border-radius:18px;padding:18px 24px">
+    <p style="margin:0;font-size:28px;font-weight:600;line-height:1.14">The size</p>
+    <p style="margin:6px 0 0;font-size:26px;line-height:1.26"><b>Median +2.7%</b>, quartiles 0.0 to 8.6 &#183; <b>mean +6.2%</b> (4.1 to 8.2) &#183; moderate certainty, 177 studies.</p>
+  </div>
+  <div style="background:#FFFFFF;border:3px solid #C3CBD4;border-radius:18px;padding:18px 24px">
+    <p style="margin:0;font-size:28px;font-weight:600;line-height:1.14">Largest where the baseline is worst</p>
+    <p style="margin:6px 0 0;font-size:26px;line-height:1.26">Nobody deploys this where things are fine, <b>so the median is a floor, not a forecast.</b></p>
+  </div>
+  <div style="background:#FFFFFF;border:3px solid #FFB454;border-radius:18px;padding:18px 24px">
+    <p style="margin:0;font-size:28px;font-weight:600;line-height:1.14">⚠️ Repetition alone does not compound it</p>
+    <p style="margin:6px 0 0;font-size:26px;line-height:1.26"><b>Repeated delivery went with a smaller effect</b>, contrary to expectation. Frequency is not the lever.</p>
+  </div>
+</div>
+</div>
+
+<div style="background:#12161C;padding:20px 30px;border-radius:20px">
+<p style="margin:0;font-size:31px;color:#F7F8F6;line-height:1.24"><b>So show it to the people whose decisions multiply.</b> <span style="color:#A9B4C2">A person deciding transactions improves their own next decisions. <b style="color:#F7F8F6">A person setting a rule or a threshold makes one decision applied to every matching case, by everyone who handles one, and now by every agent that follows it.</b> Nobody shows a policy owner what their rule did across ten thousand cases. <b style="color:#7FA6F5">That report is this room&#8217;s job, and it is the same two columns.</b></span></p>
+</div>
+<p style="margin:0;font-size:22px;line-height:1.3;color:#6A7179">Trajectory: Jolliffe et al., <i>PLoS ONE</i> (2019) &#8212; one inpatient unit, uncontrolled. Sizes and moderators: Cochrane CD000259.pub5, 22 June 2026; its evidence base runs to June 2020. ⚠️ The fan-out argument is arithmetic, not a finding.</p>
+<div style="position:absolute;left:140px;right:140px;bottom:40px;display:flex;justify-content:space-between;font-size:22px;color:#9AA3AD"><span>Part 2 &#183; Organisational learning</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>⭐ Three things off the plot and no more: it started badly, it got much better over a year of fortnightly cycles, and it slid back when the cycles stopped. ⚠️ Say at once that this is one unit and uncontrolled &#8212; the shape is the point, the green card is the size. ⭐⭐ Pause on the amber card: repeating feedback more often went with a <i>smaller</i> effect. That kills the obvious plan of sending more reports and sets up the band. ⭐⭐ The dark band is why this slide exists for this audience. A caseworker improving their own decisions is worth 2.7%. A policy owner seeing what their threshold did across ten thousand cases is that same gain on a decision governing ten thousand more &#8212; and that report is the analyst&#8217;s job. ⚠️ Say the fan-out is arithmetic, not a measured finding.</aside>
+</section>
+
+<section id="part3" data-transition="fade" style="background:#12161C;color:#F7F8F6;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 140px 120px;display:flex;flex-direction:column;justify-content:center;gap:28px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:34px;color:#4ADE80;letter-spacing:3px">PART 3</p>
+<h2 style="margin:0;font-size:116px;font-weight:600;line-height:1.0;letter-spacing:-2px">Safe delegation</h2>
+<p style="margin:0;font-size:46px;line-height:1.22;color:#E4E9EF;max-width:1520px">Hand more decisions to people and to agents, inside a delegation you set, with the evidence captured and the escalation automatic.</p>
+<p style="margin:0;font-size:34px;line-height:1.26;color:#E4E9EF;max-width:1560px">&#11088; <b style="color:#4ADE80">And it compounds in your favour.</b> Every criterion you write, and every path you make deterministic, stops needing a hosted model: <b style="color:#F7F8F6">a rule on your own CPU, a small classifier on your own GPU, and your organisation&#8217;s judgement staying inside your boundary</b> &#8212; instead of waiting for somebody else&#8217;s models to get good enough.</p>
+<div style="display:inline-flex;align-self:flex-start;gap:14px;align-items:center;background:#1B7A43;padding:16px 28px;border-radius:14px">
+<span style="font-size:34px;color:#FFFFFF">&#10003;</span><span style="font-size:32px;color:#FFFFFF">Capability two complete &#8212; that was organisational learning</span>
+</div>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;font-size:24px;color:#6A7179"><span>Capability three of three</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>This is the one with the money in it. The room has been waiting for it since the third slide.</aside>
+</section>
+
+<section id="delegable" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:56px 140px 110px;display:flex;flex-direction:column;justify-content:center;gap:24px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:27px;color:#1B7A43;letter-spacing:2px">which of your decisions can be handed over, and to what</p>
+<h2 style="margin:0;font-size:52px;font-weight:600;line-height:1.07">One question sorts most of it. <span style="color:#1B7A43">Does the outcome label itself?</span></h2>
+<div style="display:flex;gap:20px;align-items:stretch">
+  <div style="flex:1;background:#E9F7EE;border:3px solid #4ADE80;border-radius:18px;padding:20px 24px"><p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:23px;color:#1B7A43">deterministic_code</p><p style="margin:8px 0 0;font-size:30px;font-weight:600;line-height:1.12">A rule</p><p style="margin:6px 0 0;font-size:24px;line-height:1.24">Label automatic, input bounded. <b>No model, and already as accurate as the expert.</b></p></div>
+  <div style="flex:1;background:#E9F7EE;border:3px solid #4ADE80;border-radius:18px;padding:20px 24px"><p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:23px;color:#1B7A43">agent</p><p style="margin:8px 0 0;font-size:30px;font-weight:600;line-height:1.12">A narrow model</p><p style="margin:6px 0 0;font-size:24px;line-height:1.24">Label automatic, input unbounded. <b>Fine-tuned small beats much larger general.</b></p></div>
+  <div style="flex:1.2;background:#EEF3FD;border:3px solid #7FA6F5;border-radius:18px;padding:20px 24px"><p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:23px;color:#2F6FEB">person_with_agent</p><p style="margin:8px 0 0;font-size:30px;font-weight:600;line-height:1.12;color:#2F6FEB">⭐ Most of your work</p><p style="margin:6px 0 0;font-size:24px;line-height:1.24">No automatic label, but it recurs and you can write the criterion.<br><b>This is the rung the record is for.</b></p></div>
+  <div style="flex:1;background:#FFFFFF;border:3px solid #C3CBD4;border-radius:18px;padding:20px 24px"><p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:23px;color:#6A7179">person</p><p style="margin:8px 0 0;font-size:30px;font-weight:600;line-height:1.12">A person</p><p style="margin:6px 0 0;font-size:24px;line-height:1.24">No label, one-off, the standard itself argued. <b>Record it; no pattern will come.</b></p></div>
+</div>
+<p style="margin:0;font-size:29px;line-height:1.26;color:#12161C;max-width:1660px">The other five questions: <b>how soon do you know</b> &#183; <b>does it recur</b> &#183; <b>can &#8220;right&#8221; be written before the attempt</b> &#183; <b>what does wrong cost and can it be undone</b> &#183; <b>is the input bounded</b>.</p>
+<div style="background:#1B7A43;padding:20px 30px;border-radius:20px">
+<p style="margin:0;font-size:32px;color:#FFFFFF;line-height:1.24"><b>These are not new categories. They are the four values of <span style="font-family:'JetBrains Mono','Courier New',monospace">worker_kind</span></b> &#8212; and the record is what moves a decision down the rungs, so you do not have to sort it correctly today.</p>
+<p style="margin:14px 0 0;font-size:28px;color:#F7F8F6;line-height:1.24;border-top:2px solid #FFB454;padding-top:14px">⚠️ <b style="color:#FFB454">This ladder is the coarse version.</b> <span style="color:#D6F5E2">Research already routes <i>each case</i>, not each class &#8212; and what those methods need is per-case examples of what the expert decided. <b style="color:#FFFFFF">The routing is theirs. The training data is the gap, and that is what the record produces.</b></span></p>
+</div>
+<div style="position:absolute;left:140px;right:140px;bottom:44px;display:flex;justify-content:space-between;font-size:23px;color:#9AA3AD"><span>⚠️ The six questions are argued. The rungs carry citations &#183; Grove 2000 &#183; arXiv:2406.08660</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>⭐⭐ The slide where everyone sorts their own work while sitting there. Say question one and stop: does the outcome label itself? If a chargeback arrives you never needed a reason column; if nothing ever arrives, the reason is the only label you will get. ⭐ Point at the blue card and say that is most of this room. ⭐⭐ Then the band: these are not new categories, they are worker_kind, which the talk already asked you to record, so the framework costs no new fields. ⚠️ Say the six questions are argued and the rungs are the part with evidence.</aside>
+</section>
+
+<section id="industries" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:30px 140px 92px;display:flex;flex-direction:column;justify-content:center;gap:15px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:25px;color:#1B7A43;letter-spacing:2px">pick a side &#8212; the rest of the talk only applies to one of them</p>
+<h2 style="margin:0;font-size:46px;font-weight:600;line-height:1.07">Which column is your work in?<br><span style="color:#1B7A43">The answer decides whether you need any of this.</span></h2>
+<table style="font-family:'IBM Plex Sans', Arial, sans-serif;font-size:22px;color:#12161C;border-collapse:collapse;width:100%;line-height:1.16">
+<tr style="background:#12161C"><th style="width:23%;color:#F7F8F6;text-align:left;padding:6px 12px">Decide by</th><th style="width:38%;color:#C3CBD4;text-align:left;padding:6px 12px">Left</th><th style="width:39%;color:#4ADE80;text-align:left;padding:6px 12px">Right</th></tr>
+<tr style="background:#FFFFFF"><td style="padding:5px 12px"><b>Who decides each case</b></td><td style="padding:5px 12px">A qualified person <b>built the system</b></td><td style="padding:5px 12px"><b>A qualified person decides, case by case</b></td></tr>
+<tr style="background:#FFFFFF"><td style="padding:5px 12px"><b>Writable as a procedure</b></td><td style="padding:5px 12px">Yes &#8212; explicit, codifiable steps</td><td style="padding:5px 12px"><b>No. The knowledge is tacit</b></td></tr>
+<tr style="background:#FFFFFF"><td style="padding:5px 12px"><b>You learn the outcome</b></td><td style="padding:5px 12px">Automatically, in seconds to days</td><td style="padding:5px 12px"><b>Months, contested, or never</b></td></tr>
+<tr style="background:#FFFFFF"><td style="padding:5px 12px"><b>One error</b></td><td style="padding:5px 12px">Absorbed in the aggregate</td><td style="padding:5px 12px">Examined individually</td></tr>
+<tr style="background:#FFFFFF"><td style="padding:5px 12px"><b>Duty to explain</b></td><td style="padding:5px 12px">None</td><td style="padding:5px 12px"><b>Often legal or professional</b></td></tr>
+<tr style="background:#FFFFFF"><td style="padding:5px 12px">⭐ <b>If software errs</b></td><td style="padding:5px 12px">Nobody sees the single case</td><td style="padding:5px 12px">⭐ <b>Confidence drops faster than for a person making the same mistake</b></td></tr>
+</table>
+<div style="display:flex;gap:20px;align-items:stretch">
+<div style="flex:1;background:#FFFFFF;border:3px solid #C3CBD4;border-radius:16px;padding:12px 20px">
+  <p style="margin:0;font-size:22px;line-height:1.32"><b>Card authorisation and payment fraud</b> &#183; <b>content moderation</b> &#183; spam &#183; ad bidding &#183; ranking and search &#183; test gates &#183; predictive maintenance &#183; forecasting &#183; churn scoring &#183; routing</p>
+</div>
+<div style="flex:1.05;background:#E9F7EE;border:3px solid #4ADE80;border-radius:16px;padding:12px 20px">
+  <p style="margin:0;font-size:22px;line-height:1.32"><b>Underwriting and claims</b> &#183; <b>clinical protocol departures</b> &#183; <b>credit exceptions</b> &#183; benefits and licensing &#183; planning approvals &#183; access approvals &#183; data-quality exceptions &#183; procurement &#183; safety investigations &#183; audit &#183; casework &#183; hiring &#183; engineering design</p>
+</div>
+</div>
+<div style="background:#1B7A43;padding:14px 26px;border-radius:16px;display:flex;flex-direction:column;gap:8px">
+<p style="margin:0;font-size:27px;color:#FFFFFF;line-height:1.22"><b>The divide is not difficulty, and it is not capability.</b> <span style="color:#D6F5E2">Fraud scoring at that volume is not a simple problem. <b style="color:#FFFFFF">The divide is whether the work produces its own evidence as a by-product.</b> The left column&#8217;s problems arrived with their answers attached; the right column&#8217;s never have.</span></p>
+<p style="margin:0;font-size:26px;color:#E4E9EF;line-height:1.22;border-top:2px solid #4ADE80;padding-top:8px">⭐ <b style="color:#4ADE80">Which is why a record is the way in.</b> <span style="color:#A9B4C2">The right column cannot be written as a procedure &#8212; <b style="color:#F7F8F6">but it can be written as instances.</b></span></p>
+</div>
+<div style="position:absolute;left:140px;right:140px;bottom:36px;display:flex;justify-content:space-between;font-size:20px;color:#9AA3AD"><span>⚠️ Suitability varies more within an occupation than between occupations &#8212; sort the task, not the job title</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>⭐⭐ The self-identification slide, and the title is the call to action: everybody picks a side before the next slide. Ten seconds of silence. ⭐ Read the table, not the lists. ⭐⭐ The last row is peer-reviewed and it will surprise them: people lose confidence in an algorithm faster than in a person making the same mistake. In the left column nobody sees a single decision, so that never forms; in the right column every error is visible, which is exactly where it bites hardest. Part of what keeps the right column manual has nothing to do with technical possibility. ⛔ Do not say complexity separates the columns; fraud scoring at that volume is not simple and somebody will know it. ⛔ The qualification claim is withdrawn &#8212; the left column is built by qualified people too, and suitability varies more within an occupation than between them. ⭐⭐ The second band line is the contribution: it cannot be written as a procedure, but it can be written as instances.</aside>
+</section>
+
+<section id="workerkind" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:84px 140px 120px;display:flex;flex-direction:column;justify-content:center;gap:32px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#1B7A43;letter-spacing:2px">who or what actually decided</p>
+<h2 style="margin:0;font-size:72px;font-weight:600;line-height:1.05">Four kinds of worker, <span style="color:#1B7A43">not two.</span></h2>
+<div style="display:flex;gap:22px;align-items:stretch">
+<div style="flex:1;background:#FFFFFF;border:3px solid #C3CBD4;border-radius:20px;padding:26px 28px">
+<p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:30px;color:#6A7179">person</p>
+<p style="margin:12px 0 0;font-size:31px;line-height:1.24">A human decided, unaided</p>
+</div>
+<div style="flex:1;background:#FFFFFF;border:3px solid #C3CBD4;border-radius:20px;padding:26px 28px">
+<p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:30px;color:#6A7179">agent</p>
+<p style="margin:12px 0 0;font-size:31px;line-height:1.24">Software chose its own next step and decided</p>
+</div>
+<div style="flex:1;background:#FFFFFF;border:3px solid #C3CBD4;border-radius:20px;padding:26px 28px">
+<p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:30px;color:#6A7179">deterministic code</p>
+<p style="margin:12px 0 0;font-size:31px;line-height:1.24">A rule fired. No model involved</p>
+</div>
+<div style="flex:1.25;background:#E9F7EE;border:3px solid #4ADE80;border-radius:20px;padding:26px 28px">
+<p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:30px;color:#1B7A43">person with agent</p>
+<p style="margin:12px 0 0;font-size:31px;line-height:1.24;color:#12161C"><b>The one most schemas leave out, and the one the December date reaches.</b></p>
+</div>
+</div>
+<div style="background:#1B7A43;padding:24px 34px;border-radius:20px">
+<p style="margin:0;font-size:38px;color:#FFFFFF;line-height:1.22">Record what the machine proposed, next to what was finally done. <span style="color:#D6F5E2">An override rate tells you people disagree. An override with a reason tells you what to fix.</span></p>
+</div>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;font-size:24px;color:#9AA3AD"><span>Part 3 &#183; Safe delegation</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>The green card is the whole slide. Most of the work in this room within two years is a person working with an agent, and almost no schema has a value for it. Say that which model answered is also a decision somebody&#8217;s software made on your behalf, and worth recording as a field while nobody has strong opinions about it yet.</aside>
+</section>
+
+<section id="anim_system" class="anim" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:18px 128px 70px;display:flex;flex-direction:column;gap:14px">
+<style>
+  /* a_system: one turn of the whole loop, two lanes into one record, and the
+     share moving from the upper lane to the lower one as the months pass.
+     Everything runs on the same 9s cycle so the strip and the lanes agree. */
+  #anim_system .ret { stroke-dasharray: 16 11; animation: sysflow 1.7s linear infinite; }
+  @keyframes sysflow { to { stroke-dashoffset: -27; } }
+
+  #anim_system .laneA { animation: syslaneA 9s ease-in-out infinite; }
+  @keyframes syslaneA { 0%, 6% { stroke-width: 15 } 90%, 100% { stroke-width: 5 } }
+  #anim_system .laneB { animation: syslaneB 9s ease-in-out infinite; }
+  @keyframes syslaneB { 0%, 6% { stroke-width: 4 } 90%, 100% { stroke-width: 16 } }
+
+  #anim_system .boxB { animation: sysboxB 9s ease-in-out infinite; }
+  @keyframes sysboxB { 0%, 6% { opacity: .38 } 90%, 100% { opacity: 1 } }
+  #anim_system .pktA { animation: sysfadeA 9s ease-in-out infinite; }
+  @keyframes sysfadeA { 0%, 6% { opacity: 1 } 90%, 100% { opacity: .12 } }
+  #anim_system .pktB { animation: sysfadeB 9s ease-in-out infinite; }
+  @keyframes sysfadeB { 0%, 6% { opacity: .12 } 90%, 100% { opacity: 1 } }
+
+  #anim_system .tb { animation: sysstep 9s linear infinite; }
+  @keyframes sysstep { 0%,3% { opacity:.16 } 11%,88% { opacity:1 } 97%,100% { opacity:.16 } }
+  #anim_system .t1 { animation-delay: 0s }
+  #anim_system .t2 { animation-delay: .9s }
+  #anim_system .t3 { animation-delay: 1.8s }
+  #anim_system .t4 { animation-delay: 2.7s }
+
+  @media (prefers-reduced-motion: reduce) {
+    #anim_system .tb, #anim_system .boxB, #anim_system .pktA, #anim_system .pktB { opacity:1 !important; }
+    #anim_system .laneA { stroke-width: 9 !important; }
+    #anim_system .laneB { stroke-width: 11 !important; }
+  }
+</style>
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:25px;color:#2F6FEB;letter-spacing:1px">so how do the three fit together? &#8212; one loop, two lanes, and the share moving</p>
+<h2 style="margin:0;font-size:40px;font-weight:600;line-height:1.06">All of it is one loop. <span style="color:#2F6FEB">A person decides, or a rule does</span> &#8212; the decision is recorded either way, the pattern comes back, and the delegation widens.</h2>
+<p style="margin:0;font-size:23px;color:#4A5568;line-height:1.2">⭐ <b style="color:#12161C">Two lanes, one record, and the share moves.</b> The two curves are what comes back &#8212; a decision, and a changed standard.</p>
+<svg viewBox="0 0 1664 450" style="width:1664px;height:450px;font-family:'IBM Plex Sans',Arial,sans-serif" aria-label="Work arrives with its standard set first and reaches a routing point. From there it takes one of two lanes: an upper lane where a person decides with an agent, or a lower lane where a rule or an agent decides end to end with no person in it. Both lanes rejoin, the work is judged against the same standard, one row is written whichever lane it came down, and that row joins every other row where its local words become a shared class and a locus. As the animation runs the upper lane thins and the lower automated lane thickens, showing the share of fully automated decisions growing. Two curved paths return from the end of the chain: one to the routing point, carrying the decision back to whoever decided, and one further back to the start, changing the standard the next task is judged against. Beneath the loop a time strip shows four widening bars from week one to month six, each split into a human share and a growing automated share.">
+  <defs>
+    <marker id="sys_ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2F6FEB"/></marker>
+    <marker id="sys_ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1B7A43"/></marker>
+    <marker id="sys_gr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="15" markerHeight="15" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9AA4AF"/></marker>
+  </defs>
+
+  <g>
+    <circle cx="455" cy="14" r="10" fill="#2F6FEB"/>
+    <path d="M439,30 Q455,16 471,30" fill="none" stroke="#2F6FEB" stroke-width="4" stroke-linecap="round"/>
+    <rect x="477" y="5" width="28" height="22" rx="5" fill="#FFFFFF" stroke="#2F6FEB" stroke-width="3"/>
+    <path d="M483,12 L499,12 M483,17 L495,17 M483,22 L500,22" stroke="#7FA6F5" stroke-width="2"/>
+  </g>
+
+  <rect x="20" y="90" width="190" height="84" rx="14" fill="#FFFFFF" stroke="#B8C2CC" stroke-width="3"/>
+  <text x="115" y="124" fill="#12161C" font-size="23" font-weight="600" text-anchor="middle">Work arrives</text>
+  <text x="115" y="152" fill="#6A7179" font-size="19" text-anchor="middle">standard set first</text>
+
+  <path d="M210,132 L225,132" fill="none" stroke="#9AA4AF" stroke-width="4" marker-end="url(#sys_gr)"/>
+  <path d="M245,118 L263,132 L245,146 L227,132 Z" fill="#FFFFFF" stroke="#6A7179" stroke-width="3"/>
+  <text x="245" y="140" fill="#6A7179" font-size="20" font-weight="600" text-anchor="middle">?</text>
+
+  <path class="laneA" id="sysA" d="M263,126 C278,108 278,76 286,76" fill="none" stroke="#2F6FEB" stroke-linecap="round" marker-end="url(#sys_ab)"/>
+  <path class="laneB" id="sysB" d="M263,138 C278,156 278,188 286,188" fill="none" stroke="#1B7A43" stroke-linecap="round" marker-end="url(#sys_ag)"/>
+
+  <rect x="290" y="34" width="380" height="84" rx="14" fill="#FFFFFF" stroke="#2F6FEB" stroke-width="4"/>
+  <text x="480" y="68" fill="#12161C" font-size="21" font-weight="600" text-anchor="middle">A person decides, with an agent</text>
+  <text x="480" y="96" fill="#2F6FEB" font-size="18" text-anchor="middle">worker_kind: person_with_agent</text>
+
+  <g class="boxB">
+    <rect x="290" y="146" width="380" height="84" rx="14" fill="#E9F7EE" stroke="#1B7A43" stroke-width="4"/>
+    <text x="480" y="180" fill="#12161C" font-size="21" font-weight="600" text-anchor="middle">A rule or an agent decides</text>
+    <text x="480" y="208" fill="#1B7A43" font-size="18" text-anchor="middle">agent &#183; deterministic_code</text>
+  </g>
+
+  <path class="laneA" d="M670,76 C692,76 694,110 711,128" fill="none" stroke="#2F6FEB" stroke-linecap="round" marker-end="url(#sys_ab)"/>
+  <path class="laneB" d="M670,188 C692,188 694,154 711,136" fill="none" stroke="#1B7A43" stroke-linecap="round" marker-end="url(#sys_ag)"/>
+
+  <rect x="715" y="90" width="226" height="84" rx="14" fill="#FFFFFF" stroke="#B8C2CC" stroke-width="3"/>
+  <text x="828" y="124" fill="#12161C" font-size="23" font-weight="600" text-anchor="middle">Judged against it</text>
+  <text x="828" y="152" fill="#6A7179" font-size="19" text-anchor="middle">not against hindsight</text>
+
+  <path d="M941,132 L971,132" fill="none" stroke="#9AA4AF" stroke-width="4" marker-end="url(#sys_gr)"/>
+
+  <rect x="975" y="90" width="250" height="84" rx="14" fill="#FFFFFF" stroke="#B8C2CC" stroke-width="3"/>
+  <text x="1100" y="116" fill="#12161C" font-size="23" font-weight="600" text-anchor="middle">One row is written</text>
+  <text x="1100" y="142" fill="#6A7179" font-size="18" text-anchor="middle">whichever lane it came down</text>
+  <text x="1100" y="166" fill="#2F6FEB" font-size="18" font-weight="600" text-anchor="middle">reason_code &#183; basis_refs</text>
+
+  <path d="M1225,132 L1255,132" fill="none" stroke="#9AA4AF" stroke-width="4" marker-end="url(#sys_gr)"/>
+
+  <rect x="1259" y="90" width="381" height="84" rx="14" fill="#E9F7EE" stroke="#4ADE80" stroke-width="4"/>
+  <text x="1449" y="116" fill="#12161C" font-size="23" font-weight="600" text-anchor="middle">It joins every other row</text>
+  <text x="1449" y="142" fill="#2F7A52" font-size="18" text-anchor="middle">local words, shared class</text>
+  <text x="1449" y="166" fill="#1B7A43" font-size="18" font-weight="600" text-anchor="middle">reason_class &#8594; locus</text>
+
+  <path class="ret" id="sysr1" d="M1449,174 C1449,238 1200,256 820,256 C440,256 245,196 245,150"
+        fill="none" stroke="#1B7A43" stroke-width="4" marker-end="url(#sys_ag)"/>
+  <text x="880" y="282" fill="#1B7A43" font-size="23" font-weight="600" text-anchor="middle">shown back to whoever decided &#8212; and what they do next measurably improves</text>
+
+  <path class="ret" id="sysr2" d="M1449,174 C1449,282 1180,312 760,312 C340,312 115,252 115,176"
+        fill="none" stroke="#2F6FEB" stroke-width="4" marker-end="url(#sys_ab)"/>
+  <text x="790" y="338" fill="#2F6FEB" font-size="23" font-weight="600" text-anchor="middle">and the standard the next task is judged against changes &#8212; by whoever the locus named</text>
+
+  <text x="24" y="366" fill="#12161C" font-size="21" font-weight="600">The same loop, turning. More is delegated, and more of it is decided end to end.</text>
+  <rect x="1150" y="352" width="20" height="16" rx="4" fill="#FFFFFF" stroke="#2F6FEB" stroke-width="3"/>
+  <text x="1178" y="366" fill="#2F6FEB" font-size="18">a person, with an agent</text>
+  <rect x="1390" y="352" width="20" height="16" rx="4" fill="#4ADE80" stroke="#1B7A43" stroke-width="3"/>
+  <text x="1418" y="366" fill="#1B7A43" font-size="18">a rule or an agent, end to end</text>
+
+  <g class="tb t1">
+    <rect x="24"   y="376" width="128" height="40" rx="9" fill="#FFFFFF" stroke="#2F6FEB" stroke-width="3"/>
+    <rect x="152"  y="376" width="22"  height="40" rx="9" fill="#4ADE80" stroke="#1B7A43" stroke-width="3"/>
+    <text x="88"   y="403" fill="#2F6FEB" font-size="20" font-weight="600" text-anchor="middle">week one</text>
+  </g>
+  <g class="tb t2">
+    <rect x="214"  y="376" width="203" height="40" rx="9" fill="#FFFFFF" stroke="#2F6FEB" stroke-width="3"/>
+    <rect x="417"  y="376" width="87"  height="40" rx="9" fill="#4ADE80" stroke="#1B7A43" stroke-width="3"/>
+    <text x="315"  y="403" fill="#2F6FEB" font-size="20" font-weight="600" text-anchor="middle">month one</text>
+  </g>
+  <g class="tb t3">
+    <rect x="544"  y="376" width="215" height="40" rx="9" fill="#FFFFFF" stroke="#2F6FEB" stroke-width="3"/>
+    <rect x="759"  y="376" width="215" height="40" rx="9" fill="#4ADE80" stroke="#1B7A43" stroke-width="3"/>
+    <text x="651"  y="403" fill="#2F6FEB" font-size="20" font-weight="600" text-anchor="middle">month three</text>
+  </g>
+  <g class="tb t4">
+    <rect x="1014" y="376" width="188" height="40" rx="9" fill="#FFFFFF" stroke="#2F6FEB" stroke-width="3"/>
+    <rect x="1202" y="376" width="438" height="40" rx="9" fill="#4ADE80" stroke="#1B7A43" stroke-width="3"/>
+    <text x="1108" y="403" fill="#2F6FEB" font-size="20" font-weight="600" text-anchor="middle">month six</text>
+  </g>
+
+  <text class="tb t1" x="88"   y="434" fill="#6A7179" font-size="18" text-anchor="middle">one list, one team</text>
+  <text class="tb t2" x="359"  y="434" fill="#6A7179" font-size="18" text-anchor="middle">enough rows to read a rate</text>
+  <text class="tb t3" x="759"  y="434" fill="#6A7179" font-size="18" text-anchor="middle">the cases safe to automate are visible</text>
+  <text class="tb t4" x="1327" y="434" fill="#6A7179" font-size="18" text-anchor="middle">more decided end to end, and the record says which</text>
+
+  <path d="M24,446 L1640,446" fill="none" stroke="#C3CBD4" stroke-width="3" marker-end="url(#sys_gr)"/>
+
+  <g class="pktA">
+    <circle class="pkt" r="8" fill="#2F6FEB"><animateMotion dur="1.9s" repeatCount="indefinite"><mpath href="#sysA"/></animateMotion></circle>
+    <circle class="pkt" r="8" fill="#2F6FEB"><animateMotion dur="1.9s" begin="0.95s" repeatCount="indefinite"><mpath href="#sysA"/></animateMotion></circle>
+  </g>
+  <g class="pktB">
+    <circle r="8" fill="#1B7A43"><animateMotion dur="1.4s" repeatCount="indefinite"><mpath href="#sysB"/></animateMotion></circle>
+    <circle r="8" fill="#1B7A43"><animateMotion dur="1.4s" begin="0.47s" repeatCount="indefinite"><mpath href="#sysB"/></animateMotion></circle>
+    <circle r="8" fill="#1B7A43"><animateMotion dur="1.4s" begin="0.94s" repeatCount="indefinite"><mpath href="#sysB"/></animateMotion></circle>
+  </g>
+  <circle r="9" fill="#4ADE80"><animateMotion dur="4.4s" repeatCount="indefinite"><mpath href="#sysr1"/></animateMotion></circle>
+  <circle r="9" fill="#4ADE80"><animateMotion dur="4.4s" begin="2.2s" repeatCount="indefinite"><mpath href="#sysr1"/></animateMotion></circle>
+  <circle r="9" fill="#2F6FEB"><animateMotion dur="6s" repeatCount="indefinite"><mpath href="#sysr2"/></animateMotion></circle>
+  <circle r="9" fill="#2F6FEB"><animateMotion dur="6s" begin="3s" repeatCount="indefinite"><mpath href="#sysr2"/></animateMotion></circle>
+</svg>
+<div style="background:#12161C;padding:14px 24px;border-radius:16px;display:flex;flex-direction:column;gap:11px">
+<p style="margin:0;font-size:27px;color:#F7F8F6;line-height:1.2">⭐ <b>Two measured results sit behind this loop, and they come from two different studies.</b> <span style="color:#A9B4C2">Neither of them asks for new work: the person was already deciding, the row is a tick-box and identifiers the system already holds, and the class is a lookup.</span></p>
+<div style="display:flex;gap:16px">
+  <div style="flex:1;background:#13251A;border:3px solid #4ADE80;border-radius:13px;padding:12px 17px">
+    <p style="margin:0;font-size:24px;color:#4ADE80;font-weight:600;line-height:1.2">The green arrow &#8212; showing decisions back</p>
+    <p style="margin:7px 0 0;font-size:25px;color:#E4E9EF;line-height:1.22">People measurably improve what they do next &#8212; <b style="color:#FFFFFF">median 2.7%, mean 6.2%</b>, moderate certainty, across <b style="color:#FFFFFF">177 trials</b>.</p>
+  </div>
+  <div style="flex:1.3;background:#16233A;border:3px solid #2F6FEB;border-radius:13px;padding:12px 17px">
+    <p style="margin:0;font-size:24px;color:#7FA6F5;font-weight:600;line-height:1.2">The whole loop &#8212; deciding from data at all</p>
+    <p style="margin:7px 0 0;font-size:25px;color:#E4E9EF;line-height:1.22">Firms genuinely doing it showed <b style="color:#FFFFFF">output and productivity five to six per cent above</b> what their technology investment predicted &#8212; <b style="color:#FFFFFF">and again in asset utilisation, return on equity and market value.</b></p>
+  </div>
+</div>
+<p style="margin:0;font-size:20px;color:#8A94A3;line-height:1.2">Cochrane CD000259.pub5 (2026), 177 trials · Brynjolfsson, Hitt &amp; Kim (2011), 179 listed firms &#8212; two separate studies. ⚠️ The time strip is a mechanism, not a rate.</p>
+</div>
+<aside>⭐ The packaging slide, and the one place the whole argument is visible at once. Do not re-explain the boxes — every one has already had its own slide. Trace the path with a hand instead. ⭐ Start at the fork and name it: every piece of work arriving hits a routing decision, and the only question is which lane it goes down. The upper lane is a person with an agent; the lower lane has no person in it at all. ⭐⭐ Then stop talking and let one full cycle run — the upper lane thins, the lower lane thickens, and the green share inside the bars grows. That is the whole proposition happening in front of them. ⚠️ Say the two things that make it safe: both lanes are judged against the same standard, and both write the same row, so the widening is readable rather than hopeful. ⭐⭐ The band is the payoff and the two cards are two different studies — say that out loud, because they measure different things. The green card is the feedback loop in healthcare practice. The blue card is firm performance, and it is the one that answers "what is this worth". ⛔ Never merge them into one finding. ⚠️ Say "shape, not data" out loud about the time strip — the mechanism is the claim, the rate belongs to whoever runs it. Then go to what success looks like.</aside>
+</section>
+
+<section id="part4" data-transition="fade" style="background:#12161C;color:#F7F8F6;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 140px 120px;display:flex;flex-direction:column;justify-content:center;gap:28px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:34px;color:#4ADE80;letter-spacing:3px">PART 4</p>
+<h2 style="margin:0;font-size:116px;font-weight:600;line-height:1.0;letter-spacing:-2px">On Monday</h2>
+<p style="margin:0;font-size:46px;line-height:1.22;color:#E4E9EF;max-width:1520px">Where the first row actually comes from, who makes each change, and why anybody would fill it in.</p>
+<div style="display:inline-flex;align-self:flex-start;gap:14px;align-items:center;background:#1B7A43;padding:16px 28px;border-radius:14px">
+<span style="font-size:34px;color:#FFFFFF">&#10003;</span><span style="font-size:32px;color:#FFFFFF">All three capabilities covered &#8212; the rest is how to start</span>
+</div>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;font-size:24px;color:#6A7179"><span>Putting it to work</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>The technical case is finished. Everything from here is adoption, and adoption is where the last wave failed.</aside>
+</section>
+
+<section id="plugsin" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:84px 140px 120px;display:flex;flex-direction:column;justify-content:center;gap:30px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#1B7A43;letter-spacing:2px">where does the first row come from?</p>
+<h2 style="margin:0;font-size:70px;font-weight:600;line-height:1.05">Six places you already run.<br><span style="color:#1B7A43">One of them is yours alone.</span></h2>
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:28px;align-items:baseline;background:#E9F7EE;border-radius:14px;padding:14px 26px"><span style="font-size:36px;font-weight:600;width:620px;flex:none">Your own exception queue</span><span style="font-size:34px;color:#1B7A43;font-weight:600">You. On your own table, this week</span></div>
+<div style="display:flex;gap:28px;align-items:baseline;padding:10px 26px"><span style="font-size:36px;width:620px;flex:none">The work tracker</span><span style="font-size:34px;color:#6A7179">A service-desk admin. A settings screen</span></div>
+<div style="display:flex;gap:28px;align-items:baseline;padding:10px 26px"><span style="font-size:36px;width:620px;flex:none">Pull request review</span><span style="font-size:34px;color:#6A7179">Whoever administers the repository</span></div>
+<div style="display:flex;gap:28px;align-items:baseline;padding:10px 26px"><span style="font-size:36px;width:620px;flex:none">Access requests</span><span style="font-size:34px;color:#6A7179">The identity or platform team</span></div>
+<div style="display:flex;gap:28px;align-items:baseline;padding:10px 26px"><span style="font-size:36px;width:620px;flex:none">Catalogue certification</span><span style="font-size:34px;color:#6A7179">Whoever owns the catalogue</span></div>
+<div style="display:flex;gap:28px;align-items:baseline;background:#EEF3FD;border-radius:14px;padding:14px 26px"><span style="font-size:36px;font-weight:600;width:620px;flex:none">An assisted harness you already run</span><span style="font-size:34px;color:#2F6FEB;font-weight:600">A developer. One line, and the longest lead time</span></div>
+</div>
+<div style="background:#1B7A43;padding:24px 34px;border-radius:20px">
+<p style="margin:0;font-size:38px;color:#FFFFFF;line-height:1.22"><b>Go where the outcome is already recorded, and you are adding one column.</b><br><span style="color:#D6F5E2">Where it is not, you are building a form, and a form is a project.</span></p>
+</div>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;font-size:24px;color:#9AA3AD"><span>Part 4 &#183; On Monday</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>Read the right-hand column first. One row says you &#8212; start there, because a rate from your own work turns every other row from a request into a demonstration. The blue row has the longest lead time and the largest payoff: start that conversation now even though it shows nothing for a month. Say the ordering is engineering judgement rather than a measurement.</aside>
+</section>
+
+<section id="yours" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:84px 140px 120px;display:flex;flex-direction:column;justify-content:center;gap:30px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#1B7A43;letter-spacing:2px">and if you only do one of them?</p>
+<h2 style="margin:0;font-size:64px;font-weight:600;line-height:1.06">You are not the one who collects this. <span style="color:#1B7A43">You are the one who specifies it, proves it, and reports on it.</span></h2>
+<div style="display:flex;gap:24px;align-items:stretch">
+<div style="flex:1;background:#E9F7EE;border:3px solid #4ADE80;border-radius:20px;padding:28px 32px;display:flex;flex-direction:column;gap:14px">
+<p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:27px;color:#1B7A43">yours alone, this week</p>
+<p style="margin:0;font-size:42px;font-weight:600;line-height:1.1">Write the list, and run it on your own queue</p>
+<p style="margin:0;font-size:31px;line-height:1.26">Six to eight reasons, written with the people who do the work. Then a why-column on every break you already disposition.</p>
+<p style="margin:0;font-size:31px;line-height:1.26;color:#1B7A43"><b>In a month you have a rate.</b></p>
+</div>
+<div style="flex:1;background:#FFFFFF;border:3px solid #FFB454;border-radius:20px;padding:28px 32px;display:flex;flex-direction:column;gap:14px">
+<p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:27px;color:#B5751A">hand over &#8212; one line, not a project</p>
+<p style="margin:0;font-size:42px;font-weight:600;line-height:1.1">Give the form a fixed list instead of free text</p>
+<p style="margin:0;font-size:31px;line-height:1.26">A settings screen for an admin, or one field for the developer who owns the form.</p>
+<p style="margin:0;font-size:31px;line-height:1.26;color:#B5751A"><b>You make it small enough to say yes to.</b></p>
+</div>
+<div style="flex:1.05;background:#12161C;border:3px solid #7FA6F5;border-radius:20px;padding:28px 32px;display:flex;flex-direction:column;gap:14px">
+<p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:27px;color:#7FA6F5">start now &#8212; the long pole</p>
+<p style="margin:0;font-size:42px;font-weight:600;line-height:1.1;color:#F7F8F6">Ask for the logging line in the assisted harness</p>
+<p style="margin:0;font-size:31px;line-height:1.26;color:#E4E9EF">It already holds the identifiers of what it put in front of the model, and discards them.</p>
+<p style="margin:0;font-size:31px;line-height:1.26;color:#7FA6F5"><b>Start the conversation first, not last.</b></p>
+</div>
+</div>
+<div style="background:#1B7A43;padding:24px 34px;border-radius:20px">
+<p style="margin:0;font-size:38px;color:#FFFFFF;line-height:1.22"><b>The order is the argument.</b><br><span style="color:#D6F5E2">A one-line ticket backed by your own rate is a different request from a good idea.</span></p>
+</div>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;font-size:24px;color:#9AA3AD"><span>Part 4 &#183; On Monday</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>The Monday slide, and the one that has to be true for this room rather than flattering to it. Open on the headline and mean it: nobody here adds a field to a form. The green card is the only one that is yours outright, and it is deliberately first. Say the ordering is judgement, not measurement.</aside>
+</section>
+
+<section id="success" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:84px 140px 120px;display:flex;flex-direction:column;justify-content:center;gap:24px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#1B7A43;letter-spacing:2px">what success looks like</p>
+<h2 style="margin:0;font-size:66px;font-weight:600;line-height:1.06">Six steps, <span style="color:#1B7A43">and each one is only possible because of the one before it.</span></h2>
+<div style="display:flex;flex-direction:column;gap:9px">
+<div style="display:flex;gap:26px;align-items:baseline"><span style="font-family:'JetBrains Mono','Courier New',monospace;font-size:32px;color:#9AA3AD;width:40px;flex:none">1</span><span style="font-size:37px;font-weight:600;width:560px;flex:none">The collection grows</span><span style="font-size:31px;color:#6A7179">More rows, more kinds of work, more teams agreeing the same handful of dimensions</span></div>
+<div style="display:flex;gap:26px;align-items:baseline"><span style="font-family:'JetBrains Mono','Courier New',monospace;font-size:32px;color:#9AA3AD;width:40px;flex:none">2</span><span style="font-size:37px;font-weight:600;width:560px;flex:none">Automated decisions get better</span><span style="font-size:31px;color:#6A7179">An override with a reason says exactly what to fix</span></div>
+<div style="display:flex;gap:26px;align-items:baseline"><span style="font-family:'JetBrains Mono','Courier New',monospace;font-size:32px;color:#9AA3AD;width:40px;flex:none">3</span><span style="font-size:37px;font-weight:600;width:560px;flex:none">More of them, more often</span><span style="font-size:31px;color:#6A7179">The widening is earned rather than announced</span></div>
+<div style="display:flex;gap:26px;align-items:baseline"><span style="font-family:'JetBrains Mono','Courier New',monospace;font-size:32px;color:#4ADE80;width:40px;flex:none">4</span><span style="font-size:37px;font-weight:600;width:560px;flex:none;color:#1B7A43">The models get smaller</span><span style="font-size:31px;color:#6A7179">A narrow task with your own labelled examples needs far less model than an open-ended one</span></div>
+<div style="display:flex;gap:26px;align-items:baseline"><span style="font-family:'JetBrains Mono','Courier New',monospace;font-size:32px;color:#4ADE80;width:40px;flex:none">5</span><span style="font-size:37px;font-weight:600;width:560px;flex:none;color:#1B7A43">Processing moves in-house</span><span style="font-size:31px;color:#6A7179">Small enough to run on your own hardware. No per-token meter, and nothing crosses the boundary</span></div>
+<div style="display:flex;gap:26px;align-items:baseline"><span style="font-family:'JetBrains Mono','Courier New',monospace;font-size:32px;color:#4ADE80;width:40px;flex:none">6</span><span style="font-size:37px;font-weight:600;width:560px;flex:none;color:#1B7A43">Confidential work comes into range</span><span style="font-size:31px;color:#6A7179">The material that was never going to leave the building can now be worked on</span></div>
+</div>
+<div style="background:#1B7A43;padding:24px 34px;border-radius:20px">
+<p style="margin:0;font-size:38px;color:#FFFFFF;line-height:1.22">Two columns on a form, to confidential work running on your own hardware.<br><span style="color:#D6F5E2">The first row of it is yours to start alone.</span></p>
+</div>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;font-size:24px;color:#9AA3AD"><span>Part 4 &#183; On Monday</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>Read it as a chain rather than a wish list. Say plainly that steps five and six are a projection: they rest on the published finding that fine-tuned small models beat much larger zero-shot ones at classification, and the rest is reasoning laid out to be argued with. For several organisations in this room, step six is the whole question.</aside>
+</section>
+
+<section id="motivators" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:84px 140px 120px;display:flex;flex-direction:column;justify-content:center;gap:30px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#1B7A43;letter-spacing:2px">so why would anybody fill it in?</p>
+<h2 style="margin:0;font-size:68px;font-weight:600;line-height:1.06">Make the field mandatory and you get compliance. <span style="color:#1B7A43">Give people a reason and you get data.</span></h2>
+<p style="margin:0;font-size:34px;line-height:1.28;color:#6A7179;max-width:1640px">Cause-of-death coding is a century old, mandatory worldwide and staffed by trained coders &#8212; and 29% of a million Norwegian deaths still went to a residual code, with the share rising over 24 years.</p>
+<div style="display:flex;gap:24px;align-items:stretch">
+<div style="flex:1;background:#E9F7EE;border:3px solid #4ADE80;border-radius:20px;padding:28px 32px">
+<p style="margin:0;font-size:40px;font-weight:600;line-height:1.1;color:#1B7A43">Give it back to them first</p>
+<p style="margin:14px 0 0;font-size:32px;line-height:1.26">The person who fills it in is the first to see the summary, not the last.</p>
+</div>
+<div style="flex:1;background:#E9F7EE;border:3px solid #4ADE80;border-radius:20px;padding:28px 32px">
+<p style="margin:0;font-size:40px;font-weight:600;line-height:1.1;color:#1B7A43">Let them write the list</p>
+<p style="margin:14px 0 0;font-size:32px;line-height:1.26">A list handed down is an imposition. They already know the eight answers.</p>
+</div>
+<div style="flex:1;background:#E9F7EE;border:3px solid #4ADE80;border-radius:20px;padding:28px 32px">
+<p style="margin:0;font-size:40px;font-weight:600;line-height:1.1;color:#1B7A43">Buy them something at the gate</p>
+<p style="margin:14px 0 0;font-size:32px;line-height:1.26">The hospital model: you may depart from the standard, provided you record why.</p>
+</div>
+</div>
+<div style="background:#1B7A43;padding:24px 34px;border-radius:20px">
+<p style="margin:0;font-size:37px;color:#FFFFFF;line-height:1.22"><b>Report on kinds of work, never on named people.</b><br><span style="color:#D6F5E2">If people think it will be used against them, the quality dies before the adoption does.</span></p>
+</div>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;font-size:24px;color:#9AA3AD"><span>Part 4 &#183; On Monday</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>This is the slide that decides whether any of it gets adopted, and it is our job rather than a vendor&#8217;s. The Norwegian finding is the evidence that mandatory alone does not work, even with trained staff and a century of practice. Watch the other rate and how fast the first summary comes back; a climbing other rate is the earliest sign people are paying the cost and getting nothing for it.</aside>
+</section>
+
+<section id="howitfails" data-transition="fade" style="background:#12161C;color:#F7F8F6;font-family:'IBM Plex Sans', Arial, sans-serif;padding:84px 140px 120px;display:flex;flex-direction:column;justify-content:center;gap:32px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#7FA6F5;letter-spacing:2px">how it fails</p>
+<h2 style="margin:0;font-size:70px;font-weight:600;line-height:1.05">Eight ways it fails.<br><span style="color:#4ADE80">Seven of them are yours to control.</span></h2>
+<div style="display:flex;flex-wrap:wrap;gap:16px">
+<span style="font-size:36px;background:#1D2530;border:2px solid #4ADE80;border-radius:14px;padding:14px 26px">Career protection</span>
+<span style="font-size:36px;background:#1D2530;border:2px solid #4ADE80;border-radius:14px;padding:14px 26px">Complacency</span>
+<span style="font-size:36px;background:#1D2530;border:2px solid #3A4553;border-radius:14px;padding:14px 26px">Drift</span>
+<span style="font-size:36px;background:#1D2530;border:2px solid #4ADE80;border-radius:14px;padding:14px 26px">Functional</span>
+<span style="font-size:36px;background:#1D2530;border:2px solid #3A4553;border-radius:14px;padding:14px 26px">Greed</span>
+<span style="font-size:36px;background:#1D2530;border:2px solid #3A4553;border-radius:14px;padding:14px 26px">Industry</span>
+<span style="font-size:36px;background:#1D2530;border:2px solid #3A4553;border-radius:14px;padding:14px 26px">Power</span>
+<span style="font-size:36px;background:#1D2530;border:2px solid #4ADE80;border-radius:14px;padding:14px 26px">Security</span>
+</div>
+<p style="margin:0;font-size:32px;line-height:1.3;color:#9AA3AD">A green edge means a published finding sits behind that row &#8212; four of the eight.<br>The other four are reasoning, and they are labelled as such.</p>
+<div style="background:#2F6FEB;padding:24px 34px;border-radius:20px">
+<p style="margin:0;font-size:38px;color:#FFFFFF;line-height:1.22">They are about people, money, attention and who holds the data.<br><b>Every one of them has a countermeasure you can put in place on day one.</b></p>
+</div>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;font-size:24px;color:#6A7179"><span>Part 4 &#183; On Monday</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>Announce it as an argued list and invite a ninth; somebody will have one, and that exchange is worth more than the slide. Drift is the one to slow down on, because it is the only failure mode that arrives after everything has gone well &#8212; the countermeasure is a date in the calendar rather than an alert. The detailed deck has the full table with every countermeasure if anybody asks. The point to land: seven of the eight are not engineering problems, which is exactly why the last wave stalled.</aside>
+</section>
+
+<section id="market" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:84px 140px 120px;display:flex;flex-direction:column;justify-content:center;gap:30px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#1B7A43;letter-spacing:2px">selling it inside your own organisation</p>
+<h2 style="margin:0;font-size:72px;font-weight:600;line-height:1.05">Two pitches for identical software.<br><span style="color:#1B7A43">One of them sells.</span></h2>
+<div style="display:flex;gap:26px;align-items:stretch">
+<div style="flex:1;background:#FFFFFF;border:3px solid #C0392B;border-radius:20px;padding:28px 34px;display:flex;flex-direction:column;gap:14px">
+<p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:27px;color:#C0392B">pitch A</p>
+<p style="margin:0;font-size:36px;line-height:1.2"><i>&#8220;It records why your managers made their decisions, so those decisions can be audited later.&#8221;</i></p>
+<p style="margin:0;font-size:31px;line-height:1.26;color:#C0392B"><b>Accurate.<br>And it lands as surveillance, so the people who would use it become the people blocking it.</b></p>
+</div>
+<div style="flex:1.1;background:#E9F7EE;border:3px solid #4ADE80;border-radius:20px;padding:28px 34px;display:flex;flex-direction:column;gap:14px">
+<p style="margin:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:27px;color:#1B7A43">pitch B</p>
+<p style="margin:0;font-size:36px;line-height:1.2"><i>&#8220;It lets you hand more decisions to people and to agents, with the evidence captured, the policy enforced and the escalation automatic.&#8221;</i></p>
+<p style="margin:0;font-size:31px;line-height:1.26;color:#1B7A43"><b>Capability, speed and reach.<br>Accountability stops being the cost and becomes what makes the reach safe.</b></p>
+</div>
+</div>
+<div style="background:#1B7A43;padding:24px 34px;border-radius:20px">
+<p style="margin:0;font-size:37px;color:#FFFFFF;line-height:1.22">The opportunity is not persuading senior people to record more of their own decisions.<br><b>It is giving them a way to delegate more decisions safely.</b></p>
+</div>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#6A7179">The person who pays, the person who uses it, and the person it watches are three different people &#8212; which is why something with a strong technical case still stalls.</p>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;font-size:24px;color:#9AA3AD"><span>Part 4 &#183; On Monday</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>For anybody who will have to sell this internally. A line manager reads pitch A as being watched more closely; the risk officer two floors up reads the same system as infrastructure they have wanted for years. Say that the positioning is a proposal offered to be argued with, not a finding. Where to start looking: manufacturing, utilities and infrastructure, then IT operations and agent governance where the logs already exist.</aside>
+</section>
+
+<section id="thirdwave" data-transition="fade" style="background:#12161C;color:#F7F8F6;font-family:'IBM Plex Sans', Arial, sans-serif;padding:84px 140px 120px;display:flex;flex-direction:column;justify-content:center;gap:30px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#4ADE80;letter-spacing:2px">and what comes after this?</p>
+<h2 style="margin:0;font-size:68px;font-weight:600;line-height:1.05">The Third Wave. <span style="color:#4ADE80">Every model generation resets the benchmarks. Your record carries across.</span></h2>
+<p style="margin:0;font-size:38px;line-height:1.26;color:#E4E9EF;max-width:1640px">You will not need anybody to announce it. <b style="color:#FFFFFF">It will be readable in your own four columns:</b></p>
+<div style="display:flex;flex-wrap:wrap;gap:16px">
+<span style="font-family:'JetBrains Mono','Courier New',monospace;font-size:32px;background:#1D2530;border:2px solid #7FA6F5;border-radius:14px;padding:14px 24px;color:#E4E9EF">worker_kind shifting toward agent</span>
+<span style="font-family:'JetBrains Mono','Courier New',monospace;font-size:32px;background:#1D2530;border:2px solid #7FA6F5;border-radius:14px;padding:14px 24px;color:#E4E9EF">decide_seconds falling</span>
+<span style="font-family:'JetBrains Mono','Courier New',monospace;font-size:32px;background:#1D2530;border:2px solid #7FA6F5;border-radius:14px;padding:14px 24px;color:#E4E9EF">the override rate moving</span>
+<span style="font-family:'JetBrains Mono','Courier New',monospace;font-size:32px;background:#1D2530;border:2px solid #7FA6F5;border-radius:14px;padding:14px 24px;color:#E4E9EF">a reason class climbing on one task type</span>
+</div>
+<div style="background:#1B7A43;padding:24px 34px;border-radius:20px">
+<p style="margin:0;font-size:37px;color:#FFFFFF;line-height:1.22">Your record of judged attempts survives every generation, <span style="color:#D6F5E2">because it is your own labelled data about your own work, and it belongs to no vendor.</span></p>
+</div>
+<p style="margin:0;font-size:31px;line-height:1.3;color:#9AA3AD">The open question, unchanged: the reason half has 177 trials behind it.<br><b style="color:#E4E9EF">The basis half is still open, and this room is equipped to close it.</b></p>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;font-size:24px;color:#6A7179"><span>The close</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>Four indicators that are already readable tonight, not four predictions. The last line is the invitation: the reason column has the evidence, the basis column is the open question, and this is the room equipped to answer it. Offer it as work worth doing rather than as a gap in the argument.</aside>
+</section>
+
+<section id="close" data-transition="fade" style="background:#F7F8F6;color:#12161C;font-family:'IBM Plex Sans', Arial, sans-serif;padding:84px 140px 120px;display:flex;flex-direction:column;justify-content:center;gap:34px">
+<p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#1B7A43;letter-spacing:2px">there is no ask beyond the first line</p>
+<h2 style="margin:0;font-size:76px;font-weight:600;line-height:1.04">One thing to do.</h2>
+<div style="background:#E9F7EE;border:3px solid #4ADE80;border-radius:20px;padding:34px 40px;display:flex;flex-direction:column;gap:16px">
+<p style="margin:0;font-size:54px;font-weight:600;line-height:1.1;color:#1B7A43">Add a why-column to one queue you already own.</p>
+<p style="margin:0;font-size:38px;line-height:1.24">Six to eight reasons, written with the people who do the work. Disposition next week&#8217;s breaks into it. <b>In a month you have a rate</b> &#8212; and nobody&#8217;s permission was required to get it.</p>
+</div>
+<div style="display:flex;gap:26px;align-items:stretch">
+<div style="flex:1;background:#FFFFFF;border:3px solid #C3CBD4;border-radius:20px;padding:26px 32px">
+<p style="margin:0;font-size:30px;color:#6A7179">The vocabulary, the schema, the worked example and every source</p>
+<p style="margin:10px 0 0;font-size:34px;font-weight:600;color:#2F6FEB;line-height:1.2">github.com/ab4data/decision-record-vocabulary</p>
+<p style="margin:10px 0 0;font-size:28px;color:#6A7179">Open, free to adopt, and built to be corrected</p>
+</div>
+<div style="flex:1;background:#FFFFFF;border:3px solid #C3CBD4;border-radius:20px;padding:26px 32px">
+<p style="margin:0;font-size:30px;color:#6A7179">These slides, and the detailed version with every figure and link</p>
+<p style="margin:10px 0 0;font-size:34px;font-weight:600;color:#2F6FEB;line-height:1.2">linkedin.com/in/tony-blanch</p>
+<p style="margin:10px 0 0;font-size:28px;color:#6A7179">Tony Blanch &#183; Solution Architect, AI systems and data</p>
+</div>
+</div>
+<div style="position:absolute;left:140px;right:140px;bottom:50px;display:flex;justify-content:space-between;font-size:24px;color:#9AA3AD"><span>The close</span><span>The Second Wave &#183; Decision Intelligence</span></div>
+<aside>No recruitment ask. The ask is to go and measure one thing, and it needs nobody else&#8217;s permission. Hold this slide through the questions so the links stay on screen. Say that the detailed deck carries the claims register and every source, for anybody who wants to check a figure.</aside>
+</section>
+
+</div>
+<script>
+/* Keyboard and click navigation. Everything else in this file is static HTML,
+   CSS and SVG — no libraries, no network calls, works offline. */
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.deck > section'));
+  function current() {
+    var best = 0, bestDist = Infinity;
+    slides.forEach(function (s, i) {
+      var d = Math.abs(s.getBoundingClientRect().top);
+      if (d < bestDist) { bestDist = d; best = i; }
+    });
+    return best;
+  }
+  function go(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    slides[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    switch (e.key) {
+      case 'ArrowRight': case 'ArrowDown': case 'PageDown': case ' ':
+        e.preventDefault(); go(current() + 1); break;
+      case 'ArrowLeft': case 'ArrowUp': case 'PageUp':
+        e.preventDefault(); go(current() - 1); break;
+      case 'Home': e.preventDefault(); go(0); break;
+      case 'End':  e.preventDefault(); go(slides.length - 1); break;
+    }
+  });
+})();
+</script>
+</body>
+</html>
