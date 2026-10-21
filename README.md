@@ -4,7 +4,7 @@
 
 Dedicated to the public domain under [CC0](LICENSE) — and [here is why](NOTICE.md). Adopt it, fork it, rename it, ignore the parts that do not fit. **It is only worth anything if it is shared.**
 
-▶ **[Open the presentation this came from](https://ab4data.github.io/decision-record-vocabulary/deck/the-second-wave.html)** — all 33 slides, in the browser. ⚠️ **A working draft until 29 October 2026.**
+▶ **[Open the presentation this came from](https://ab4data.github.io/decision-record-vocabulary/deck/the-second-wave.html)** — all 34 slides, in the browser. ⚠️ **A working draft until 29 October 2026.**
 
 ---
 
