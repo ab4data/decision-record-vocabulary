@@ -43,6 +43,12 @@ Every table answers this question quietly, and it is the most expensive thing to
 
 **Seven is a starting proposal.** If you need an eighth, that is a useful disagreement — [open an issue](../../issues).
 
+⭐ **The two shared dimensions ship seeded.** `ddl/postgres.sql` and `ddl/sqlite.sql` create `dim_locus` and `dim_reason_class` **and populate them** — **6 loci and 11 classes**, matching [reason-codes/TAXONOMY.md](reason-codes/TAXONOMY.md) and [reason-codes/CLASSES.md](reason-codes/CLASSES.md). Run either file and you can insert a decision immediately.
+
+⚠️ **Two classes carry no locus, and `dim_reason_class.parent` is nullable for exactly that reason.** A locus records where a **departure** came from: `conformed` is not a departure, and `other` is not yet classified. ⛔ **Neither should be given one to satisfy the column.**
+
+⚠️ **`out_of_scope` is seeded as `provisional`, not `stable`.** It appears in 19 of 87 domains and is the most contestable call in the scheme — the status column says so rather than leaving it implied.
+
 ---
 
 ## 3. `worker_kind` — four values, not two

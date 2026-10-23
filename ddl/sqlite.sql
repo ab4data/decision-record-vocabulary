@@ -21,10 +21,41 @@ CREATE TABLE dim_locus (
 
 CREATE TABLE dim_reason_class (
     value       TEXT PRIMARY KEY,
-    parent      TEXT NOT NULL REFERENCES dim_locus (value),
+    parent      TEXT REFERENCES dim_locus (value),   -- NULL for conformed and other
     status      TEXT NOT NULL,              -- stable | provisional | deprecated
     definition  TEXT NOT NULL
 );
+
+-- ===========================================================================
+-- The shared vocabulary, seeded. These are the only two tables every domain
+-- holds in common, and they are the same copy everywhere.
+--   6 loci, 11 classes, from reason-codes/TAXONOMY.md and CLASSES.md.
+-- NOTE conformed and other carry no locus: a locus says where a DEPARTURE
+--   came from, and conformed is not one, while other is not yet classified.
+-- out_of_scope is seeded as provisional -- 19 of 87 domains, and the most
+--   contestable call in the scheme. See reason-codes/CLASSES.md.
+-- ===========================================================================
+
+INSERT INTO dim_locus (value, parent, status, definition) VALUES
+  ('input',     'departed', 'stable', 'Where the information the decision rested on fell short. Whoever owns intake can act: forms, upstream systems, what gets asked for'),
+  ('rule',      'departed', 'stable', 'Where a rule, policy, threshold or boundary decided it. Whoever owns the policy or the rule set can act'),
+  ('judgement', 'departed', 'stable', 'Where a person assessed risk, consequence or trajectory. Training, calibration and worked examples are the levers'),
+  ('resource',  'departed', 'stable', 'Where money, people, time or a deadline shaped it. Funding, staffing and scheduling are the levers'),
+  ('external',  'departed', 'stable', 'Where someone outside the organisation determined it. Nobody internally can fix it; manage it instead'),
+  ('authority', 'departed', 'stable', 'Where the decision exceeded the delegation held by the decider. Whoever sets delegations can act');
+
+INSERT INTO dim_reason_class (value, parent, status, definition) VALUES
+  ('conformed',             NULL,        'stable',      'The standard, protocol or policy applied and was followed. Every list needs this value'),
+  ('evidence_insufficient', 'input',     'stable',      'There was not enough to go on - missing, incomplete, unreadable, unverifiable or not yet available'),
+  ('evidence_contradicts',  'input',     'stable',      'What was supplied conflicts with something else that is known'),
+  ('rule_conflict',         'rule',      'stable',      'A specific rule, policy, threshold or standard was breached or engaged'),
+  ('out_of_scope',          'rule',      'provisional', 'The matter does not fall within the boundary of what is being decided'),
+  ('risk_elevated',         'judgement', 'stable',      'An assessment of risk, consequence or trajectory drove the outcome, rather than a rule'),
+  ('capacity_or_cost',      'resource',  'stable',      'Resources, budget, volume or cost-to-serve shaped the decision'),
+  ('timing',                'resource',  'stable',      'A deadline, window, sequence or statutory clock shaped the outcome'),
+  ('third_party',           'external',  'stable',      'The outcome was determined by someone outside the deciding organisation'),
+  ('authority_exceeded',    'authority', 'stable',      'Beyond the delegation held by the decider; referred, escalated or stood aside'),
+  ('other',                 NULL,        'stable',      'None of the above. Free text required, and the rate is monitored');
 
 
 -- ===========================================================================
