@@ -11,6 +11,7 @@ find "$OUT" -name "*.md" -delete 2>/dev/null; mkdir -p "$OUT"
 n=0
 while IFS=$'\t' read -r sector slug title rows; do
   [ -z "${sector:-}" ] && continue
+  [ "$sector" = "sector" ] && continue   # skip the header row
   case "$sector" in \#*) continue;; esac
   mkdir -p "$OUT/$sector"
   {
@@ -28,4 +29,4 @@ done < "$SRC"
 
 echo "domains written: $n"
 echo "sectors:         $(find "$OUT" -mindepth 1 -maxdepth 1 -type d | wc -l)"
-echo "codes:           $(cat "$OUT"/*/*.md | grep -c '^| `' )"
+echo "codes:           $(cat "$OUT"/*/*.md | grep '^| `' | grep -cv '^| `code`' )"

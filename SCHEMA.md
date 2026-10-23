@@ -74,7 +74,7 @@ Writing the first 27 lists produced **eleven classes**. Extending the corpus to 
 
 | Field | Who owns it | Cardinality |
 |---|---|---|
-| `reason_code` | **The domain. Stays local, in local language** | 6–9 per domain |
+| `reason_code` | **The domain. Stays local, in local language** | 7–9 per domain |
 | `reason_class` | **Conformed, shared across every domain** | ~11 total |
 
 **Nobody adopts anybody else's vocabulary.** A hospital's `collateral_unavailable` and a bank's `income_unverified` are the same class in different words, and both words are right where they are used. **The class is what travels.**
@@ -145,7 +145,43 @@ decided_at        2026-10-10T04:21:07Z
 
 ---
 
-## 8. What this does not cover
+## 8. How sure — derived, not declared
+
+⭐⭐ **This section adds no obligation.** Everything below is computed from columns §1–§2 already require. There is nothing extra to record, and nothing for an operator to maintain.
+
+**Why the table can answer it at all.** `standard_set_at` fixes the acceptance criterion **before** the attempt; `outcome` records what happened **after**. Every row is therefore a pre-registered prediction together with its realised result — **a forecast-verification dataset by construction**, not by effort.
+
+**The estimator is one query.** The conformed dimensions *are* the partition. For each cell — `task_type × reason_class × worker_kind` — take `accepted ÷ n`. That share is the probability that the next decision of that kind stands.
+
+```sql
+SELECT task_type, reason_class, worker_kind,
+       COUNT(*)                                   AS n,
+       AVG(CASE WHEN outcome = 'accepted' THEN 1.0 ELSE 0 END) AS rate
+FROM   decision_attempt
+GROUP  BY 1, 2, 3;
+```
+
+⭐ **Calibration is an identity, not an achievement.** The figure quoted for a cell *is* the frequency observed in that cell. In sample that is arithmetic; nobody has to be a well-calibrated judge. Out of sample it holds **while the cell is stable**, and the same rows are what expose the drift. Precision is the binomial interval, which narrows as **1/√n** — so the lower bound rises on volume alone, with no model improving. Use **Wilson or Jeffreys at small n, Agresti–Coull at larger** (Brown, Cai & DasGupta, *Statistical Science*, 2001); the Wald interval is not safe here.
+
+⭐⭐ **And sharpness rises, in a direction that is proved rather than hoped.** Volume buys a finer partition: at first only `task_type` carries the rows, then `× reason_class`, then `× worker_kind`, then `× reason_code`. Resolution is the variance of the conditional mean, so **splitting a cell cannot lower it** — the law of total variance. And among well-calibrated forecasters, the **more refined one is preferred under every strictly proper scoring rule** (DeGroot & Fienberg, 1982 and 1983; refinement is the same ordering called sufficiency in elicitation and sharpness in forecasting). That is *sharpness increasing subject to calibration* — the published definition of a better forecast (Gneiting, Balabdaoui & Raftery, *JRSS-B*, 2007) — obtained as a by-product of keeping the record.
+
+**What to report.** One line per decision path: the **lower bound** of its acceptance rate, by month. It climbs for two reasons at once — the interval narrows as rows accumulate, and the cells refine as volume allows. **When a line clears the threshold you set, that path can run unattended.** This is §6's promotion rule with a number and an interval underneath it.
+
+⭐ **Free supervision as well.** On `person_with_agent` rows, `proposed_outcome` against `outcome` is the agent's accuracy on your own work — the labelled expert decisions that routing research reports it is short of, arriving as a by-product.
+
+⛔ **Seven limits, and all seven belong in any report built on this.**
+
+1. It measures **agreement with the standard you wrote, not ground truth**. A badly chosen standard yields a confident number about the wrong thing.
+2. It holds **while a cell is stable**. Drift breaks it, and the record is what shows the break.
+3. **A thin cell carries a wide interval.** Quote the bound, never the point.
+4. **The interval assumes independent trials.** A batch dispositioned by one assessor, or several exceptions from one customer, are not that many independent draws — **count clusters, not rows**, or use a cluster-robust interval.
+5. **Watching many cells at once is multiple testing.** At 95% across two hundred cells, about ten clear the line by chance — raise the bar, require the bound to hold for consecutive periods, or control the false-discovery rate.
+6. **Never promote on the `other` cell.** A reference class has to be homogeneous; `other` is mixed by construction, so its rate averages unlike things. The free text it is required to carry is what later splits it into real classes — which is refinement arriving by the front door.
+7. **A reclassified code shifts a cell without saying so.** `reason_class` is written on the row at decision time rather than joined at query time, so a remapping **cannot rewrite history** — but new rows then carry a different class from old ones for the same code. **`class_map_version` records which mapping was in force**, so the shift can be explained rather than merely detected.
+
+**An optional `confidence` column exists for one purpose only.** Where a tool already emits a confidence value — OpenAI's Decisions API returns one, separate from its probability distribution, and **does not document how it is computed** — store it so it can be *checked* against the derived rate. It is never the source of the measure, and the schema does not require it.
+
+## 9. What this does not cover
 
 **Decisions that were assembled afterwards out of things that happened** — the boardroom, how a strategy actually got chosen. Fifty years of research describes much organisational choice as streams meeting by timing rather than as a deliberate act at an identifiable moment, and that work is worth taking seriously.
 

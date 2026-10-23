@@ -43,6 +43,10 @@ CREATE TABLE claim_assessments (
     outcome          text        NOT NULL
                      CHECK (outcome IN ('accepted','edited','rejected','abandoned')),
     reason_class     text        NOT NULL REFERENCES dim_reason_class (value),
+    class_map_version text       NOT NULL,   -- which code->class mapping assigned the class above.
+                                 -- reason_class is WRITTEN HERE, not joined at query time, so a
+                                 -- later remapping cannot rewrite history. This records which
+                                 -- mapping was in force, so a shift in a cell can be explained.
 
     -- Standard ---------------------------------------------------------------
     task_id          text        NOT NULL,
@@ -52,6 +56,10 @@ CREATE TABLE claim_assessments (
                      CHECK (worker_kind IN ('person','agent','deterministic_code','person_with_agent')),
     reason_code      text        NOT NULL,   -- LOCAL. This domain's own words
     decide_seconds   numeric     CHECK (decide_seconds >= 0),
+    confidence       numeric     CHECK (confidence >= 0 AND confidence <= 1),
+                                 -- OPTIONAL. How sure the decider was, at the time.
+                                 -- One scale, used consistently. Meaningful only when
+                                 -- read back against outcome; never trusted on its own.
 
     -- Full -------------------------------------------------------------------
     standard_set_at  timestamptz NOT NULL,

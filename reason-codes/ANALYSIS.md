@@ -16,7 +16,7 @@ Rather than assert an answer, **87 reason-code lists were written across 18 sect
 | Sectors | **18** |
 | Local codes | **716** |
 | Classes needed to describe all of them | ⭐ **11** |
-| Codes per domain | 6 to 9, median **8** |
+| Codes per domain | 7 to 9, median **8** |
 
 **716 local codes collapse to 11 classes.** Roughly sixty-five to one.
 
