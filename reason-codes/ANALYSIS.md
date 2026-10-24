@@ -56,7 +56,7 @@ Grouping the classes by **where the departure originated** gives six loci — an
 | `rule` | 84/87 | Policy owners |
 | `judgement` | 71/87 | Training, calibration, worked examples |
 | `resource` | 68/87 | Funding, staffing, scheduling |
-| `external` | 57/87 | ⚠️ **Nobody internally — manage, do not plan to fix** |
+| `external` | 57/87 | ⚠️ **The lever sits outside — manage rather than plan to fix** |
 | `authority` | 38/87 | Whoever sets delegations |
 
 > **"Incomplete documentation is up four points" is a fact.** **"Sixty per cent of departures this quarter were `input`" is an instruction to go and fix the form.**

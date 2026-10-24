@@ -41,7 +41,7 @@ INSERT INTO dim_locus (value, parent, status, definition) VALUES
   ('rule',      'departed', 'stable', 'Where a rule, policy, threshold or boundary decided it. Whoever owns the policy or the rule set can act'),
   ('judgement', 'departed', 'stable', 'Where a person assessed risk, consequence or trajectory. Training, calibration and worked examples are the levers'),
   ('resource',  'departed', 'stable', 'Where money, people, time or a deadline shaped it. Funding, staffing and scheduling are the levers'),
-  ('external',  'departed', 'stable', 'Where someone outside the organisation determined it. Nobody internally can fix it; manage it instead'),
+  ('external',  'departed', 'stable', 'Where someone outside the organisation determined it. The lever sits outside, so it is managed rather than fixed'),
   ('authority', 'departed', 'stable', 'Where the decision exceeded the delegation held by the decider. Whoever sets delegations can act');
 
 INSERT INTO dim_reason_class (value, parent, status, definition) VALUES

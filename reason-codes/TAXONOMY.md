@@ -40,7 +40,7 @@ Derived from 87 domain lists across 18 sectors. The method and the numbers are i
 | **`rule`** | `rule_conflict` · `out_of_scope` | **84 / 87** | Whoever owns the policy or the rule set |
 | **`judgement`** | `risk_elevated` | 71 / 87 | Training, calibration, worked examples |
 | **`resource`** | `capacity_or_cost` · `timing` | 68 / 87 | Funding, staffing, scheduling |
-| **`external`** | `third_party` | 57 / 87 | ⚠️ **Nobody internally. Manage it, do not plan to fix it** |
+| **`external`** | `third_party` | 57 / 87 | ⚠️ **The lever sits outside the organisation. Manage it rather than plan to fix it** |
 | **`authority`** | `authority_exceeded` | 38 / 87 | Whoever sets delegations |
 
 > ⭐ **That last column is the point of the whole exercise.** A reason-code report that says "incomplete documentation is up four points" tells you something happened. A locus roll-up that says **"sixty per cent of departures this quarter were `input`"** tells you to go and fix the form.
