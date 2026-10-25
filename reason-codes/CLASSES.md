@@ -20,7 +20,7 @@
 
 ## Three distinctions worth getting right
 
-**`evidence_insufficient` vs `evidence_contradicts`.** *Not enough* versus *does not add up*. Different remedies: the first means ask for more, the second means reconcile. Together they are the `input` locus, present in all 87 domains.
+**`evidence_insufficient` vs `evidence_contradicts`.** *Not enough* versus *does not add up*. Different remedies: the first means ask for more, the second means reconcile. Together they are the `input` locus, present in all 96 domains.
 
 **`rule_conflict` vs `out_of_scope`.** *It is ours and it breaches a rule* versus *it is not ours to decide*. ⚠️ `out_of_scope` is the weakest class in the corpus at 22% coverage, and a reasonable reviewer could argue it collapses into `rule_conflict`. It is kept separate because the remedies differ — one changes the rule, the other changes the boundary — but **this is the most contestable call in the scheme** and [issue #1](../../issues/1) is the place to argue it.
 
@@ -30,6 +30,6 @@
 
 ## Adding a twelfth
 
-**Growing the corpus from 27 domains to 96, across 22 sectors, required no new class.** That is weak evidence of sufficiency rather than proof — all 87 lists were written by one author.
+**Growing the corpus from 27 domains to 96, across 22 sectors, required no new class.** That is weak evidence of sufficiency rather than proof — all 96 lists were written by one author.
 
 ⭐ **A genuine twelfth class would be a better outcome than another list that fits.** If your domain has a reason that will not map, [open issue #1](../../issues/1) with the code and the sentence a practitioner reads when they pick it.

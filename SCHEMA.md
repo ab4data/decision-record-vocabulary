@@ -39,7 +39,7 @@ Every table answers this question quietly, and it is the most expensive thing to
 | ⭐ `reason_class` | **One of about eleven shared classes — see §4** |
 | `decided_at` | When |
 
-⭐ **Note what is *not* in that list: `reason_code` itself.** The code stays in the fact table, in the domain's own language. **It is the class that conforms.** That distinction came out of writing the first 27 of these lists and classifying all 238 values. The corpus is now 87 lists across 18 sectors and 716 codes, and tripling it required no twelfth class — see [reason-codes/ANALYSIS.md](reason-codes/ANALYSIS.md). It is the difference between asking every team to adopt a shared vocabulary and asking them to map onto one.
+⭐ **Note what is *not* in that list: `reason_code` itself.** The code stays in the fact table, in the domain's own language. **It is the class that conforms.** That distinction came out of writing the first 27 of these lists and classifying all 238 values. The corpus is now 96 lists across 22 sectors and 797 codes, and growing it to that size required no twelfth class — see [reason-codes/ANALYSIS.md](reason-codes/ANALYSIS.md). It is the difference between asking every team to adopt a shared vocabulary and asking them to map onto one.
 
 **Seven is a starting proposal.** If you need an eighth, that is a useful disagreement — [open an issue](../../issues).
 

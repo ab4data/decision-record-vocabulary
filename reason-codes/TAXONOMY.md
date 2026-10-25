@@ -26,7 +26,7 @@ Derived from 96 domain lists across 22 sectors. The method and the numbers are i
 | `conformed` | The standard, protocol or policy applied and was followed |
 | `departed` | Something made this decision different from the default |
 
-**Two values, and the first one is the one teams forget.** Without a `conformed` value you record only exceptions — a numerator with no denominator, and no rate can be computed. It appears in all 87 domains examined.
+**Two values, and the first one is the one teams forget.** Without a `conformed` value you record only exceptions — a numerator with no denominator, and no rate can be computed. It appears in all 96 domains examined.
 
 ---
 

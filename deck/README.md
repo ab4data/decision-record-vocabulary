@@ -4,7 +4,7 @@
 
 **Every slide, in the browser — nothing to download and nothing to install.** Arrow keys, space, Home and End navigate.
 
-One self-contained file: [`the-second-wave.html`](the-second-wave.html) — **24 slides**, the short version of the talk: the shortest path through the proposal that still carries the argument. **A longer thirty-seven-slide version exists and is not published**; the two never differ in substance, only in how much supporting evidence is on screen. **No build step, no dependencies, no network calls** beyond a Google Fonts stylesheet, so saving the file gives you the whole talk offline.
+One self-contained file: [`the-second-wave.html`](the-second-wave.html) — **24 slides**, the short version of the talk: the shortest path through the proposal that still carries the argument. **A longer version exists and is not published**; the two never differ in substance, only in how much supporting evidence is on screen. **No build step, no dependencies, no network calls** beyond a Google Fonts stylesheet, so saving the file gives you the whole talk offline.
 
 **The speaker notes are in the file**, in `<aside>` elements — hidden on screen, readable in the source. **They carry the caveats**, including which figures are to be said aloud as analyst-published or as a prediction, and they hold the detail that the slides deliberately leave off.
 

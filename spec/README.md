@@ -34,7 +34,7 @@
 | `decision_automation.csv` | 3 | `fully` · `partially` · `not_automated` |
 | `detection_automation.csv` | 2 | `yes` · `no` |
 
-**Each CSV carries `parent`, so the four levels are in the data rather than in prose:** posture → locus → reason_class, and under those, the 716 local codes that stay with their domains.
+**Each CSV carries `parent`, so the four levels are in the data rather than in prose:** posture → locus → reason_class, and under those, the 797 local codes that stay with their domains.
 
 ⭐ **Why `locus` matters more than it looks.** A reason class tells you what happened. Its locus tells you **who can do something about it** — `input` is intake, `rule` is the policy owner, `judgement` is calibration, `resource` is funding, `external` is managed rather than fixed, `authority` is delegations. **A count becomes a work item.**
 
