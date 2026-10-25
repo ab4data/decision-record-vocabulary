@@ -27,7 +27,7 @@
 |---|---|---|
 | `posture.csv` | 2 | `conformed` · `departed` |
 | ⭐ `locus.csv` | 8 | **Who can act on a departure** — the layer that turns a count into an owner |
-| ⭐ `reason_class.csv` | 11 | **The column that travels.** 716 local codes across 87 domains collapse to these |
+| ⭐ `reason_class.csv` | 11 | **The column that travels.** 797 local codes across 96 domains collapse to these |
 | `worker_kind.csv` | 4 | `person` · `agent` · `deterministic_code` · **`person_with_agent`** |
 | `outcome.csv` | 4 | `accepted` · `edited` · `rejected` · `abandoned` |
 | `basis_relation.csv` | 4 | `applied` · `assessed` · `cited` · `supersedes` |

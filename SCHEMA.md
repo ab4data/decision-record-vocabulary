@@ -47,7 +47,7 @@ Every table answers this question quietly, and it is the most expensive thing to
 
 ⚠️ **Two classes carry no locus, and `dim_reason_class.parent` is nullable for exactly that reason.** A locus records where a **departure** came from: `conformed` is not a departure, and `other` is not yet classified. ⛔ **Neither should be given one to satisfy the column.**
 
-⚠️ **`out_of_scope` is seeded as `provisional`, not `stable`.** It appears in 19 of 87 domains and is the most contestable call in the scheme — the status column says so rather than leaving it implied.
+⚠️ **`out_of_scope` is seeded as `provisional`, not `stable`.** It appears in 19 of 96 domains and is the most contestable call in the scheme — the status column says so rather than leaving it implied.
 
 ---
 
@@ -76,7 +76,7 @@ With it: *"and two thirds of the new rejections are incomplete documentation, on
 
 ⭐ **And the conformed counterpart: `reason_class`.**
 
-Writing the first 27 lists produced **eleven classes**. Extending the corpus to 87 lists across 18 sectors, and 716 codes, required no twelfth class. Three classes appear in every single domain. See [reason-codes/ANALYSIS.md](reason-codes/ANALYSIS.md).
+Writing the first 27 lists produced **eleven classes**. Extending the corpus to 96 lists across 22 sectors, and 797 codes, required no twelfth class. Three classes appear in every single domain. See [reason-codes/ANALYSIS.md](reason-codes/ANALYSIS.md).
 
 | Field | Who owns it | Cardinality |
 |---|---|---|
@@ -85,7 +85,7 @@ Writing the first 27 lists produced **eleven classes**. Extending the corpus to 
 
 **Nobody adopts anybody else's vocabulary.** A hospital's `collateral_unavailable` and a bank's `income_unverified` are the same class in different words, and both words are right where they are used. **The class is what travels.**
 
-The three classes present in all 87 domains are worth building first: `evidence_insufficient` (the most universal reason anything departs from default), `conformed` (without it there is no denominator and no rate), and `other` (which no list of any size has eliminated).
+The three classes present in all 96 domains are worth building first: `evidence_insufficient` (the most universal reason anything departs from default), `conformed` (without it there is no denominator and no rate), and `other` (which no list of any size has eliminated).
 
 Starter lists per domain are in [reason-codes/](reason-codes/).
 

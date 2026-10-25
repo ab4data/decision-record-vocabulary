@@ -10,10 +10,10 @@
       │
   class       evidence_insufficient · rule_conflict …      11 values   shared
       │
-  code        income_unverified · obs_incomplete …        716 values   LOCAL
+  code        income_unverified · obs_incomplete …        797 values   LOCAL
 ```
 
-Derived from 87 domain lists across 18 sectors. The method and the numbers are in [ANALYSIS.md](ANALYSIS.md); the class definitions are in [CLASSES.md](CLASSES.md).
+Derived from 96 domain lists across 22 sectors. The method and the numbers are in [ANALYSIS.md](ANALYSIS.md); the class definitions are in [CLASSES.md](CLASSES.md).
 
 ---
 
@@ -53,7 +53,7 @@ Derived from 87 domain lists across 18 sectors. The method and the numbers are i
 
 ## Level 4 — code
 
-**Local, and it stays local.** 716 codes across 87 domains, median eight per domain. A hospital says `collateral_unavailable`, a bank says `income_unverified`, a procurement team says `response_incomplete`. **All three are `evidence_insufficient`, in the `input` locus — and all three words are right where they are used.**
+**Local, and it stays local.** 797 codes across 96 domains, median eight per domain. A hospital says `collateral_unavailable`, a bank says `income_unverified`, a procurement team says `response_incomplete`. **All three are `evidence_insufficient`, in the `input` locus — and all three words are right where they are used.**
 
 ---
 

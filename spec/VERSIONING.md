@@ -57,7 +57,7 @@ vocabulary_version = 0.1.0
 
 ## How a change actually happens
 
-1. **[Open an issue](../../issues)** naming the question your current values cannot answer. The corpus held at 11 classes across 87 domains, so a twelfth needs to show what the eleven miss.
+1. **[Open an issue](../../issues)** naming the question your current values cannot answer. The corpus held at 11 classes across 96 domains, so a twelfth needs to show what the eleven miss.
 2. **The change is made in one place:** the `%VOCAB` table at the top of [`build-vocab.pl`](build-vocab.pl).
 3. **`perl build-vocab.pl` rewrites every CSV** from that table, so the CSVs and the source cannot drift.
 4. **`perl check-spec.pl` must pass.** It compares every enum in the JSON Schema against its CSV, and re-checks the worked example against every rule.

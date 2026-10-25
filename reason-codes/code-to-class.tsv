@@ -1,0 +1,798 @@
+sector	domain	code	class	use_when
+health	clinical-triage	criteria_met	conformed	Acuity scored against the standard and allocated accordingly
+health	clinical-triage	obs_incomplete	evidence_insufficient	Required observations missing or not recorded in time
+health	clinical-triage	history_conflicts	evidence_contradicts	Presentation does not match the reported history
+health	clinical-triage	comorbidity_uplift	risk_elevated	Scored higher because of coexisting conditions
+health	clinical-triage	outside_service_scope	out_of_scope	Needs a service this site does not provide
+health	clinical-triage	senior_review_required	authority_exceeded	Beyond the triage nurse scope of practice
+health	clinical-triage	capacity_constrained	capacity_or_cost	Allocation shaped by bed or staff availability
+health	clinical-triage	other	other	Free text required
+health	prescribing-review	appropriate_as_written	conformed	Dose, route and duration match the guideline
+health	prescribing-review	indication_unclear	evidence_insufficient	No documented indication for the medicine
+health	prescribing-review	interaction_flagged	rule_conflict	Interacts with an existing medicine
+health	prescribing-review	dose_outside_range	rule_conflict	Outside the age, weight or renal range
+health	prescribing-review	allergy_conflict	rule_conflict	Conflicts with a recorded allergy
+health	prescribing-review	prescriber_contacted	authority_exceeded	Changed only after confirming with the prescriber
+health	prescribing-review	supply_unavailable	third_party	Clinically fine, cannot be dispensed
+health	prescribing-review	other	other	Free text required
+health	mental-health-risk	risk_rated_to_tool	conformed	Rating follows the structured instrument
+health	mental-health-risk	collateral_unavailable	evidence_insufficient	Could not obtain family, GP or service history
+health	mental-health-risk	account_inconsistent	evidence_contradicts	Self-report conflicts with observed presentation
+health	mental-health-risk	recent_escalation	risk_elevated	Rated higher on recent change rather than static score
+health	mental-health-risk	clinical_override	authority_exceeded	Clinician departed from the tool, with reasons
+health	mental-health-risk	legal_status_applies	rule_conflict	Involuntary provisions shaped the decision
+health	mental-health-risk	other	other	Free text required
+health	ambulance-dispatch	dispatched_to_protocol	conformed	Call scored to the dispatch protocol and resourced accordingly
+health	ambulance-dispatch	caller_detail_limited	evidence_insufficient	Caller could not describe the patient condition
+health	ambulance-dispatch	scene_differs_from_call	evidence_contradicts	Crew found a different situation from the one reported
+health	ambulance-dispatch	deterioration_risk	risk_elevated	Upgraded on likely trajectory rather than current state
+health	ambulance-dispatch	no_resource_available	capacity_or_cost	Priority correct, nearest resource committed elsewhere
+health	ambulance-dispatch	referred_secondary_triage	authority_exceeded	Passed to a clinician for a higher-level decision
+health	ambulance-dispatch	other_agency_lead	third_party	Police or fire is the lead agency
+health	ambulance-dispatch	other	other	Free text required
+health	nursing-escalation	escalated_per_criteria	conformed	Observations met the published escalation trigger
+health	nursing-escalation	observations_incomplete	evidence_insufficient	A required observation was not taken
+health	nursing-escalation	chart_conflicts_with_patient	evidence_contradicts	Recorded observations do not match presentation
+health	nursing-escalation	clinical_concern_override	risk_elevated	Escalated on judgement without meeting a trigger
+health	nursing-escalation	treatment_limits_apply	rule_conflict	An advance care directive shaped the response
+health	nursing-escalation	reviewer_unavailable	capacity_or_cost	Escalated further because no reviewer was free
+health	nursing-escalation	family_initiated	third_party	Escalation requested by family rather than by staff
+health	nursing-escalation	other	other	Free text required
+health	pathology-review	within_reference_range	conformed	Result normal, released without comment
+health	pathology-review	sample_quality_poor	evidence_insufficient	Haemolysis, clotting or insufficient volume
+health	pathology-review	inconsistent_with_history	evidence_contradicts	Result does not fit the clinical picture
+health	pathology-review	critical_value	rule_conflict	Mandatory notification threshold reached
+health	pathology-review	delta_check_failed	evidence_contradicts	Changed too much from the previous result
+health	pathology-review	repeat_requested	evidence_insufficient	Repeat ordered before reporting
+health	pathology-review	referred_pathologist	authority_exceeded	Beyond the scientist release authority
+health	pathology-review	other	other	Free text required
+health	radiology-signoff	agrees_with_report	conformed	Findings and report agree, signed as drafted
+health	radiology-signoff	study_technically_limited	evidence_insufficient	Positioning, motion or coverage limited the read
+health	radiology-signoff	discrepancy_with_prior	evidence_contradicts	Differs from a previous study without explanation
+health	radiology-signoff	incidental_finding	risk_elevated	Report amended for a finding outside the clinical question
+health	radiology-signoff	urgent_communication	rule_conflict	Direct notification mandated by the finding
+health	radiology-signoff	priors_unavailable	evidence_insufficient	Comparison not possible
+health	radiology-signoff	second_read_requested	authority_exceeded	Referred for subspecialty opinion
+health	radiology-signoff	other	other	Free text required
+health	infection-control	standard_precautions	conformed	Managed under routine precautions
+health	infection-control	typing_pending	evidence_insufficient	Organism not yet characterised
+health	infection-control	epi_link_unconfirmed	evidence_contradicts	Suspected link between cases not supported
+health	infection-control	outbreak_threshold_met	rule_conflict	Case count triggered the outbreak definition
+health	infection-control	transmission_risk_high	risk_elevated	Response escalated on setting or population
+health	infection-control	isolation_capacity	capacity_or_cost	Response shaped by available single rooms
+health	infection-control	public_health_directed	third_party	Action set by the external authority
+health	infection-control	other	other	Free text required
+health	surgical-consent	consent_valid	conformed	Capacity, information and voluntariness all satisfied
+health	surgical-consent	risks_not_documented	evidence_insufficient	Specific risks not recorded as discussed
+health	surgical-consent	understanding_unclear	evidence_contradicts	Patient account differs from the documented discussion
+health	surgical-consent	capacity_assessment_required	authority_exceeded	Referred for a formal capacity assessment
+health	surgical-consent	interpreter_required	rule_conflict	Consent invalid without an accredited interpreter
+health	surgical-consent	substitute_decision_maker	third_party	Decision rests with a guardian or nominee
+health	surgical-consent	procedure_changed	timing	Consent predates a change in the planned procedure
+health	surgical-consent	other	other	Free text required
+health	aged-care-incident	managed_under_care_plan	conformed	Incident handled as the care plan anticipates
+health	aged-care-incident	witness_unavailable	evidence_insufficient	No staff or resident account obtainable
+health	aged-care-incident	accounts_conflict	evidence_contradicts	Resident and staff accounts differ materially
+health	aged-care-incident	reportable_incident	rule_conflict	Meets the statutory reporting threshold
+health	aged-care-incident	recurrence_pattern	risk_elevated	Rated higher because the pattern is repeating
+health	aged-care-incident	staffing_level_factor	capacity_or_cost	Rostering contributed to the circumstances
+health	aged-care-incident	family_complaint	third_party	Assessment driven by an external complaint
+health	aged-care-incident	other	other	Free text required
+finance	lending-credit	within_policy	conformed	Meets serviceability and credit policy
+finance	lending-credit	income_unverified	evidence_insufficient	Income evidence missing or not acceptable
+finance	lending-credit	declared_vs_observed	evidence_contradicts	Declared expenses conflict with transaction data
+finance	lending-credit	serviceability_shortfall	rule_conflict	Fails the buffer calculation
+finance	lending-credit	adverse_credit_history	rule_conflict	Default or arrears within the policy window
+finance	lending-credit	security_insufficient	rule_conflict	Valuation or security does not support the amount
+finance	lending-credit	product_not_eligible	out_of_scope	Applicant or purpose is outside the product
+finance	lending-credit	referred_credit_officer	authority_exceeded	Beyond the delegated lending authority
+finance	lending-credit	other	other	Free text required
+finance	fraud-alert	genuine_confirmed	conformed	Confirmed legitimate, alert closed
+finance	fraud-alert	customer_uncontactable	evidence_insufficient	Could not reach the customer within the window
+finance	fraud-alert	behaviour_inconsistent	evidence_contradicts	Activity does not match the established pattern
+finance	fraud-alert	known_fraud_pattern	rule_conflict	Matches a documented typology
+finance	fraud-alert	device_or_location_risk	risk_elevated	Signal risk drove the hold rather than the amount
+finance	fraud-alert	low_value_accepted	capacity_or_cost	Risk accepted because pursuit costs more than exposure
+finance	fraud-alert	referred_investigations	authority_exceeded	Escalated beyond the analyst authority
+finance	fraud-alert	merchant_dispute	third_party	Resolution sits with the merchant or scheme
+finance	fraud-alert	other	other	Free text required
+finance	aml-monitoring	expected_activity	conformed	Consistent with the known customer profile
+finance	aml-monitoring	kyc_gap	evidence_insufficient	Customer information incomplete or stale
+finance	aml-monitoring	source_of_funds_unclear	evidence_insufficient	Could not establish where the money came from
+finance	aml-monitoring	profile_mismatch	evidence_contradicts	Activity inconsistent with stated occupation or purpose
+finance	aml-monitoring	structuring_indicators	rule_conflict	Pattern matches a structuring typology
+finance	aml-monitoring	sanctions_or_pep	rule_conflict	Screening match drove the outcome
+finance	aml-monitoring	jurisdiction_risk	risk_elevated	Counterparty geography drove the rating
+finance	aml-monitoring	reported_to_regulator	authority_exceeded	Escalated to the regulator, decision no longer local
+finance	aml-monitoring	other	other	Free text required
+finance	hardship-application	assistance_granted_standard	conformed	Meets the published hardship criteria
+finance	hardship-application	evidence_outstanding	evidence_insufficient	Supporting documents not supplied
+finance	hardship-application	circumstances_unverified	evidence_contradicts	Stated circumstances conflict with account activity
+finance	hardship-application	temporary_vs_structural	risk_elevated	Arrangement shaped by whether the change is lasting
+finance	hardship-application	outside_hardship_scope	out_of_scope	Product or situation is not covered
+finance	hardship-application	lodged_after_default	timing	Timing changed the options available
+finance	hardship-application	referred_specialist_team	authority_exceeded	Beyond frontline discretion
+finance	hardship-application	external_advocate	third_party	A financial counsellor is now acting
+finance	hardship-application	other	other	Free text required
+finance	mortgage-valuation	valuation_accepted	conformed	Within tolerance of the contract price
+finance	mortgage-valuation	comparables_insufficient	evidence_insufficient	Too few recent comparable sales
+finance	mortgage-valuation	valuer_vs_model_gap	evidence_contradicts	Manual valuation differs materially from the model
+finance	mortgage-valuation	property_risk_rating	risk_elevated	Rated on construction, zoning or location
+finance	mortgage-valuation	outside_lending_area	out_of_scope	Property type or location outside policy
+finance	mortgage-valuation	valuation_too_old	timing	Valuation beyond its acceptable age
+finance	mortgage-valuation	second_valuation_ordered	authority_exceeded	Escalated for an independent assessment
+finance	mortgage-valuation	other	other	Free text required
+finance	investment-suitability	suitable_to_profile	conformed	Matches risk profile, objectives and timeframe
+finance	investment-suitability	fact_find_incomplete	evidence_insufficient	Client circumstances not fully documented
+finance	investment-suitability	stated_vs_demonstrated_risk	evidence_contradicts	Stated tolerance conflicts with reaction to scenarios
+finance	investment-suitability	concentration_breach	rule_conflict	Would breach a diversification limit
+finance	investment-suitability	complex_product_gate	rule_conflict	Product requires an additional qualification test
+finance	investment-suitability	client_against_advice	third_party	Client proceeded contrary to the recommendation
+finance	investment-suitability	referred_compliance	authority_exceeded	Beyond the adviser authorisation
+finance	investment-suitability	other	other	Free text required
+finance	chargeback-dispute	represented_successfully	conformed	Evidence met the scheme requirement
+finance	chargeback-dispute	merchant_evidence_missing	evidence_insufficient	Merchant did not supply within the window
+finance	chargeback-dispute	delivery_record_conflicts	evidence_contradicts	Proof of delivery conflicts with the cardholder account
+finance	chargeback-dispute	scheme_rule_applies	rule_conflict	Outcome set by a specific scheme rule
+finance	chargeback-dispute	reason_code_mismatch	rule_conflict	Dispute filed under the wrong scheme reason
+finance	chargeback-dispute	time_limit_expired	timing	Filed or represented outside the scheme window
+finance	chargeback-dispute	issuer_decision	third_party	Determined by the issuing bank
+finance	chargeback-dispute	other	other	Free text required
+finance	treasury-limit	within_approved_limit	conformed	Exposure inside the mandate
+finance	treasury-limit	position_data_stale	evidence_insufficient	Valuation feed delayed at the time of check
+finance	treasury-limit	system_vs_manual_gap	evidence_contradicts	Reported position differs from the trader record
+finance	treasury-limit	hard_limit_breached	rule_conflict	Mandated limit exceeded
+finance	treasury-limit	market_move_passive	third_party	Breach caused by price movement, not by trading
+finance	treasury-limit	temporary_approved_excess	authority_exceeded	Excess approved by a named officer
+finance	treasury-limit	close_out_cost	capacity_or_cost	Held because unwinding costs more than the exposure
+finance	treasury-limit	other	other	Free text required
+finance	collections-treatment	standard_pathway	conformed	Arrears stage mapped to the standard treatment
+finance	collections-treatment	contact_details_invalid	evidence_insufficient	Unable to reach the customer on file
+finance	collections-treatment	payment_history_conflicts	evidence_contradicts	Stated payment not visible on the account
+finance	collections-treatment	hardship_indicator	risk_elevated	Treatment softened on a vulnerability signal
+finance	collections-treatment	legal_action_threshold	rule_conflict	Balance and age met the escalation rule
+finance	collections-treatment	external_agency_assigned	third_party	Account placed with an agency
+finance	collections-treatment	limitation_period	timing	Age of debt changed the available options
+finance	collections-treatment	other	other	Free text required
+insurance	claims-assessment	within_policy	conformed	Met the policy terms with no complication
+insurance	claims-assessment	documentation_incomplete	evidence_insufficient	Required evidence missing or unreadable
+insurance	claims-assessment	valuation_disputed	evidence_contradicts	Amount claimed does not match the assessed value
+insurance	claims-assessment	coverage_excluded	out_of_scope	The event falls outside the cover
+insurance	claims-assessment	timing_outside_terms	timing	Notification or incident date outside the window
+insurance	claims-assessment	suspected_misstatement	evidence_contradicts	The account given conflicts with the evidence
+insurance	claims-assessment	referred_specialist	authority_exceeded	Beyond the assessor authority or expertise
+insurance	claims-assessment	other	other	Free text required
+insurance	underwriting	standard_terms	conformed	Accepted at standard rates, no loading
+insurance	underwriting	disclosure_incomplete	evidence_insufficient	Material questions unanswered
+insurance	underwriting	disclosure_inconsistent	evidence_contradicts	Application conflicts with medical or claims history
+insurance	underwriting	risk_loaded	risk_elevated	Accepted with a premium loading
+insurance	underwriting	exclusion_applied	rule_conflict	Accepted with a specific exclusion
+insurance	underwriting	outside_appetite	out_of_scope	Occupation, asset or geography outside appetite
+insurance	underwriting	aggregation_limit	capacity_or_cost	Portfolio concentration drove the decision
+insurance	underwriting	referred_reinsurer	authority_exceeded	Beyond the retained authority
+insurance	underwriting	other	other	Free text required
+government	planning-approval	complies_with_controls	conformed	Meets the planning scheme without variation
+government	planning-approval	documents_inadequate	evidence_insufficient	Plans or reports missing or not to standard
+government	planning-approval	survey_conflicts	evidence_contradicts	Submitted plans conflict with survey or site inspection
+government	planning-approval	variation_within_discretion	rule_conflict	Departs from a control, allowed under discretion
+government	planning-approval	prohibited_in_zone	out_of_scope	Use is not permissible in the zone
+government	planning-approval	amenity_impact	risk_elevated	Overshadowing, traffic or noise drove the decision
+government	planning-approval	referral_authority	third_party	Determined by a referral body response
+government	planning-approval	submission_period	timing	Public exhibition timing shaped the outcome
+government	planning-approval	other	other	Free text required
+government	grant-assessment	meets_all_criteria	conformed	Scored above threshold on every criterion
+government	grant-assessment	application_incomplete	evidence_insufficient	Required attachments or budget detail missing
+government	grant-assessment	budget_unsupported	evidence_contradicts	Costings conflict with the described activity
+government	grant-assessment	ineligible_applicant	out_of_scope	Entity type, location or sector not eligible
+government	grant-assessment	below_merit_threshold	rule_conflict	Scored, but under the cut
+government	grant-assessment	deliverability_concern	risk_elevated	Capability or track record drove the decision
+government	grant-assessment	funds_exhausted	capacity_or_cost	Merit sufficient, budget was not
+government	grant-assessment	conflict_of_interest	authority_exceeded	Assessor stood aside, decided elsewhere
+government	grant-assessment	other	other	Free text required
+government	benefits-eligibility	qualifies_on_evidence	conformed	Meets every eligibility test on the evidence supplied
+government	benefits-eligibility	evidence_not_provided	evidence_insufficient	Requested documents not received
+government	benefits-eligibility	declared_vs_recorded	evidence_contradicts	Declaration conflicts with other agency records
+government	benefits-eligibility	income_or_asset_test	rule_conflict	Fails a means test
+government	benefits-eligibility	residency_or_status	out_of_scope	Residency, age or status requirement not met
+government	benefits-eligibility	claim_lodged_late	timing	Backdating rules changed the entitlement
+government	benefits-eligibility	change_of_circumstance	rule_conflict	Entitlement changed mid-period
+government	benefits-eligibility	referred_review_officer	authority_exceeded	Beyond the assessor delegation
+government	benefits-eligibility	other	other	Free text required
+government	foi-request	released_in_full	conformed	Documents released without redaction
+government	foi-request	scope_unclear	evidence_insufficient	Request too vague to identify documents
+government	foi-request	no_documents_held	out_of_scope	Search complete, nothing within scope exists
+government	foi-request	exemption_applied	rule_conflict	A statutory exemption covers some or all
+government	foi-request	third_party_consultation	third_party	Outcome depends on a consulted party view
+government	foi-request	personal_privacy	rule_conflict	Release would disclose personal information
+government	foi-request	processing_burden	capacity_or_cost	Volume made the request impracticable as framed
+government	foi-request	statutory_period	timing	Decision shaped by the statutory clock
+government	foi-request	other	other	Free text required
+government	procurement-evaluation	highest_value_compliant	conformed	Best value among conforming offers
+government	procurement-evaluation	response_incomplete	evidence_insufficient	Mandatory schedules not provided
+government	procurement-evaluation	claims_unsubstantiated	evidence_contradicts	Capability claims not supported by references
+government	procurement-evaluation	non_conforming_offer	rule_conflict	Departs from mandatory requirements
+government	procurement-evaluation	price_outside_budget	capacity_or_cost	Technically sound, unaffordable
+government	procurement-evaluation	supplier_risk	risk_elevated	Financial or delivery risk drove the decision
+government	procurement-evaluation	probity_issue	authority_exceeded	Referred because of a probity concern
+government	procurement-evaluation	late_submission	timing	Received after the close of tenders
+government	procurement-evaluation	other	other	Free text required
+government	immigration-visa	criteria_satisfied	conformed	All criteria met on the evidence provided
+government	immigration-visa	documents_not_provided	evidence_insufficient	Requested evidence not supplied in time
+government	immigration-visa	claims_not_supported	evidence_contradicts	Claims inconsistent with supporting documents
+government	immigration-visa	character_or_health	rule_conflict	A statutory requirement not met
+government	immigration-visa	visa_class_ineligible	out_of_scope	Applicant does not fall within the class
+government	immigration-visa	programme_cap_reached	capacity_or_cost	Ceiling reached for the period
+government	immigration-visa	referred_delegate	authority_exceeded	Beyond the officer delegation
+government	immigration-visa	other	other	Free text required
+government	child-protection-intake	below_threshold	conformed	Concern assessed and did not meet the statutory threshold
+government	child-protection-intake	reporter_detail_limited	evidence_insufficient	Notifier could not provide identifying or specific detail
+government	child-protection-intake	records_conflict	evidence_contradicts	Reported concern differs from case history
+government	child-protection-intake	cumulative_harm	risk_elevated	Escalated on pattern rather than single incident
+government	child-protection-intake	mandatory_response_time	timing	Response window set by the assessed category
+government	child-protection-intake	family_already_engaged	third_party	Another agency holds the active case
+government	child-protection-intake	referred_senior_practitioner	authority_exceeded	Beyond the intake worker decision
+government	child-protection-intake	other	other	Free text required
+government	tax-audit-selection	profile_within_norms	conformed	Return consistent with the benchmark for the segment
+government	tax-audit-selection	records_not_lodged	evidence_insufficient	Required schedules or statements missing
+government	tax-audit-selection	return_vs_thirdparty_data	evidence_contradicts	Return conflicts with reported third-party data
+government	tax-audit-selection	risk_model_flag	risk_elevated	Selected on model score rather than a specific anomaly
+government	tax-audit-selection	specific_rule_breach	rule_conflict	A defined provision appears not to be met
+government	tax-audit-selection	audit_capacity	capacity_or_cost	Case worth pursuing, resources committed elsewhere
+government	tax-audit-selection	amendment_period_closed	timing	Outside the period of review
+government	tax-audit-selection	other	other	Free text required
+government	licensing-decision	requirements_met	conformed	Qualifications, experience and probity all satisfied
+government	licensing-decision	evidence_not_verified	evidence_insufficient	Could not verify a qualification or reference
+government	licensing-decision	application_inconsistent	evidence_contradicts	Declared history conflicts with external records
+government	licensing-decision	disqualifying_matter	rule_conflict	A statutory disqualification applies
+government	licensing-decision	conditional_licence	risk_elevated	Granted with conditions on assessed risk
+government	licensing-decision	interstate_recognition	third_party	Outcome set by mutual recognition
+government	licensing-decision	renewal_lapsed	timing	Application fell outside the renewal window
+government	licensing-decision	other	other	Free text required
+government	building-certification	complies_with_code	conformed	Work complies with the building code as constructed
+government	building-certification	documentation_missing	evidence_insufficient	Certificates or specifications not provided
+government	building-certification	as_built_differs	evidence_contradicts	Construction differs from approved plans
+government	building-certification	non_compliant_element	rule_conflict	A specific code requirement not met
+government	building-certification	structural_or_fire_risk	risk_elevated	Withheld on a safety assessment
+government	building-certification	engineer_certification_required	authority_exceeded	Beyond the certifier scope, referred
+government	building-certification	staged_inspection_missed	timing	A mandatory inspection point was not called
+government	building-certification	other	other	Free text required
+government	environmental-approval	within_approved_impact	conformed	Impacts within the assessed and approved envelope
+government	environmental-approval	baseline_data_insufficient	evidence_insufficient	Survey effort inadequate for the assessment
+government	environmental-approval	modelling_vs_monitoring	evidence_contradicts	Monitoring results differ from predictions
+government	environmental-approval	threatened_species_trigger	rule_conflict	A listed species or community triggers assessment
+government	environmental-approval	cumulative_impact	risk_elevated	Assessed on combined rather than individual effect
+government	environmental-approval	offset_unavailable	capacity_or_cost	Conditions could not be satisfied by available offsets
+government	environmental-approval	commonwealth_referral	third_party	Determination sits with another jurisdiction
+government	environmental-approval	other	other	Free text required
+justice	bail-decision	released_on_conditions	conformed	Standard conditions assessed as sufficient
+justice	bail-decision	antecedents_unavailable	evidence_insufficient	Criminal history or address not verified in time
+justice	bail-decision	submissions_conflict	evidence_contradicts	Prosecution and defence accounts differ materially
+justice	bail-decision	unacceptable_risk	risk_elevated	Refused on assessed risk of reoffending or flight
+justice	bail-decision	show_cause_offence	rule_conflict	Statutory presumption applied
+justice	bail-decision	no_suitable_accommodation	capacity_or_cost	Supported accommodation unavailable
+justice	bail-decision	adjourned_for_report	timing	Decision deferred pending an assessment
+justice	bail-decision	other	other	Free text required
+justice	prosecution-charge	prima_facie_and_public_interest	conformed	Both limbs of the test satisfied
+justice	prosecution-charge	evidence_gaps	evidence_insufficient	Brief incomplete or key statements missing
+justice	prosecution-charge	witness_accounts_conflict	evidence_contradicts	Material inconsistency between witnesses
+justice	prosecution-charge	no_reasonable_prospect	rule_conflict	Test not met on the available evidence
+justice	prosecution-charge	public_interest_against	risk_elevated	Proceeding assessed as not in the public interest
+justice	prosecution-charge	diversion_available	third_party	Matter directed to a diversionary scheme
+justice	prosecution-charge	limitation_expired	timing	Outside the statutory time limit
+justice	prosecution-charge	other	other	Free text required
+justice	legal-aid-eligibility	grant_approved	conformed	Means and merits tests both satisfied
+justice	legal-aid-eligibility	financial_evidence_missing	evidence_insufficient	Income or asset evidence not provided
+justice	legal-aid-eligibility	declared_vs_verified	evidence_contradicts	Declared means conflict with verified records
+justice	legal-aid-eligibility	means_test_failed	rule_conflict	Income or assets above the threshold
+justice	legal-aid-eligibility	merits_test_failed	rule_conflict	Insufficient prospects of success
+justice	legal-aid-eligibility	matter_type_excluded	out_of_scope	Matter outside the funding guidelines
+justice	legal-aid-eligibility	funding_exhausted	capacity_or_cost	Eligible, allocation unavailable
+justice	legal-aid-eligibility	other	other	Free text required
+justice	parole-decision	released_to_plan	conformed	Release plan assessed as adequate against the criteria
+justice	parole-decision	assessment_outstanding	evidence_insufficient	Psychological or programme report not available
+justice	parole-decision	self_report_conflicts	evidence_contradicts	Account differs from custodial records
+justice	parole-decision	community_safety_risk	risk_elevated	Refused on assessed risk
+justice	parole-decision	mandatory_non_parole	rule_conflict	Statutory period not yet served
+justice	parole-decision	accommodation_unsuitable	capacity_or_cost	No approved address available
+justice	parole-decision	victim_submission	third_party	Submission materially affected the decision
+justice	parole-decision	other	other	Free text required
+education	admissions-decision	meets_entry_requirements	conformed	Rank and prerequisites satisfied
+education	admissions-decision	qualifications_unverified	evidence_insufficient	Transcripts or credentials not verified
+education	admissions-decision	credential_inconsistent	evidence_contradicts	Documents conflict with the issuing institution record
+education	admissions-decision	prerequisite_not_met	rule_conflict	A required subject or score is absent
+education	admissions-decision	quota_filled	capacity_or_cost	Qualified, places exhausted
+education	admissions-decision	special_entry_pathway	risk_elevated	Admitted on assessed potential outside the standard rank
+education	admissions-decision	credential_authority	third_party	Recognition set by an external assessing body
+education	admissions-decision	other	other	Free text required
+education	academic-misconduct	no_breach	conformed	Allegation assessed, no breach established
+education	academic-misconduct	evidence_inconclusive	evidence_insufficient	Similarity or detection evidence not conclusive
+education	academic-misconduct	student_account_conflicts	evidence_contradicts	Explanation inconsistent with the submission history
+education	academic-misconduct	breach_established	rule_conflict	A specific rule in the policy was breached
+education	academic-misconduct	repeat_offence	risk_elevated	Penalty set on prior findings
+education	academic-misconduct	referred_committee	authority_exceeded	Beyond the unit coordinator authority
+education	academic-misconduct	contract_cheating_service	third_party	Third-party provider involved
+education	academic-misconduct	other	other	Free text required
+education	special-consideration	granted_standard	conformed	Documented circumstances met the published criteria
+education	special-consideration	documentation_insufficient	evidence_insufficient	Medical or other evidence does not support the claim
+education	special-consideration	dates_do_not_align	evidence_contradicts	Documented period does not cover the assessment
+education	special-consideration	outside_policy_grounds	out_of_scope	Circumstances not covered by the policy
+education	special-consideration	late_application	timing	Lodged outside the application window
+education	special-consideration	alternative_arrangement	capacity_or_cost	Granted in a different form because of scheduling
+education	special-consideration	referred_faculty	authority_exceeded	Beyond the standard delegation
+education	special-consideration	other	other	Free text required
+education	curriculum-accreditation	meets_standards	conformed	Programme meets the accreditation standards
+education	curriculum-accreditation	evidence_of_outcomes_thin	evidence_insufficient	Insufficient evidence that outcomes are achieved
+education	curriculum-accreditation	mapping_inconsistent	evidence_contradicts	Stated outcomes do not match assessment design
+education	curriculum-accreditation	standard_not_met	rule_conflict	A specific standard is unmet
+education	curriculum-accreditation	staffing_capability	capacity_or_cost	Teaching capacity insufficient for the proposal
+education	curriculum-accreditation	conditional_accreditation	risk_elevated	Approved with conditions and review
+education	curriculum-accreditation	professional_body_view	third_party	Determined with an external accrediting body
+education	curriculum-accreditation	other	other	Free text required
+research	research-ethics	approved_as_submitted	conformed	Meets the national statement without modification
+research	research-ethics	protocol_detail_missing	evidence_insufficient	Method or recruitment detail insufficient to assess
+research	research-ethics	consent_inconsistent	evidence_contradicts	Participant materials conflict with the protocol
+research	research-ethics	risk_benefit_concern	risk_elevated	Burden to participants not justified by the benefit
+research	research-ethics	privacy_or_data_handling	rule_conflict	Data management breaches a requirement
+research	research-ethics	vulnerable_participants	rule_conflict	Additional safeguards required by the category
+research	research-ethics	outside_committee_remit	out_of_scope	Low risk, or another committee responsibility
+research	research-ethics	conflict_declared	authority_exceeded	Member stood aside, decided by the remaining panel
+research	research-ethics	other	other	Free text required
+research	academic-peer-review	accept_as_sound	conformed	Method and conclusions supported
+research	academic-peer-review	method_underspecified	evidence_insufficient	Cannot assess the work as described
+research	academic-peer-review	conclusions_overreach	evidence_contradicts	Claims exceed what the results support
+research	academic-peer-review	analysis_error	rule_conflict	A specific statistical or logical fault
+research	academic-peer-review	out_of_scope_journal	out_of_scope	Sound, wrong venue
+research	academic-peer-review	novelty_insufficient	rule_conflict	Correct, and does not advance the field
+research	academic-peer-review	ethics_or_data_statement	rule_conflict	Approval or data availability statement missing
+research	academic-peer-review	reviewer_conflict	authority_exceeded	Declined and returned to the editor
+research	academic-peer-review	other	other	Free text required
+research	data-access-request	approved_under_agreement	conformed	Purpose and safeguards meet the access conditions
+research	data-access-request	purpose_unclear	evidence_insufficient	Research question not specified well enough to assess
+research	data-access-request	request_exceeds_purpose	evidence_contradicts	Variables requested exceed the stated purpose
+research	data-access-request	reidentification_risk	risk_elevated	Refused or reduced on disclosure risk
+research	data-access-request	consent_scope	rule_conflict	Original consent does not cover the use
+research	data-access-request	custodian_refusal	third_party	Data custodian declined
+research	data-access-request	secure_environment_capacity	capacity_or_cost	Approved in principle, no analysis environment available
+research	data-access-request	other	other	Free text required
+research	model-deployment-approval	meets_validation_criteria	conformed	Performance, fairness and drift checks all passed
+research	model-deployment-approval	validation_data_unrepresentative	evidence_insufficient	Test set does not reflect the deployment population
+research	model-deployment-approval	offline_vs_online_gap	evidence_contradicts	Shadow results differ from offline evaluation
+research	model-deployment-approval	subgroup_performance	rule_conflict	Fails a performance floor for a defined group
+research	model-deployment-approval	explainability_requirement	rule_conflict	Cannot meet the required level of explanation
+research	model-deployment-approval	human_in_loop_required	risk_elevated	Approved only with review on every decision
+research	model-deployment-approval	monitoring_not_ready	capacity_or_cost	Model sound, observability not in place
+research	model-deployment-approval	other	other	Free text required
+technology	code-review	meets_standard	conformed	Approved with no substantive change requested
+technology	code-review	test_coverage	evidence_insufficient	Plausible but untested
+technology	code-review	works_as_specified	evidence_contradicts	Behaviour matches the specification, report stands
+technology	code-review	correctness_risk	rule_conflict	A defect or an unhandled case
+technology	code-review	readability	rule_conflict	Correct, and the next person will struggle
+technology	code-review	scope_creep	out_of_scope	Does more than the ticket asked
+technology	code-review	security_concern	risk_elevated	Introduces or fails to close an exposure
+technology	code-review	architecture_mismatch	rule_conflict	Conflicts with an existing decision
+technology	code-review	other	other	Free text required
+technology	incident-severity	matches_severity_matrix	conformed	Impact and urgency scored to the published matrix
+technology	incident-severity	impact_unknown	evidence_insufficient	Severity set before the blast radius was known
+technology	incident-severity	reported_vs_observed	evidence_contradicts	Reported impact differs from telemetry
+technology	incident-severity	customer_facing_uplift	risk_elevated	Raised because customers are affected
+technology	incident-severity	data_integrity_risk	risk_elevated	Raised because data may be wrong rather than absent
+technology	incident-severity	workaround_available	capacity_or_cost	Lowered because a workaround holds
+technology	incident-severity	vendor_dependency	third_party	Resolution sits with a supplier
+technology	incident-severity	major_incident_declared	authority_exceeded	Escalated beyond the on-call engineer
+technology	incident-severity	other	other	Free text required
+technology	change-advisory	approved_as_submitted	conformed	Meets the change standard, approved unchanged
+technology	change-advisory	plan_incomplete	evidence_insufficient	Backout or test evidence missing
+technology	change-advisory	test_results_conflict	evidence_contradicts	Results do not support the stated readiness
+technology	change-advisory	window_conflict	timing	Clashes with a freeze or another change
+technology	change-advisory	risk_requires_pilot	risk_elevated	Approved only as a staged rollout
+technology	change-advisory	dependency_unresolved	third_party	Blocked on another team or supplier
+technology	change-advisory	standard_change	rule_conflict	Pre-authorised, no board decision needed
+technology	change-advisory	emergency_authority	authority_exceeded	Approved outside the board under emergency powers
+technology	change-advisory	other	other	Free text required
+technology	bug-triage	accepted_to_backlog	conformed	Reproduced and prioritised to the standard
+technology	bug-triage	cannot_reproduce	evidence_insufficient	Insufficient detail to reproduce
+technology	bug-triage	works_as_designed	evidence_contradicts	Behaviour matches the specification
+technology	bug-triage	duplicate	rule_conflict	Already tracked elsewhere
+technology	bug-triage	out_of_support_scope	out_of_scope	Unsupported version, platform or configuration
+technology	bug-triage	severity_uplift_security	risk_elevated	Prioritised on security rather than frequency
+technology	bug-triage	upstream_defect	third_party	Cause sits in a dependency
+technology	bug-triage	wont_fix_cost	capacity_or_cost	Real, and not worth the cost to fix
+technology	bug-triage	other	other	Free text required
+technology	access-request	role_entitlement_met	conformed	Matches the role standard entitlement
+technology	access-request	business_need_unstated	evidence_insufficient	No justification supplied
+technology	access-request	role_mismatch	evidence_contradicts	Request inconsistent with the stated role
+technology	access-request	segregation_of_duties	rule_conflict	Would breach a separation rule
+technology	access-request	privileged_access	risk_elevated	Elevated rights required additional scrutiny
+technology	access-request	time_boxed_grant	timing	Granted for a limited window only
+technology	access-request	data_owner_refused	third_party	Decision rests with the data owner
+technology	access-request	exception_approved	authority_exceeded	Granted outside policy by a named approver
+technology	access-request	other	other	Free text required
+technology	service-desk-triage	known_issue	conformed	Matches a recorded problem with a known workaround
+technology	service-desk-triage	insufficient_detail	evidence_insufficient	Could not be progressed as reported
+technology	service-desk-triage	user_error	evidence_contradicts	Resolved by guidance rather than by change
+technology	service-desk-triage	data_quality	evidence_contradicts	The system behaved correctly on incorrect data
+technology	service-desk-triage	access_rights	rule_conflict	A permissions or entitlement matter
+technology	service-desk-triage	defect_suspected	risk_elevated	Reproducible and unexplained, escalated
+technology	service-desk-triage	third_party	third_party	Cause sits outside systems we control
+technology	service-desk-triage	other	other	Free text required
+technology	architecture-decision	accepted	conformed	Option selected and recorded against the drivers
+technology	architecture-decision	options_not_evaluated	evidence_insufficient	Alternatives not assessed in enough detail
+technology	architecture-decision	assumptions_contradicted	evidence_contradicts	A stated assumption proved wrong in a spike
+technology	architecture-decision	constraint_breach	rule_conflict	Conflicts with a standard or a prior decision
+technology	architecture-decision	supersedes_prior	rule_conflict	Replaces an earlier decision, which is marked superseded
+technology	architecture-decision	operational_risk	risk_elevated	Chosen for resilience over other qualities
+technology	architecture-decision	licence_or_cost	capacity_or_cost	Driven by licensing or run cost
+technology	architecture-decision	other	other	Free text required
+technology	data-quality-gate	passed_all_checks	conformed	All contract tests passed, load proceeded
+technology	data-quality-gate	source_file_missing	evidence_insufficient	Expected input did not arrive
+technology	data-quality-gate	row_counts_conflict	evidence_contradicts	Reconciliation against source failed
+technology	data-quality-gate	schema_violation	rule_conflict	Contract breached by an upstream change
+technology	data-quality-gate	threshold_breach	rule_conflict	Null or duplicate rate above the agreed limit
+technology	data-quality-gate	stale_data_accepted	risk_elevated	Loaded knowingly stale to keep a deadline
+technology	data-quality-gate	upstream_provider	third_party	Fault sits with the data supplier
+technology	data-quality-gate	other	other	Free text required
+security	vulnerability-triage	patched_in_sla	conformed	Remediated within the standard window for its rating
+security	vulnerability-triage	asset_ownership_unknown	evidence_insufficient	Could not identify the owning team
+security	vulnerability-triage	scanner_false_positive	evidence_contradicts	Finding not reproducible on inspection
+security	vulnerability-triage	exploitability_uplift	risk_elevated	Prioritised on known exploitation rather than score
+security	vulnerability-triage	compensating_control	rule_conflict	Risk accepted because another control applies
+security	vulnerability-triage	vendor_patch_unavailable	third_party	No fix published
+security	vulnerability-triage	remediation_deferred	capacity_or_cost	Accepted and scheduled for a later release
+security	vulnerability-triage	other	other	Free text required
+security	security-exception	no_exception_needed	conformed	Request met policy without an exception
+security	security-exception	justification_insufficient	evidence_insufficient	Business case not documented
+security	security-exception	control_claim_unverified	evidence_contradicts	Claimed compensating control not evidenced
+security	security-exception	policy_breach_accepted	rule_conflict	Granted against a specific control, with conditions
+security	security-exception	residual_risk_too_high	risk_elevated	Refused on assessed residual risk
+security	security-exception	time_limited_exception	timing	Granted only until a fixed date
+security	security-exception	risk_owner_accepted	authority_exceeded	Accepted by a named executive risk owner
+security	security-exception	other	other	Free text required
+security	phishing-report	confirmed_malicious	conformed	Assessed and actioned under the standard playbook
+security	phishing-report	headers_unavailable	evidence_insufficient	Reporter forwarded without the original message
+security	phishing-report	sender_display_mismatch	evidence_contradicts	Display name conflicts with the sending domain
+security	phishing-report	legitimate_but_unusual	evidence_contradicts	Genuine message that resembles a known pattern
+security	phishing-report	targeted_campaign	risk_elevated	Escalated on evidence of targeting
+security	phishing-report	blocklist_rule_applied	rule_conflict	Handled by an existing rule
+security	phishing-report	mail_provider_action	third_party	Takedown depends on the provider
+security	phishing-report	other	other	Free text required
+utilities	water-quality-exceedance	within_guideline	conformed	Result inside the guideline value
+utilities	water-quality-exceedance	sample_integrity_doubt	evidence_insufficient	Chain of custody or holding time compromised
+utilities	water-quality-exceedance	resample_disagrees	evidence_contradicts	Repeat sample does not confirm the exceedance
+utilities	water-quality-exceedance	health_based_guideline	rule_conflict	Health-related value exceeded, notification required
+utilities	water-quality-exceedance	distribution_system_risk	risk_elevated	Escalated on network location rather than value alone
+utilities	water-quality-exceedance	treatment_capacity	capacity_or_cost	Response limited by available treatment
+utilities	water-quality-exceedance	regulator_directed	third_party	Action set by the health regulator
+utilities	water-quality-exceedance	other	other	Free text required
+utilities	network-switching	approved_to_procedure	conformed	Switching sheet matches the approved procedure
+utilities	network-switching	network_model_outdated	evidence_insufficient	As-built status of the asset unconfirmed
+utilities	network-switching	field_differs_from_model	evidence_contradicts	Field inspection contradicts the network model
+utilities	network-switching	protection_coordination	rule_conflict	Would leave protection settings non-compliant
+utilities	network-switching	customer_impact	risk_elevated	Deferred on criticality of connected load
+utilities	network-switching	weather_window	timing	Timing set by conditions rather than by plan
+utilities	network-switching	market_or_aemo	third_party	Constrained by the market operator
+utilities	network-switching	other	other	Free text required
+utilities	dam-safety	within_normal_range	conformed	Instrumentation inside expected bounds
+utilities	dam-safety	instrument_fault	evidence_insufficient	Reading unavailable or unreliable
+utilities	dam-safety	visual_vs_instrument	evidence_contradicts	Inspection does not match instrument trend
+utilities	dam-safety	trigger_level_reached	rule_conflict	Defined trigger level crossed
+utilities	dam-safety	consequence_category	risk_elevated	Response set by downstream consequence
+utilities	dam-safety	works_funding	capacity_or_cost	Remediation deferred to a funded programme
+utilities	dam-safety	regulator_notified	authority_exceeded	Escalated to the dam safety regulator
+utilities	dam-safety	other	other	Free text required
+utilities	asset-renewal	scored_to_model	conformed	Prioritised by the condition and criticality model
+utilities	asset-renewal	condition_data_stale	evidence_insufficient	Last inspection too old to rely on
+utilities	asset-renewal	inspection_contradicts_model	evidence_contradicts	Field condition differs from the modelled score
+utilities	asset-renewal	consequence_of_failure	risk_elevated	Raised on consequence rather than condition
+utilities	asset-renewal	regulatory_obligation	rule_conflict	Mandated regardless of score
+utilities	asset-renewal	deferred_budget	capacity_or_cost	Justified, and not funded this period
+utilities	asset-renewal	bundled_with_other_works	capacity_or_cost	Brought forward to share mobilisation costs
+utilities	asset-renewal	third_party_works	third_party	Timing set by another authority programme
+utilities	asset-renewal	other	other	Free text required
+utilities	outage-restoration	restored_to_priority	conformed	Sequenced by the published restoration priority
+utilities	outage-restoration	fault_location_unknown	evidence_insufficient	Fault not yet located
+utilities	outage-restoration	reported_vs_telemetry	evidence_contradicts	Customer reports conflict with network telemetry
+utilities	outage-restoration	life_support_customer	rule_conflict	Registered critical customer changed the sequence
+utilities	outage-restoration	access_or_safety	risk_elevated	Deferred on crew safety or site access
+utilities	outage-restoration	crew_availability	capacity_or_cost	Sequence shaped by available crews
+utilities	outage-restoration	another_utility	third_party	Dependent on another utility making safe
+utilities	outage-restoration	other	other	Free text required
+transport	flight-dispatch	released_to_plan	conformed	Aircraft, crew, fuel and weather all within limits
+transport	flight-dispatch	forecast_uncertain	evidence_insufficient	Destination forecast does not support a decision
+transport	flight-dispatch	load_sheet_discrepancy	evidence_contradicts	Final load differs from the planning figures
+transport	flight-dispatch	minimum_equipment_list	rule_conflict	Released under a specific MEL item
+transport	flight-dispatch	alternate_required	risk_elevated	Additional alternate carried on assessed risk
+transport	flight-dispatch	crew_duty_limits	rule_conflict	Duty time shaped the decision
+transport	flight-dispatch	slot_or_atc	third_party	Departure set by air traffic flow management
+transport	flight-dispatch	other	other	Free text required
+transport	rail-possession	granted_as_planned	conformed	Possession matches the approved programme
+transport	rail-possession	worksite_detail_incomplete	evidence_insufficient	Protection arrangements not fully specified
+transport	rail-possession	plan_conflicts_with_register	evidence_contradicts	Submitted limits conflict with the infrastructure register
+transport	rail-possession	adjacent_line_risk	risk_elevated	Conditions added for adjacent open lines
+transport	rail-possession	rules_non_compliance	rule_conflict	Protection method not permitted for the work
+transport	rail-possession	path_availability	capacity_or_cost	Reduced to protect freight or passenger paths
+transport	rail-possession	operator_objection	third_party	Objection from an operator changed the outcome
+transport	rail-possession	other	other	Free text required
+transport	freight-exception	delivered_as_booked	conformed	Consignment delivered within the service standard
+transport	freight-exception	pod_missing	evidence_insufficient	No proof of delivery captured
+transport	freight-exception	scan_history_conflicts	evidence_contradicts	Scan events inconsistent with the reported location
+transport	freight-exception	dangerous_goods_rule	rule_conflict	Handling governed by a dangerous goods requirement
+transport	freight-exception	temperature_excursion	risk_elevated	Rejected on cold chain integrity
+transport	freight-exception	capacity_reallocation	capacity_or_cost	Reassigned because of linehaul capacity
+transport	freight-exception	carrier_delay	third_party	Delay caused by a subcontracted carrier
+transport	freight-exception	other	other	Free text required
+transport	fleet-maintenance-release	released_serviceable	conformed	All scheduled tasks complete and signed
+transport	fleet-maintenance-release	defect_history_incomplete	evidence_insufficient	Previous repair not documented
+transport	fleet-maintenance-release	symptom_not_reproduced	evidence_contradicts	Reported fault could not be reproduced
+transport	fleet-maintenance-release	roadworthiness_rule	rule_conflict	A statutory requirement not met
+transport	fleet-maintenance-release	wear_within_limits_but_trending	risk_elevated	Held on trend rather than measurement
+transport	fleet-maintenance-release	parts_unavailable	capacity_or_cost	Serviceable pending a part
+transport	fleet-maintenance-release	manufacturer_recall	third_party	Held under a recall notice
+transport	fleet-maintenance-release	other	other	Free text required
+transport	port-clearance	cleared_on_documents	conformed	Documentation complete and consistent
+transport	port-clearance	declaration_incomplete	evidence_insufficient	Required declarations not lodged
+transport	port-clearance	manifest_vs_inspection	evidence_contradicts	Physical inspection differs from the manifest
+transport	port-clearance	prohibited_or_restricted	rule_conflict	Goods subject to a specific control
+transport	port-clearance	biosecurity_risk	risk_elevated	Held on contamination or pest risk
+transport	port-clearance	inspection_capacity	capacity_or_cost	Held pending an inspection slot
+transport	port-clearance	other_agency_hold	third_party	Held at the request of another agency
+transport	port-clearance	other	other	Free text required
+manufacturing	nonconformance-disposition	conforms_on_recheck	conformed	Recheck confirmed the item meets specification
+manufacturing	nonconformance-disposition	measurement_uncertainty	evidence_insufficient	Result within the uncertainty of the method
+manufacturing	nonconformance-disposition	sample_vs_batch	evidence_contradicts	Sample result does not represent the batch
+manufacturing	nonconformance-disposition	use_as_is_concession	rule_conflict	Released against specification under a concession
+manufacturing	nonconformance-disposition	safety_critical_characteristic	risk_elevated	Scrapped on criticality rather than magnitude
+manufacturing	nonconformance-disposition	rework_cost	capacity_or_cost	Scrapped because rework exceeds value
+manufacturing	nonconformance-disposition	customer_concession	third_party	Disposition agreed with the customer
+manufacturing	nonconformance-disposition	other	other	Free text required
+manufacturing	batch-release	released_to_specification	conformed	All critical attributes within specification
+manufacturing	batch-release	documentation_gap	evidence_insufficient	Batch record incomplete
+manufacturing	batch-release	in_process_vs_final	evidence_contradicts	In-process results conflict with final testing
+manufacturing	batch-release	out_of_specification	rule_conflict	A specification limit exceeded
+manufacturing	batch-release	deviation_open	risk_elevated	Held pending closure of a deviation
+manufacturing	batch-release	stability_data_pending	timing	Release deferred for stability confirmation
+manufacturing	batch-release	qualified_person_referral	authority_exceeded	Beyond the release delegation
+manufacturing	batch-release	other	other	Free text required
+manufacturing	supplier-audit	approved_no_findings	conformed	Audit closed with no findings
+manufacturing	supplier-audit	records_unavailable	evidence_insufficient	Supplier could not produce required records
+manufacturing	supplier-audit	practice_differs_from_procedure	evidence_contradicts	Observed practice conflicts with documented procedure
+manufacturing	supplier-audit	major_nonconformity	rule_conflict	A standard requirement not met
+manufacturing	supplier-audit	single_source_risk	risk_elevated	Rating influenced by dependency
+manufacturing	supplier-audit	corrective_action_window	timing	Approval conditional on a closure date
+manufacturing	supplier-audit	subcontractor_scope	third_party	Finding relates to the supplier own supplier
+manufacturing	supplier-audit	other	other	Free text required
+manufacturing	calibration-decision	in_tolerance	conformed	As-found readings within tolerance
+manufacturing	calibration-decision	reference_standard_due	evidence_insufficient	Reference standard itself out of date
+manufacturing	calibration-decision	as_found_vs_as_left	evidence_contradicts	Drift pattern inconsistent with use history
+manufacturing	calibration-decision	out_of_tolerance_impact	rule_conflict	Out of tolerance, product impact assessment triggered
+manufacturing	calibration-decision	extended_interval	risk_elevated	Interval changed on observed stability
+manufacturing	calibration-decision	instrument_replacement_cost	capacity_or_cost	Retired rather than repaired
+manufacturing	calibration-decision	external_laboratory	third_party	Determined by the calibration laboratory
+manufacturing	calibration-decision	other	other	Free text required
+retail	returns-decision	within_returns_policy	conformed	Meets the published returns conditions
+retail	returns-decision	proof_of_purchase_missing	evidence_insufficient	No receipt or order record
+retail	returns-decision	condition_differs_from_claim	evidence_contradicts	Item condition inconsistent with the stated reason
+retail	returns-decision	statutory_guarantee	rule_conflict	Consumer law obligation applied
+retail	returns-decision	fraud_pattern	risk_elevated	Refused on a repeat returns pattern
+retail	returns-decision	goodwill_exception	authority_exceeded	Approved outside policy by a manager
+retail	returns-decision	outside_return_window	timing	Beyond the allowed period
+retail	returns-decision	other	other	Free text required
+retail	pricing-exception	within_price_band	conformed	Discount inside the standard band
+retail	pricing-exception	margin_data_unavailable	evidence_insufficient	Cost to serve not known at decision time
+retail	pricing-exception	quoted_vs_system	evidence_contradicts	Quoted price conflicts with the system price
+retail	pricing-exception	below_floor_price	rule_conflict	Below the approved floor
+retail	pricing-exception	competitive_response	risk_elevated	Approved to defend an account
+retail	pricing-exception	volume_commitment	capacity_or_cost	Granted against a committed volume
+retail	pricing-exception	distributor_agreement	third_party	Set by a channel agreement
+retail	pricing-exception	other	other	Free text required
+retail	credit-hold	within_terms	conformed	Account inside limit and terms
+retail	credit-hold	financials_not_supplied	evidence_insufficient	Updated financials not provided
+retail	credit-hold	payment_claim_unverified	evidence_contradicts	Claimed remittance not received
+retail	credit-hold	limit_exceeded	rule_conflict	Order would exceed the approved limit
+retail	credit-hold	deteriorating_indicators	risk_elevated	Held on external credit signals
+retail	credit-hold	strategic_account_release	authority_exceeded	Released by a named approver
+retail	credit-hold	insurer_withdrew_cover	third_party	Trade credit insurance reduced
+retail	credit-hold	other	other	Free text required
+retail	stock-writeoff	within_shrinkage_tolerance	conformed	Variance inside the accepted tolerance
+retail	stock-writeoff	count_not_verified	evidence_insufficient	Recount not performed before adjustment
+retail	stock-writeoff	system_vs_physical	evidence_contradicts	Physical count conflicts with system quantity
+retail	stock-writeoff	obsolescence_policy	rule_conflict	Aged stock rule applied
+retail	stock-writeoff	damage_or_spoilage	risk_elevated	Written off on condition
+retail	stock-writeoff	disposal_cost	capacity_or_cost	Disposal cheaper than holding
+retail	stock-writeoff	supplier_credit_pending	third_party	Awaiting a supplier claim outcome
+retail	stock-writeoff	other	other	Free text required
+people	recruitment-screening	meets_all_essential	conformed	Meets every essential criterion
+people	recruitment-screening	application_incomplete	evidence_insufficient	Required responses or documents missing
+people	recruitment-screening	claims_unsupported	evidence_contradicts	Experience claimed is not evidenced in the history
+people	recruitment-screening	essential_criterion_unmet	rule_conflict	Fails a stated essential requirement
+people	recruitment-screening	not_eligible_to_work	out_of_scope	Work rights, registration or licence absent
+people	recruitment-screening	stronger_field	capacity_or_cost	Capable, and ranked below others for limited places
+people	recruitment-screening	withdrew_or_unavailable	timing	No longer available for the role
+people	recruitment-screening	panel_referral	authority_exceeded	Beyond the screener discretion
+people	recruitment-screening	other	other	Free text required
+people	performance-moderation	rating_confirmed	conformed	Manager rating upheld at moderation
+people	performance-moderation	evidence_thin	evidence_insufficient	Insufficient documented examples to support the rating
+people	performance-moderation	rating_vs_evidence	evidence_contradicts	Rating inconsistent with the recorded evidence
+people	performance-moderation	distribution_guidance	rule_conflict	Adjusted against distribution guidance
+people	performance-moderation	consistency_across_teams	risk_elevated	Adjusted for comparability rather than performance
+people	performance-moderation	part_year_or_leave	timing	Period of service shaped the outcome
+people	performance-moderation	escalated_hr	authority_exceeded	Referred for review
+people	performance-moderation	other	other	Free text required
+people	grievance-outcome	not_substantiated	conformed	Investigated, allegation not substantiated
+people	grievance-outcome	witnesses_unavailable	evidence_insufficient	Key witnesses declined or unavailable
+people	grievance-outcome	accounts_conflict	evidence_contradicts	Direct conflict between accounts, no corroboration
+people	grievance-outcome	policy_breach_found	rule_conflict	A specific policy provision breached
+people	grievance-outcome	safety_or_wellbeing	risk_elevated	Interim measures taken on assessed risk
+people	grievance-outcome	external_process	third_party	Matter before an external body
+people	grievance-outcome	investigation_timeframe	timing	Outcome shaped by the required timeframe
+people	grievance-outcome	other	other	Free text required
+people	leave-exception	approved_under_policy	conformed	Request within entitlement and notice period
+people	leave-exception	supporting_evidence_absent	evidence_insufficient	Required certificate not supplied
+people	leave-exception	pattern_inconsistent	evidence_contradicts	Absence pattern inconsistent with the stated reason
+people	leave-exception	entitlement_exhausted	rule_conflict	No remaining entitlement of that type
+people	leave-exception	operational_requirement	capacity_or_cost	Declined on coverage
+people	leave-exception	compassionate_discretion	risk_elevated	Approved outside entitlement on circumstances
+people	leave-exception	notice_period	timing	Lodged inside the notice window
+people	leave-exception	other	other	Free text required
+media	editorial-factcheck	verified_to_standard	conformed	Claims verified against the editorial standard
+media	editorial-factcheck	sourcing_insufficient	evidence_insufficient	Single source or unverifiable attribution
+media	editorial-factcheck	sources_disagree	evidence_contradicts	Credible sources materially disagree
+media	editorial-factcheck	legal_risk	rule_conflict	Defamation or contempt risk identified
+media	editorial-factcheck	public_interest_override	risk_elevated	Published with known residual uncertainty
+media	editorial-factcheck	deadline_pressure	timing	Published or held against the deadline
+media	editorial-factcheck	subject_response_pending	third_party	Awaiting a right of reply
+media	editorial-factcheck	other	other	Free text required
+media	advertising-clearance	cleared_as_submitted	conformed	Meets the advertising code as submitted
+media	advertising-clearance	substantiation_missing	evidence_insufficient	Claim substantiation not provided
+media	advertising-clearance	claim_vs_evidence	evidence_contradicts	Substantiation does not support the claim made
+media	advertising-clearance	code_breach	rule_conflict	Breaches a specific provision
+media	advertising-clearance	audience_sensitivity	risk_elevated	Restricted by placement or time
+media	advertising-clearance	regulator_precedent	third_party	Determined by a prior ruling
+media	advertising-clearance	campaign_timing	timing	Clearance shaped by the flight date
+media	advertising-clearance	other	other	Free text required
+media	content-moderation	no_breach_found	conformed	Reported, assessed, and left in place
+media	content-moderation	insufficient_context	evidence_insufficient	Could not be judged on the material available
+media	content-moderation	policy_breach_clear	rule_conflict	Unambiguously against a published rule
+media	content-moderation	policy_breach_contextual	rule_conflict	Against a rule once context is taken into account
+media	content-moderation	legal_requirement	rule_conflict	Required by law or a valid order
+media	content-moderation	coordinated_behaviour	risk_elevated	Actioned on pattern across accounts
+media	content-moderation	rights_complaint_upheld	third_party	A complaint from a rights holder was accepted
+media	content-moderation	escalated_specialist	authority_exceeded	Beyond the reviewer authority
+media	content-moderation	other	other	Free text required
+legal	contract-review	approved_on_standard_terms	conformed	Matches the approved template
+legal	contract-review	instructions_unclear	evidence_insufficient	Commercial intent not stated well enough to advise
+legal	contract-review	terms_conflict_with_brief	evidence_contradicts	Drafting does not reflect what was agreed
+legal	contract-review	liability_outside_policy	rule_conflict	Cap, indemnity or insurance outside policy
+legal	contract-review	jurisdiction_or_law	rule_conflict	Governing law or forum unacceptable
+legal	contract-review	commercial_risk_accepted	risk_elevated	Signed with a known risk, consciously accepted
+legal	contract-review	counterparty_refused	third_party	Position held by the other side
+legal	contract-review	delegation_exceeded	authority_exceeded	Above the signing authority
+legal	contract-review	other	other	Free text required
+legal	discovery-relevance	relevant_and_produced	conformed	Within the agreed scope and produced
+legal	discovery-relevance	document_incomplete	evidence_insufficient	Fragment or attachment missing
+legal	discovery-relevance	metadata_conflicts	evidence_contradicts	Metadata inconsistent with the document content
+legal	discovery-relevance	privileged	rule_conflict	Legal professional privilege claimed
+legal	discovery-relevance	outside_agreed_scope	out_of_scope	Outside the date range or custodian list
+legal	discovery-relevance	proportionality	capacity_or_cost	Excluded on review cost against likely value
+legal	discovery-relevance	client_instruction	third_party	Withheld on instruction, recorded
+legal	discovery-relevance	other	other	Free text required
+environment	biosecurity-intervention	cleared_no_intervention	conformed	Assessed as low risk, released
+environment	biosecurity-intervention	declaration_unclear	evidence_insufficient	Import declaration insufficient to assess
+environment	biosecurity-intervention	inspection_vs_declaration	evidence_contradicts	Physical inspection differs from the declaration
+environment	biosecurity-intervention	prohibited_commodity	rule_conflict	Commodity not permitted from that origin
+environment	biosecurity-intervention	pest_detection_risk	risk_elevated	Escalated on an interception pattern
+environment	biosecurity-intervention	treatment_capacity	capacity_or_cost	Held pending treatment availability
+environment	biosecurity-intervention	exporting_country_certification	third_party	Reliance on the exporting authority certificate
+environment	biosecurity-intervention	other	other	Free text required
+environment	land-clearing-permit	within_allowable	conformed	Clearing within the permitted extent
+environment	land-clearing-permit	vegetation_mapping_dated	evidence_insufficient	Mapping too old to rely on
+environment	land-clearing-permit	ground_truth_differs	evidence_contradicts	Field survey differs from the mapped community
+environment	land-clearing-permit	threatened_community	rule_conflict	Listed community present
+environment	land-clearing-permit	connectivity_impact	risk_elevated	Refused on habitat fragmentation
+environment	land-clearing-permit	offset_unavailable	capacity_or_cost	Offsets could not be secured
+environment	land-clearing-permit	native_title_or_heritage	third_party	Determined with another rights holder
+environment	land-clearing-permit	other	other	Free text required
+environment	fisheries-quota	within_allocation	conformed	Catch within the allocated quota
+environment	fisheries-quota	logbook_incomplete	evidence_insufficient	Catch records not submitted
+environment	fisheries-quota	logbook_vs_landing	evidence_contradicts	Reported catch differs from landing records
+environment	fisheries-quota	size_or_species_rule	rule_conflict	Protected species or undersize take
+environment	fisheries-quota	stock_assessment_decline	risk_elevated	Allocation reduced on stock status
+environment	fisheries-quota	monitoring_coverage	capacity_or_cost	Observer coverage limited verification
+environment	fisheries-quota	interjurisdictional	third_party	Shared stock managed with another jurisdiction
+environment	fisheries-quota	other	other	Free text required
+sport	anti-doping	negative_no_action	conformed	Sample negative, no further action
+sport	anti-doping	sample_chain_of_custody	evidence_insufficient	Documentation package incomplete
+sport	anti-doping	a_sample_vs_b_sample	evidence_contradicts	Confirmation sample does not support the screen
+sport	anti-doping	adverse_analytical_finding	rule_conflict	Prohibited substance above threshold
+sport	anti-doping	therapeutic_use_exemption	rule_conflict	Valid exemption in place
+sport	anti-doping	whereabouts_pattern	risk_elevated	Action on a pattern of missed tests
+sport	anti-doping	laboratory_or_federation	third_party	Determined by the accredited laboratory or federation
+sport	anti-doping	other	other	Free text required
+sport	disciplinary-tribunal	no_offence_found	conformed	Charge assessed, not established
+sport	disciplinary-tribunal	vision_inconclusive	evidence_insufficient	Footage does not show the incident clearly
+sport	disciplinary-tribunal	player_accounts_conflict	evidence_contradicts	Accounts differ and are not reconcilable
+sport	disciplinary-tribunal	grading_rule_applied	rule_conflict	Penalty set by the offence grading table
+sport	disciplinary-tribunal	injury_or_intent_uplift	risk_elevated	Grading raised on outcome or intent
+sport	disciplinary-tribunal	early_plea_discount	timing	Penalty reduced for an early guilty plea
+sport	disciplinary-tribunal	governing_body_direction	third_party	Determined by the governing body
+sport	disciplinary-tribunal	other	other	Free text required
+pharmaceuticals	candidate-selection	progressed_to_development	conformed	Meets the target product profile and the progression criteria
+pharmaceuticals	candidate-selection	scale_up_data_missing	evidence_insufficient	No demonstrated route at the scale the programme needs
+pharmaceuticals	candidate-selection	tox_signal_conflicts	evidence_contradicts	Safety findings disagree across models or studies
+pharmaceuticals	candidate-selection	selectivity_below_threshold	rule_conflict	Fails a defined selectivity or safety margin
+pharmaceuticals	candidate-selection	cost_of_goods_prohibitive	capacity_or_cost	Projected manufacturing cost exceeds the target
+pharmaceuticals	candidate-selection	portfolio_slot_unavailable	capacity_or_cost	Sound candidate, no development capacity this cycle
+pharmaceuticals	candidate-selection	freedom_to_operate	third_party	Patent position held by another party
+pharmaceuticals	candidate-selection	committee_referral	authority_exceeded	Beyond the team progression authority
+pharmaceuticals	candidate-selection	other	other	Free text required
+pharmaceuticals	formulation-development	formulation_meets_spec	conformed	Stability and release profile meet the target
+pharmaceuticals	formulation-development	stability_data_incomplete	evidence_insufficient	Too few time points to assess shelf life
+pharmaceuticals	formulation-development	dissolution_inconsistent	evidence_contradicts	Batch results disagree across sites
+pharmaceuticals	formulation-development	excipient_not_approved	rule_conflict	Excipient outside the accepted list for the route
+pharmaceuticals	formulation-development	patient_acceptability	risk_elevated	Changed on swallowability or palatability rather than a specification
+pharmaceuticals	formulation-development	line_capability	capacity_or_cost	The existing fill line cannot run the presentation
+pharmaceuticals	formulation-development	supplier_lead_time	timing	Material unavailable within the programme window
+pharmaceuticals	formulation-development	partner_decision	third_party	Set by the development partner
+pharmaceuticals	formulation-development	other	other	Free text required
+pharmaceuticals	clinical-trial-site	site_activated	conformed	Meets the feasibility and quality criteria
+pharmaceuticals	clinical-trial-site	enrolment_history_unavailable	evidence_insufficient	No recruitment record for the indication
+pharmaceuticals	clinical-trial-site	feasibility_vs_actuals	evidence_contradicts	Stated capability conflicts with prior performance
+pharmaceuticals	clinical-trial-site	gcp_finding_open	rule_conflict	An inspection finding remains unresolved
+pharmaceuticals	clinical-trial-site	population_not_represented	risk_elevated	The site would not reach the intended population
+pharmaceuticals	clinical-trial-site	activation_cost	capacity_or_cost	Start-up cost exceeds the value of the slot
+pharmaceuticals	clinical-trial-site	ethics_approval_pending	timing	Approval not in place within the window
+pharmaceuticals	clinical-trial-site	sponsor_direction	third_party	Decided by the sponsor
+pharmaceuticals	clinical-trial-site	other	other	Free text required
+agriculture	veterinary-treatment	treated_per_protocol	conformed	The standard treatment was applied
+agriculture	veterinary-treatment	history_unavailable	evidence_insufficient	No prior treatment or movement record for the animal
+agriculture	veterinary-treatment	signs_inconsistent	evidence_contradicts	Clinical signs conflict with the test result
+agriculture	veterinary-treatment	withholding_period	rule_conflict	Restricted by a residue or withholding rule
+agriculture	veterinary-treatment	welfare_trajectory	risk_elevated	Decided on welfare trajectory rather than a protocol
+agriculture	veterinary-treatment	herd_scale_cost	capacity_or_cost	Cost per head across the mob shaped the choice
+agriculture	veterinary-treatment	seasonal_window	timing	The treatment window is closed or not yet open
+agriculture	veterinary-treatment	owner_declined	third_party	The owner declined the recommended course
+agriculture	veterinary-treatment	other	other	Free text required
+agriculture	biosecurity-inspection	cleared_on_inspection	conformed	The consignment met the import or movement conditions
+agriculture	biosecurity-inspection	certificate_incomplete	evidence_insufficient	Phytosanitary or health certificate incomplete
+agriculture	biosecurity-inspection	declaration_conflicts	evidence_contradicts	Declared contents differ from what was found
+agriculture	biosecurity-inspection	prohibited_material	rule_conflict	The item is on a prohibited or restricted list
+agriculture	biosecurity-inspection	pest_risk_elevated	risk_elevated	Held on assessed pest or disease risk
+agriculture	biosecurity-inspection	treatment_capacity	capacity_or_cost	No fumigation or treatment slot available
+agriculture	biosecurity-inspection	perishable_window	timing	Spoilage time shaped the decision
+agriculture	biosecurity-inspection	exporting_authority	third_party	Determined by the exporting country authority
+agriculture	biosecurity-inspection	other	other	Free text required
+construction	design-review	approved_as_submitted	conformed	The design meets the brief and the standards cited
+construction	design-review	calculation_not_provided	evidence_insufficient	Supporting structural or services calculation missing
+construction	design-review	drawings_conflict	evidence_contradicts	Architectural and services drawings disagree
+construction	design-review	code_non_compliance	rule_conflict	A specific clause of the building code is not met
+construction	design-review	buildability_risk	risk_elevated	Decided on constructability rather than a clause
+construction	design-review	cost_plan_exceeded	capacity_or_cost	The design exceeds the cost plan
+construction	design-review	long_lead_item	timing	The selection would miss the procurement window
+construction	design-review	authority_condition	third_party	Set by a consent condition or a utility provider
+construction	design-review	other	other	Free text required
+construction	defect-disposition	no_defect_found	conformed	Inspection confirmed the work meets specification
+construction	defect-disposition	as_built_records_missing	evidence_insufficient	Cannot establish what was actually installed
+construction	defect-disposition	test_result_disputed	evidence_contradicts	An independent test disagrees with the contractor result
+construction	defect-disposition	tolerance_exceeded	rule_conflict	Outside the specified tolerance
+construction	defect-disposition	safety_critical_element	risk_elevated	Rectified on criticality rather than magnitude
+construction	defect-disposition	rectification_cost	capacity_or_cost	Accepted because rework exceeds the benefit
+construction	defect-disposition	handover_date	timing	The disposition was shaped by the handover date
+construction	defect-disposition	client_accepted	third_party	The client accepted the work as it stands
+construction	defect-disposition	other	other	Free text required
+resources	drill-target-selection	target_approved	conformed	Meets the ranking criteria for the programme
+resources	drill-target-selection	survey_coverage_incomplete	evidence_insufficient	Geophysical or geochemical coverage too sparse to rank
+resources	drill-target-selection	models_disagree	evidence_contradicts	Competing interpretations of the same dataset
+resources	drill-target-selection	tenement_condition	rule_conflict	A licence or permit condition prevents it
+resources	drill-target-selection	prospectivity_judgement	risk_elevated	Ranked on interpretation rather than a threshold
+resources	drill-target-selection	rig_availability	capacity_or_cost	Limited by rig days or programme budget
+resources	drill-target-selection	access_window	timing	Access closed within the planned window
+resources	drill-target-selection	landholder_agreement	third_party	Access set by a landholder or traditional owner agreement
+resources	drill-target-selection	other	other	Free text required
+resources	geotechnical-hold	released_to_mine	conformed	Conditions sit within the ground control plan
+resources	geotechnical-hold	monitoring_data_gap	evidence_insufficient	Instrumentation offline or not yet installed
+resources	geotechnical-hold	movement_vs_model	evidence_contradicts	Measured movement disagrees with the model
+resources	geotechnical-hold	trigger_level_exceeded	rule_conflict	A defined trigger or action level was crossed
+resources	geotechnical-hold	slope_risk_judgement	risk_elevated	Held on assessed slope risk rather than a trigger
+resources	geotechnical-hold	production_impact	capacity_or_cost	Release weighed against production loss
+resources	geotechnical-hold	inspection_window	timing	Held until the next inspection window
+resources	geotechnical-hold	regulator_direction	third_party	Directed by the mines inspectorate
+resources	geotechnical-hold	other	other	Free text required

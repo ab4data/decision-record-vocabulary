@@ -36,7 +36,7 @@ ALTER TABLE dim_reason_class
 --   6 loci, 11 classes, from reason-codes/TAXONOMY.md and CLASSES.md.
 -- NOTE conformed and other carry no locus: a locus says where a DEPARTURE
 --   came from, and conformed is not one, while other is not yet classified.
--- out_of_scope is seeded as provisional -- 19 of 87 domains, and the most
+-- out_of_scope is seeded as provisional -- 19 of 96 domains, and the most
 --   contestable call in the scheme. See reason-codes/CLASSES.md.
 -- ===========================================================================
 

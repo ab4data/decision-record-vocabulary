@@ -4,7 +4,7 @@
 
 Dedicated to the public domain under [CC0](LICENSE) — and [here is why](NOTICE.md). Adopt it, fork it, rename it, ignore the parts that do not fit. **It is only worth anything if it is shared.**
 
-▶ **[Open the presentation this came from](https://ab4data.github.io/decision-record-vocabulary/deck/the-second-wave.html)** — all 37 slides, in the browser. ⚠️ **A working draft until 29 October 2026.**
+▶ **[Open the presentation this came from](https://ab4data.github.io/decision-record-vocabulary/deck/the-second-wave.html)** — the short version, 23 slides, in the browser. ⚠️ **A working draft until 29 October 2026.**
 
 ---
 
@@ -47,7 +47,7 @@ Five working loops, and ⭐ **five different vocabularies for the same idea** �
 | ⭐ **[spec/](spec/)** | **The same thing a program can check.** JSON Schema, eight controlled vocabularies as CSV, three conformance profiles, and three validators that need nothing but Perl |
 | ⭐ **[example/](example/)** | **Two synthetic domains, 46 records, compared without ever being joined.** The answers are computed by a committed program, not typed in |
 | **[ddl/](ddl/)** | Starter tables for SQLite and Postgres, with every rule in the spec written as a `CHECK` |
-| ⭐ **[reason-codes/](reason-codes/)** | **87 lists across 18 sectors, and an [analysis](reason-codes/ANALYSIS.md) of what they share.** 716 local codes collapse to 11 classes; three appear in every domain. The lists are constructed, not collected |
+| ⭐ **[reason-codes/](reason-codes/)** | **96 lists across 22 sectors, and an [analysis](reason-codes/ANALYSIS.md) of what they share.** 797 local codes collapse to 11 classes; three appear in every domain. The lists are constructed, not collected |
 | **[CLAIMS.md](CLAIMS.md)** | Every factual claim behind this, with its source and status — including the ones that are argument rather than evidence |
 | **[CONTRIBUTING.md](CONTRIBUTING.md)** | How to propose a change, and what a useful disagreement looks like |
 | ⭐ **[deck/](deck/)** | **The talk this came from — [open it in the browser](https://ab4data.github.io/decision-record-vocabulary/deck/the-second-wave.html)**, or take the one self-contained HTML file and read it offline. ⚠️ **A working draft until 29 October 2026** |

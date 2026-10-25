@@ -30,6 +30,6 @@
 
 ## Adding a twelfth
 
-**Tripling the corpus from 27 domains to 87 required no new class.** That is weak evidence of sufficiency rather than proof — all 87 lists were written by one author.
+**Growing the corpus from 27 domains to 96, across 22 sectors, required no new class.** That is weak evidence of sufficiency rather than proof — all 87 lists were written by one author.
 
 ⭐ **A genuine twelfth class would be a better outcome than another list that fits.** If your domain has a reason that will not map, [open issue #1](../../issues/1) with the code and the sentence a practitioner reads when they pick it.
