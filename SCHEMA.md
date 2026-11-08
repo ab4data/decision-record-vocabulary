@@ -1,4 +1,5 @@
 # The schema
+**Version 0.2** · previous copy: `Versions/SCHEMA_v0.1.md`
 
 **Status: a proposal, offered for amendment.** Nothing here is a standard. If a field is wrong for your domain, [say so](../../issues) or change it in a fork — that is what it is for.
 
@@ -171,7 +172,33 @@ GROUP  BY 1, 2, 3;
 
 ⭐⭐ **And sharpness rises, in a direction that is proved rather than hoped.** Volume buys a finer partition: at first only `task_type` carries the rows, then `× reason_class`, then `× worker_kind`, then `× reason_code`. Resolution is the variance of the conditional mean, so **splitting a cell cannot lower it** — the law of total variance. And among well-calibrated forecasters, the **more refined one is preferred under every strictly proper scoring rule** (DeGroot & Fienberg, 1982 and 1983; refinement is the same ordering called sufficiency in elicitation and sharpness in forecasting). That is *sharpness increasing subject to calibration* — the published definition of a better forecast (Gneiting, Balabdaoui & Raftery, *JRSS-B*, 2007) — obtained as a by-product of keeping the record.
 
-**What to report.** One line per decision path: the **lower bound** of its acceptance rate, by month. It climbs for two reasons at once — the interval narrows as rows accumulate, and the cells refine as volume allows. **When a line clears the threshold you set, that path can run unattended.** This is §6's promotion rule with a number and an interval underneath it.
+**What to report.** One line per decision path: the **lower bound** of its acceptance rate, by month. It climbs for two reasons at once — the interval narrows as rows accumulate, and the cells refine as volume allows. **When a line clears the threshold you set, that path becomes a candidate for a supervised trial.** This is §6's promotion rule with a number and an interval underneath it. ⛔ **It is a candidate, not a release** — see the qualification immediately below, which is the part most easily got wrong.
+
+### Which paths may run unattended, and which may not
+
+⛔⭐⭐ **An acceptance rate earned under review does not establish what happens when the review is removed.** If reviewers accept 950 of 1,000 drafts and stop the other 50, a precise estimate of that 95% tells you how often drafts passed review. It is silent on what the 50 would have cost had they gone through, and the reviewers are part of the system that produced the number. **Three tiers follow from that, and `decision_automation` is where the schema records which tier a path is in.**
+
+**Tier 1 — already unattended, and the rate is not what licenses it.**
+
+- ⭐ **`deterministic_code`.** A rule whose criterion is fully specified runs unattended because it is specified, not because it scored well. **Its licence is the written criterion; the record's job is to show drift** — the rate falling, or cases arriving that the rule was never written for.
+- ⭐ **A path where what happens next labels the decision by itself, the action is reversible, and the cost of an error is bounded and borne by the operator.** Card authorisation is the standing example: the chargeback arrives without anybody recording it, so the measured rate describes the live system rather than a supervised one. **Here the loop closes with no reviewer in it, which is what makes the number transferable.**
+
+**Tier 2 — a cleared bound qualifies a supervised trial.** This is where the acceptance rate does its work, and the trial tests what the rate cannot. **Declare the three outcomes before it starts: widen, hold, or roll back.** The trial has to produce what the history does not hold:
+
+1. **Behaviour on the cases a reviewer would have stopped.** Those are absent from the historical rate by construction.
+2. **Behaviour on severe errors, not only average ones.** An acceptance rate weights every case alike; consequences do not.
+3. **Who bears the error**, and whether they can have it reversed.
+
+**Tier 3 — not promoted on a rate at all.** A cleared bound is not sufficient where any of these holds:
+
+- ⛔ **The only evidence is reviewer acceptance.** Removing the review changes both who decides and which checks remain, so the measured rate no longer describes the system being proposed.
+- ⛔ **The outcome is observed only for the action that was taken.** The rejected option is never tested — Lakkaraju, Kleinberg, Leskovec, Ludwig & Mullainathan, KDD 2017, peer-reviewed. A rate built on observed cases cannot speak for the unobserved ones.
+- ⛔ **An error is irreversible, severe, or borne by somebody other than the decider.** No interval narrows that away.
+- ⛔ **The cell is `other`.** It is mixed by construction, so its rate averages unlike things — limit 6 above.
+- ⛔ **The cell is thin, the rows are clustered, or many cells are watched at once.** Limits 3, 4 and 5 above each make a bound more generous than it looks.
+- ⛔⭐ **`reason_class` is assigned during review, and the rate would then be used to route cases before review.** The grouping variable does not exist at routing time, so a rate grouped by it cannot be applied there — **the feature leaks the outcome it is being used to predict.** Group on what is knowable at intake, or route on a model trained to predict the class rather than on the class itself.
+
+⭐⭐ **What the measure is genuinely for.** It makes recurring work auditable and **identifies candidates** — which paths are stable enough to be worth the cost of a trial, and from when. **Whether a particular path may then run unattended is a separate evaluation**, and the record supplies its baseline and its monitoring rather than its verdict.
 
 ⭐ **Free supervision as well.** On `person_with_agent` rows, `proposed_outcome` against `outcome` is the agent's accuracy on your own work — the labelled expert decisions that routing research reports it is short of, arriving as a by-product.
 
