@@ -6,6 +6,8 @@ Dedicated to the public domain under [CC0](LICENSE) — and [here is why](NOTICE
 
 ▶ **[Open the presentation this came from](https://ab4data.github.io/decision-record-vocabulary/deck/the-second-wave.html)** — the short version, 24 slides, in the browser. ⚠️ **A working draft for 29 October 2026.**
 
+▶ **[Read the survey of 120 privacy policies](survey/privacy-policy-adm-survey-november-2026.md)** — **the published privacy policies of 120 large Australian organisations**, checked for the automated-decision disclosure that starts on 10 December 2026. ⭐ **Every row carries the URL and the date the page was read.**
+
 ---
 
 ## The short version
@@ -51,6 +53,7 @@ Five working loops, and ⭐ **five different vocabularies for the same idea** �
 | **[CLAIMS.md](CLAIMS.md)** | Every factual claim behind this, with its source and status — including the ones that are argument rather than evidence |
 | **[CONTRIBUTING.md](CONTRIBUTING.md)** | How to propose a change, and what a useful disagreement looks like |
 | ⭐ **[deck/](deck/)** | **The talk this came from — [open it in the browser](https://ab4data.github.io/decision-record-vocabulary/deck/the-second-wave.html)**, or take the one self-contained HTML file and read it offline. ⚠️ **A working draft for 29 October 2026** |
+| ⭐ **[survey/](survey/)** | **The privacy policies of 120 large Australian organisations, checked for the automated-decision disclosure that starts on 10 December 2026.** **Surveyed 12–13 November 2026.** ⭐ **Every row carries the URL and the date the page was read**, so any of them can be checked in about a minute — and a correction can be raised as an [issue](../../issues) |
 
 ---
 
